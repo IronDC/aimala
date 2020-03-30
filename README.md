@@ -1,4 +1,4 @@
-# aimala
+# Aimala
 A Game Library &amp; Game DB for Ironhack Module 3 Project
 
 # Ironhack Web Dev - Module 3 Project
