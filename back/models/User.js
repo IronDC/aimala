@@ -29,8 +29,8 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Password is required'],
       match: [PASSWORD_PATTERN, 'Invalid password pattern'],
     },
-    gamesOwned:[{ type : ObjectId, ref: 'Game' }],
-    platformsOwned:[{type: ObjectId, ref: 'Platform'}],
+    gamesOwned:[{ type : Schema.ObjectId, ref: 'Game' }],
+    platformsOwned:[{type: Schema.ObjectId, ref: 'Platform'}],
     social: {
       steam: String,
     }
@@ -52,4 +52,5 @@ const userSchema = new mongoose.Schema(
 );
 ​
 ​
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+module.exports = User;
