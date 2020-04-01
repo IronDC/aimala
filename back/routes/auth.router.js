@@ -8,6 +8,7 @@ const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
 //SignUp
 router.post("/signup", async (req, res, next) => {
+  console.log("Signup User Called")
   const {
     usertype,
     username,

@@ -1,11 +1,13 @@
-const mongoose = require('mongoose');
-const EMAIL_PATTERN= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const PASSWORD_PATTERN = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$/;
-​
-const userSchema = new mongoose.Schema(
+const mongoose=require('mongoose');
+const EMAIL_PATTERN=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const PASSWORD_PATTERN=/^[a-zA-Z]\w{3,14}$/;
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema(
   {
     usertype: {
-      type: String, enum: ["user", "admin"]
+      type: String, enum: ["user", "admin"],
+      default: "user"
     },
     username: {
       type: String,
@@ -27,8 +29,8 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Password is required'],
       match: [PASSWORD_PATTERN, 'Invalid password pattern'],
     },
-    gamesOwned:[{ type : Schema.ObjectId, ref: 'Game' }],
-    platformsOwned:[{type: Schema.ObjectId, ref: 'Platform'}],
+    gamesOwned:[{type:Schema.Types.ObjectId, ref: 'Game' }],
+    platformsOwned:[{type:Schema.Types.ObjectId, ref: 'Platform'}],
     social: {
       steam: String,
     }
@@ -48,7 +50,5 @@ const userSchema = new mongoose.Schema(
     },
   },
 );
-​
-​
 const User = mongoose.model('User', userSchema);
 module.exports = User;
