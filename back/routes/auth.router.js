@@ -26,7 +26,7 @@ router.post("/signup", async (req, res, next) => {
       usertype,
       username,
       email,
-      password: hashPassword(password),
+      password,
       gamesOwned,
       platformsOwned
     });
