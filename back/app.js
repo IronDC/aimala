@@ -8,6 +8,9 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const cors = require("cors");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
 mongoose
   .connect(process.env.DBURL, {
@@ -30,21 +33,42 @@ const debug = require("debug")(
 
 const app = express();
 
+const whitelist = ["http://localhost:3000"];
+const corsOptions = {
+  origin: function(origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+};
+
 // Middleware Setup
+app.use(cors(corsOptions));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// Express View engine setup
-
 app.use(
-  require("node-sass-middleware")({
-    src: path.join(__dirname, "public"),
-    dest: path.join(__dirname, "public"),
-    sourceMap: true
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
+require("./passport")(app);
+// Express View engine setup
+
+// app.use(
+//   require("node-sass-middleware")({
+//     src: path.join(__dirname, "public"),
+//     dest: path.join(__dirname, "public"),
+//     sourceMap: true
+//   })
+// );
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
