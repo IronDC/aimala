@@ -13,7 +13,10 @@ const platformSchema = new mongoose.Schema(
       type: String,
       default: 'https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png'
     },
-    gamepad: String,
+    gamepad: {
+      type: String,
+      default: 'https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png'
+    },
   },
 
   {

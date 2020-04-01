@@ -10,6 +10,7 @@ const gameSchema = new mongoose.Schema(
     },
     description:String,
     publisher:String,
+    year: Number,
     trailer:String,
     platforms:[{ type : Schema.ObjectId, ref: 'Platforms' }],
     status:{

@@ -18,10 +18,8 @@ const userSchema = new mongoose.Schema(
         EMAIL_PATTERN,
         'Please fill a valid email address',
       ],
-      sparse: true,
       unique: false,
       default: null,
-      trim: true,
       lowecase: true
     },
     password: {

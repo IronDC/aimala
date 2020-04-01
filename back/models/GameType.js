@@ -2,9 +2,7 @@ const mongoose = require('mongoose');
 ​
 const gametypeSchema = new mongoose.Schema(
   {
-    gameType: {
-      type:String, enum:['shooter','FPS','platform','racing']
-    },
+    gameType: String,
     description: String,
   },
 
