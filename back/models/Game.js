@@ -1,29 +1,38 @@
-const mongoose = require('mongoose');
-​
-const gameSchema = new mongoose.Schema(
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const gameSchema = new Schema(
   {
     title: String,
-    gameType: [{ type : Schema.ObjectId, ref: 'gameType' }],
+    gameType: {
+      type: [{ type: Schema.Types.ObjectId, ref: "gameType" }],
+      default: []
+    },
     cover: {
       type: String,
-      default: 'https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png'
+      default:
+        "https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png"
     },
-    description:String,
-    publisher:String,
+    description: String,
+    publisher: String,
     year: Number,
-    trailer:String,
-    platforms:[{ type : Schema.ObjectId, ref: 'Platforms' }],
-    status:{
-      type: String, enum: ["pending", "published"]
+    trailer: String,
+    platforms: {
+      type: [{ type: Schema.Types.ObjectId, ref: "Platforms" }],
+      default: []
     },
-    userCreator:[{ type : Schema.ObjectId, ref: 'User' }],
+    status: {
+      type: String,
+      enum: ["pending", "published"]
+    },
+    userCreator: {
+      type: [{ type: Schema.Types.ObjectId, ref: "User" }],
+      default: []
+    }
   },
 
   {
-    timestamps: true,
-  },
+    timestamps: true
+  }
 );
-​
-​
-const Game = mongoose.model('Game', gameSchema);
+const Game = mongoose.model("Game", gameSchema);
 module.exports = Game;

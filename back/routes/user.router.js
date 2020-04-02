@@ -8,7 +8,7 @@ const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
 //SignUp
 router.post("/signup", async (req, res, next) => {
-  console.log("Signup User Called")
+  console.log("Signup User Called");
   const {
     usertype,
     username,
@@ -32,41 +32,36 @@ router.post("/signup", async (req, res, next) => {
     });
     //Login user directly
     req.logIn(newUser, err => {
-      res.json(
-        _.pick(req.user, [
-          "username",
-          "_id",
-          "createdAt",
-          "updateAt"
-        ])
-      );
+      res.json(_.pick(req.user, ["username", "_id", "createdAt", "updateAt"]));
     });
-    console.log(username,"User registered");
+    console.log(username, "User registered");
   } else {
-    res.json({status:"User Exist"});
+    res.json({ status: "User Exist" });
   }
 });
 //Login
-router.post("/login", (req,res,next) => {
-  passport.authenticate("local", (err,user,fealureDetails) => {
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, user, fealureDetails) => {
     if (err) {
       console.log(err);
-      return res.json({status:500, message:"Autentication Error"});
+      return res.json({ status: 500, message: "Autentication Error" });
     }
     if (!user) {
-      return res.json({status:401, message:fealureDetails.message});
+      return res.json({ status: 401, message: fealureDetails.message });
     }
     req.logIn(user, err => {
-      if(err) {
-        return res.status(500).json({message:"Session seve went bad"});
+      if (err) {
+        return res.status(500).json({ message: "Session seve went bad" });
       }
-      return res.json(_.pick(req.user,["username","_id","createdAt","updateAt"]));
-    })
-  })(req,res,next);
+      return res.json(
+        _.pick(req.user, ["username", "_id", "createdAt", "updateAt"])
+      );
+    });
+  })(req, res, next);
 });
 
 // LOGOUT
-router.get("/logout",isLoggedIn(), (req, res, next) => {
+router.get("/logout", isLoggedIn(), (req, res, next) => {
   if (req.user) {
     req.logout();
     return res.json({ status: "Log out" });
@@ -77,6 +72,23 @@ router.get("/logout",isLoggedIn(), (req, res, next) => {
   }
 });
 
+// EDIT USER
+router.post("/edit", isLoggedIn(), async (req, res, next) => {
+  try {
+    const id = req.user._id;
+    const { username, email, password } = req.body;
+    console.log(`Editing user con id: ${req.user}`);
+    await UserModel.findByIdAndUpdate(id, {
+      username,
+      email,
+      password
+    });
+    return res.json({ status: "Edited Profile" });
+  } catch (error) {
+    return res.status(401).json({ status: "Not Found" });
+  }
+});
+
 // WHOAMI
 router.get("/whoami", (req, res, next) => {
   if (req.user) return res.json(req.user);
@@ -84,6 +96,3 @@ router.get("/whoami", (req, res, next) => {
 });
 
 module.exports = router;
-
-
-
