@@ -46,7 +46,7 @@ router.post("/addgame", async (req, res, next) => {
 
 router.post("/editgame", isLoggedIn(), async (req, res, next) => {
   try {
-    //console.log(req);
+    console.log(req);
     const titleGame = req.body.title;
     const {
       title,
