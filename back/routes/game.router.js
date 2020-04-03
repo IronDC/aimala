@@ -83,12 +83,6 @@ router.put("/:id/editgame", isLoggedIn(), async (req, res, next) => {
 
 // GUARDAR JUEGO EN USER.GAMESOWNED
 
-// Prueba de funcion para usar en findbyid, pero nope
-// const gamesOwnedUpdate = userid => {
-//   userid.gamesOwned.push(gameid);
-//   userid.save();
-// };
-
 router.put("/:id/addgameowned", isLoggedIn(), async (req, res, next) => {
   try {
     console.log(req.user);
@@ -106,5 +100,16 @@ router.put("/:id/addgameowned", isLoggedIn(), async (req, res, next) => {
 });
 
 // BORRAR JUEGO DE LA BBDD GENERAL
+
+router.put("/:id/deletegame", isLoggedIn(), async (req, res, next) => {
+  try {
+    const gameid = req.params.id;
+    console.log(`Id game for delete ${gameid}`);
+    await GameModel.findByIdAndDelete(gameid);
+    return res.json({ status: "Game Deleted" });
+  } catch (error) {
+    return res.status(401).json({ status: "Game Not Found" });
+  }
+});
 
 module.exports = router;

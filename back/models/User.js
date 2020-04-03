@@ -25,8 +25,8 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
-      match: [PASSWORD_PATTERN, "Invalid password pattern"]
+      required: [true, "Password is required"]
+      // match: [PASSWORD_PATTERN, "Invalid password pattern"]
     },
     gamesOwned: [],
     //   type: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
