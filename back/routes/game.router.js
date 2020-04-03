@@ -1,13 +1,14 @@
 const express = require("express");
 const GameModel = require("../models/Game");
+const UserModel = require("../models/User");
 // const passport = require("passport");
 // const _ = require("lodash");
 const router = express.Router();
 // const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
-//Add Game the Aimala DB
-router.post("/addgame", async (req, res, next) => {
+//CREATE Game the Aimala DB
+router.post("/create", async (req, res, next) => {
   console.log("Adding game to the Aimala DB");
   // console.log(`Usuario conectado: ${req.user}`);
   const {
@@ -43,11 +44,17 @@ router.post("/addgame", async (req, res, next) => {
 });
 
 // EDITAR JUEGO (CARBALLO Y DAVID DEL FUTURO, HACED ESTO SOLO PARA ADMINS)
+// HAY QUE ASEGURARSE DE QUE EN LA URL LE METEMOS LA ID
 
-router.post("/editgame", isLoggedIn(), async (req, res, next) => {
+router.put("/:id/editgame", isLoggedIn(), async (req, res, next) => {
   try {
+<<<<<<< HEAD
     console.log(req);
     const titleGame = req.body.title;
+=======
+    //console.log(req);
+    const id = req.params.id;
+>>>>>>> 17e9ea914dc2272d2bb868fd3d0b82b28fce6e9b
     const {
       title,
       gameType,
@@ -61,7 +68,7 @@ router.post("/editgame", isLoggedIn(), async (req, res, next) => {
       userCreator
     } = req.body;
     console.log(`Editing Game`);
-    await GameModel.findOneAndUpdate(titleGame, {
+    await GameModel.findByIdAndUpdate(id, {
       title,
       gameType,
       cover,
@@ -81,45 +88,28 @@ router.post("/editgame", isLoggedIn(), async (req, res, next) => {
 
 // GUARDAR JUEGO EN USER.GAMESOWNED
 
+// Prueba de funcion para usar en findbyid, pero nope
+// const gamesOwnedUpdate = userid => {
+//   userid.gamesOwned.push(gameid);
+//   userid.save();
+// };
+
+router.put("/:id/addgameowned", isLoggedIn(), async (req, res, next) => {
+  try {
+    console.log(req.user);
+    const gameid = req.params.id;
+    const userid = req.user.id;
+    console.log(`Adding game ${gameid} to user ${userid}`);
+    const user = await UserModel.findById(userid);
+    console.log(user);
+    user.gamesOwned.push(gameid);
+    user.save();
+    return res.json({ status: "Added Game to user" });
+  } catch (error) {
+    return res.status(401).json({ status: "Game Not Found" });
+  }
+});
+
 // BORRAR JUEGO DE LA BBDD GENERAL
-
-// //Login
-// router.post("/login", (req, res, next) => {
-//   passport.authenticate("local", (err, user, fealureDetails) => {
-//     if (err) {
-//       console.log(err);
-//       return res.json({ status: 500, message: "Autentication Error" });
-//     }
-//     if (!user) {
-//       return res.json({ status: 401, message: fealureDetails.message });
-//     }
-//     req.logIn(user, err => {
-//       if (err) {
-//         return res.status(500).json({ message: "Session seve went bad" });
-//       }
-//       return res.json(
-//         _.pick(req.user, ["username", "_id", "createdAt", "updateAt"])
-//       );
-//     });
-//   })(req, res, next);
-// });
-
-// // LOGOUT
-// router.get("/logout", isLoggedIn(), (req, res, next) => {
-//   if (req.user) {
-//     req.logout();
-//     return res.json({ status: "Log out" });
-//   } else {
-//     return res
-//       .status(401)
-//       .json({ status: "You have to be logged in to logout" });
-//   }
-// });
-
-// // WHOAMI
-// router.get("/whoami", (req, res, next) => {
-//   if (req.user) return res.json(req.user);
-//   else return res.status(401).json({ status: "No user session present" });
-// });
 
 module.exports = router;
