@@ -32,10 +32,10 @@ const userSchema = new Schema(
     //   type: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
     //   default: []
     // },
-    platformsOwned: {
-      type: [{ type: Schema.Types.ObjectId, ref: "Platform" }],
-      default: []
-    },
+    platformsOwned: [],
+    //   type: [{ type: Schema.Types.ObjectId, ref: "Platform" }],
+    //   default: []
+    // },
     social: {
       steam: String
     }
