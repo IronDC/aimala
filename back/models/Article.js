@@ -1,19 +1,17 @@
-const mongoose = require('mongoose');
-​
-const articleSchema = new mongoose.Schema(
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const articleSchema = new Schema(
   {
-    gameRelated:[{ type : Schema.ObjectId, ref: 'Game' }],
-    platformRelated:[{type: Schema.ObjectId, ref: 'Platform'}],
-    title:String,
-    text:String,
-    image:String,
+    gameRelated: [{ type: Schema.Types.ObjectId, ref: "Game" }],
+    platformRelated: [{ type: Schema.Types.ObjectId, ref: "Platform" }],
+    title: String,
+    text: String,
+    image: String
   },
 
   {
-    timestamps: true,
-  },
+    timestamps: true
+  }
 );
-​
-​
-const Article = mongoose.model('Article', articleSchema);
+const Article = mongoose.model("Article", articleSchema);
 module.exports = Article;

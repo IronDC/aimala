@@ -4,6 +4,9 @@ const router = express.Router();
 const game = require("./game.router.js");
 router.use("/game", game);
 
+const article = require("./article.router.js");
+router.use("/article", article);
+
 const platform = require("./platform.router.js");
 router.use("/platform", platform);
 
