@@ -48,13 +48,8 @@ router.post("/create", async (req, res, next) => {
 
 router.put("/:id/editgame", isLoggedIn(), async (req, res, next) => {
   try {
-<<<<<<< HEAD
-    console.log(req);
-    const titleGame = req.body.title;
-=======
     //console.log(req);
     const id = req.params.id;
->>>>>>> 17e9ea914dc2272d2bb868fd3d0b82b28fce6e9b
     const {
       title,
       gameType,
@@ -111,5 +106,16 @@ router.put("/:id/addgameowned", isLoggedIn(), async (req, res, next) => {
 });
 
 // BORRAR JUEGO DE LA BBDD GENERAL
+
+router.put("/:id/deletegame", isLoggedIn(), async (req, res, next) => {
+  try {
+    const gameid = req.params.id;
+    console.log(`Id game for delete ${gameid}`);
+    await GameModel.findByIdAndDelete(gameid);
+    return res.json({ status: "Game Deleted" });
+  } catch (error) {
+    return res.status(401).json({ status: "Game Not Found" });
+  }
+});
 
 module.exports = router;
