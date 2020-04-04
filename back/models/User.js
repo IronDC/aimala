@@ -30,11 +30,11 @@ const userSchema = new Schema(
     },
     gamesOwned: {
       type: [{ type: Schema.Types.ObjectId, ref: "Game" }],
-      default: [],
+      default: []
     },
     platformsOwned: {
       type: [{ type: Schema.Types.ObjectId, ref: "Platform" }],
-      default: [],
+      default: []
     },
     social: {
       steam: String,

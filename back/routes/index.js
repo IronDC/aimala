@@ -10,6 +10,9 @@ router.use("/article", article);
 const platform = require("./platform.router.js");
 router.use("/platform", platform);
 
+const gameType = require("./gametype.router.js");
+router.use("/gametype", gameType);
+
 const user = require("./user.router.js");
 router.use("/user", user);
 
