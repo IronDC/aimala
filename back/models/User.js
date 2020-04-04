@@ -9,11 +9,11 @@ const userSchema = new Schema(
     usertype: {
       type: String,
       enum: ["user", "admin"],
-      default: "user"
+      default: "user",
     },
     username: {
       type: String,
-      required: "Name is required"
+      required: "Name is required",
     },
     email: {
       type: String,
@@ -21,24 +21,24 @@ const userSchema = new Schema(
       match: [EMAIL_PATTERN, "Please fill a valid email address"],
       unique: false,
       default: null,
-      lowecase: true
+      lowecase: true,
     },
     password: {
       type: String,
-      required: [true, "Password is required"]
+      required: [true, "Password is required"],
       // match: [PASSWORD_PATTERN, "Invalid password pattern"]
     },
-    gamesOwned: [],
-    //   type: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
-    //   default: []
-    // },
-    platformsOwned: [],
-    //   type: [{ type: Schema.Types.ObjectId, ref: "Platform" }],
-    //   default: []
-    // },
+    gamesOwned: {
+      type: [{ type: Schema.Types.ObjectId, ref: "Game" }],
+      default: [],
+    },
+    platformsOwned: {
+      type: [{ type: Schema.Types.ObjectId, ref: "Platform" }],
+      default: [],
+    },
     social: {
-      steam: String
-    }
+      steam: String,
+    },
   },
   {
     timestamps: true,
@@ -51,12 +51,12 @@ const userSchema = new Schema(
         delete ret.updatedAt;
         delete ret.__v;
         return ret;
-      }
-    }
+      },
+    },
   }
 );
 
-userSchema.pre("save", async function(next) {
+userSchema.pre("save", async function (next) {
   const user = this;
   if (!user.isModified("password")) {
     return next();
