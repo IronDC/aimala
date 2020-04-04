@@ -8,16 +8,16 @@ const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 router.post("/create", async (req, res, next) => {
   console.log("Adding gametype to the Aimala DB");
   // console.log(`Usuario conectado: ${req.user}`);
-  const { gameType, description } = req.body;
+  const { gametype, description } = req.body;
 
-  console.log(gameType, description);
+  console.log(gametype, description);
 
   const newGameType = await GameTypeModel.create({
-    gameType,
+    gametype,
     description
   });
 
-  console.log(`${gameType} creado`);
+  console.log(`${gametype} creado`);
   return res.json({ status: 200, message: "New GameType Created" });
 });
 // HAY QUE ASEGURARSE DE QUE EN LA URL LE METEMOS LA ID
@@ -27,12 +27,12 @@ router.put("/:id/editgametype", isLoggedIn(), async (req, res, next) => {
     //console.log(req);
     const id = req.params.id;
     const {
-      gameType,
+      gametype,
       description
     } = req.body;
     console.log(`Editing Game`);
     await GameTypeModel.findByIdAndUpdate(id, {
-      gameType,
+      gametype,
       description
     });
     return res.json({ status: "Edited GameTypeModel" });
