@@ -83,12 +83,6 @@ router.put("/:id/editgame", isLoggedIn(), async (req, res, next) => {
 
 // GUARDAR JUEGO EN USER.GAMESOWNED
 
-// Prueba de funcion para usar en findbyid, pero nope
-// const gamesOwnedUpdate = userid => {
-//   userid.gamesOwned.push(gameid);
-//   userid.save();
-// };
-
 router.put("/:id/addgameowned", isLoggedIn(), async (req, res, next) => {
   try {
     console.log(req.user);

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-​
-const gametypeSchema = new mongoose.Schema(
+​const Schema = mongoose.Schema;
+const gametypeSchema = new Schema(
   {
     gameType: String,
     description: String,
