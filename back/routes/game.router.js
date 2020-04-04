@@ -7,6 +7,21 @@ const router = express.Router();
 // const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
+router.get('/',async (req, res, next) => {
+  try{
+    const games = await GameModel.find()
+    return res.json(games);
+  } catch (error) {
+    return res.status(500).json({ status: "Game Not Found" });
+  }
+    // .populate('creator')
+    // .populate({ path: 'comments', populate: { path: 'author' } })
+    // .then((movies) => {
+    //   res.json(movies);
+    // })
+    
+});
+
 //CREATE Game the Aimala DB
 router.post("/create", async (req, res, next) => {
   console.log("Adding game to the Aimala DB");
