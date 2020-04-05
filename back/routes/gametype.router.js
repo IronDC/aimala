@@ -4,64 +4,38 @@ const UserModel = require("../models/User");
 const router = express.Router();
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
+router.get('/',async (req, res, next) => {
+  try{
+    const gametype = await GameTypeModel.find()
+    return res.json(gametype);
+  } catch (error) {
+    return res.status(500).json({ status: "GameType Not Found" });
+  }    
+});
+
 //CREATE Game the Aimala DB
 router.post("/create", async (req, res, next) => {
   console.log("Adding gametype to the Aimala DB");
-  // console.log(`Usuario conectado: ${req.user}`);
-  const { gametype, description } = req.body;
-
-  console.log(gametype, description);
-
-  const newGameType = await GameTypeModel.create({
-    gametype,
-    description
-  });
-
-  console.log(`${gametype} creado`);
+  const newGameType = await GameTypeModel.create(req.body);
+  console.log(`${req.body.gametype} creado`);
   return res.json({ status: 200, message: "New GameType Created" });
 });
 // HAY QUE ASEGURARSE DE QUE EN LA URL LE METEMOS LA ID
 
-router.put("/:id/editgametype", isLoggedIn(), async (req, res, next) => {
+router.put("/:id/edit", isLoggedIn(), async (req, res, next) => {
   try {
     //console.log(req);
     const id = req.params.id;
-    const {
-      gametype,
-      description
-    } = req.body;
-    console.log(`Editing Game`);
-    await GameTypeModel.findByIdAndUpdate(id, {
-      gametype,
-      description
-    });
+    await GameTypeModel.findByIdAndUpdate(id,req.body, { new: true});
     return res.json({ status: "Edited GameTypeModel" });
   } catch (error) {
     return res.status(401).json({ status: "GameType Not Found" });
   }
 });
 
-// GUARDAR TIPO DE JUEGO  EN GAME.GAMETYPES
-
-// router.put("/:id/addgameowned", isLoggedIn(), async (req, res, next) => {
-//   try {
-//     console.log(req.user);
-//     const gameid = req.params.id;
-//     const userid = req.user.id;
-//     console.log(`Adding game ${gameid} to user ${userid}`);
-//     const user = await UserModel.findById(userid);
-//     console.log(user);
-//     user.gamesOwned.push(gameid);
-//     user.save();
-//     return res.json({ status: "Added Game to user" });
-//   } catch (error) {
-//     return res.status(401).json({ status: "Game Not Found" });
-//   }
-// });
-
 // BORRAR JUEGO DE LA BBDD GENERAL
 
-router.put("/:id/deletegametype", isLoggedIn(), async (req, res, next) => {
+router.delete("/:id", isLoggedIn(), async (req, res, next) => {
   try {
     const gametypeid = req.params.id;
     console.log(`Id game for delete ${gametypeid}`);
