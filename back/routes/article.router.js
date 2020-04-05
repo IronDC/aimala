@@ -7,39 +7,29 @@ const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
 // FALTA UN MIDDLEWARE PARA DIFERENCIAR ENTRE ADMIN Y USER
 
+router.get('/',async (req, res, next) => {
+  try{
+    const article = await ArticleModel.find()
+    return res.json(article);
+  } catch (error) {
+    return res.status(500).json({ status: "article Not Found" });
+  }    
+});
+
 //CREATE ARTICLE
-router.post("/newarticle", async (req, res, next) => {
+router.post("/create", async (req, res, next) => {
   console.log("Creating Article");
-  const { gameRelated, platformRelated, title, text, image } = req.body;
-
-  console.log(`REQUERIDO ${title}`);
-
-  const newArticle = await ArticleModel.create({
-    gameRelated,
-    platformRelated,
-    title,
-    text,
-    image
-  });
-
-  console.log(`CREADO ${title}`);
+  const newArticle = await ArticleModel.create(req.body);
+  console.log(`CREADO ${req.body.title}`);
   return res.json({ status: 200, message: "Article Saved" });
 });
 
 // EDITAR ARTÍCULO
 
-router.put("/:id/editarticle", async (req, res, next) => {
+router.put("/:id/edit", async (req, res, next) => {
   try {
     const id = req.params.id;
-    const { gameRelated, platformRelated, title, text, image } = req.body;
-    console.log(`Editing Article ${title}`);
-    await ArticleModel.findByIdAndUpdate(id, {
-      gameRelated,
-      platformRelated,
-      title,
-      text,
-      image
-    });
+    await ArticleModel.findByIdAndUpdate(id, req.body, {new: true});
     return res.json({ status: "Article Edited" });
   } catch (error) {
     return res.status(401).json({ status: "Article Not Found" });
@@ -66,7 +56,7 @@ router.put("/:id/editarticle", async (req, res, next) => {
 
 // BORRAR ARTÍCULO DE LA BBDD GENERAL
 
-router.put("/:id/deletearticle", isLoggedIn(), async (req, res, next) => {
+router.delete("/:id", isLoggedIn(), async (req, res, next) => {
   try {
     const articleid = req.params.id;
     console.log(`Article's id to delete ${articleid}`);
