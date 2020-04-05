@@ -47,21 +47,21 @@ router.put("/:id/edit", isLoggedIn(), async (req, res, next) => {
 
 // GUARDAR JUEGO EN USER.GAMESOWNED
 
-router.put("/:id/add", isLoggedIn(), async (req, res, next) => {
-  try {
-    console.log(req.user);
-    const gameid = req.params.id;
-    const userid = req.user.id;
-    console.log(`Adding game ${gameid} to user ${userid}`);
-    const user = await UserModel.findById(userid);
-    console.log(user);
-    user.gamesOwned.push(gameid);
-    user.save();
-    return res.json({ status: "Added Game to user" });
-  } catch (error) {
-    return res.status(401).json({ status: "Game Not Found" });
-  }
-});
+// router.put("/:id/add", isLoggedIn(), async (req, res, next) => {
+//   try {
+//     console.log(req.user);
+//     const gameid = req.params.id;
+//     const userid = req.user.id;
+//     console.log(`Adding game ${gameid} to user ${userid}`);
+//     const user = await UserModel.findById(userid);
+//     console.log(user);
+//     user.gamesOwned.push(gameid);
+//     user.save();
+//     return res.json({ status: "Added Game to user" });
+//   } catch (error) {
+//     return res.status(401).json({ status: "Game Not Found" });
+//   }
+// });
 
 // BORRAR JUEGO DE LA BBDD GENERAL
 

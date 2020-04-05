@@ -42,21 +42,21 @@ router.put("/:id/edit", async (req, res, next) => {
 
 // GUARDAR PLATAFORMA EN USER.PLATFORMSOWNED
 
-router.put("/:id/add", isLoggedIn(), async (req, res, next) => {
-  try {
-    console.log(req.user);
-    const platformid = req.params.id;
-    const userid = req.user.id;
-    console.log(`Adding platform ${platformid} to user ${userid}`);
-    const user = await UserModel.findById(userid);
-    console.log(user);
-    user.platformsOwned.push(platformid);
-    user.save();
-    return res.json({ status: "Added Platform to user" });
-  } catch (error) {
-    return res.status(401).json({ status: "Platform Not Found" });
-  }
-});
+// router.put("/:id/add", isLoggedIn(), async (req, res, next) => {
+//   try {
+//     console.log(req.user);
+//     const platformid = req.params.id;
+//     const userid = req.user.id;
+//     console.log(`Adding platform ${platformid} to user ${userid}`);
+//     const user = await UserModel.findById(userid);
+//     console.log(user);
+//     user.platformsOwned.push(platformid);
+//     user.save();
+//     return res.json({ status: "Added Platform to user" });
+//   } catch (error) {
+//     return res.status(401).json({ status: "Platform Not Found" });
+//   }
+// });
 
 // BORRAR JUEGO DE LA BBDD GENERAL
 
