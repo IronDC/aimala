@@ -21,7 +21,7 @@ router.post("/create", async (req, res, next) => {
     trailer,
     platforms,
     status,
-    userCreator
+    userCreator,
   } = req.body;
 
   console.log(title, gameType, year);
@@ -36,7 +36,7 @@ router.post("/create", async (req, res, next) => {
     trailer,
     platforms,
     status,
-    userCreator
+    userCreator,
   });
 
   console.log(`${title} creado`);
@@ -60,7 +60,7 @@ router.put("/:id/editgame", isLoggedIn(), async (req, res, next) => {
       trailer,
       platforms,
       status,
-      userCreator
+      userCreator,
     } = req.body;
     console.log(`Editing Game`);
     await GameModel.findByIdAndUpdate(id, {
@@ -73,7 +73,7 @@ router.put("/:id/editgame", isLoggedIn(), async (req, res, next) => {
       trailer,
       platforms,
       status,
-      userCreator
+      userCreator,
     });
     return res.json({ status: "Edited Game" });
   } catch (error) {
@@ -100,6 +100,15 @@ router.put("/:id/addgameowned", isLoggedIn(), async (req, res, next) => {
 });
 
 // BORRAR JUEGO DE LA BBDD GENERAL
+
+// Habría que hacerlo así:
+
+// router.delete('/:id', (req, res, next) => {
+//   const { id } = req.params;
+//   Movie.findOneAndRemove({ _id: id })
+//     .then(() => res.json({ message: 'Removed succesfully' }))
+//     .catch(err => res.status(500).json(err));
+// })
 
 router.put("/:id/deletegame", isLoggedIn(), async (req, res, next) => {
   try {

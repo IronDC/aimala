@@ -1,6 +1,6 @@
 const express = require("express");
 const GameTypeModel = require("../models/GameType");
-const UserModel = require("../models/User");
+//const UserModel = require("../models/User");
 const router = express.Router();
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
@@ -14,7 +14,7 @@ router.post("/create", async (req, res, next) => {
 
   const newGameType = await GameTypeModel.create({
     gametype,
-    description
+    description,
   });
 
   console.log(`${gametype} creado`);
@@ -24,16 +24,12 @@ router.post("/create", async (req, res, next) => {
 
 router.put("/:id/editgametype", isLoggedIn(), async (req, res, next) => {
   try {
-    //console.log(req);
     const id = req.params.id;
-    const {
-      gametype,
-      description
-    } = req.body;
+    const { gametype, description } = req.body;
     console.log(`Editing Game`);
     await GameTypeModel.findByIdAndUpdate(id, {
       gametype,
-      description
+      description,
     });
     return res.json({ status: "Edited GameTypeModel" });
   } catch (error) {
