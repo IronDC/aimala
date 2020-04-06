@@ -32,10 +32,14 @@ router.get("/:id", async (req, res, next) => {
 
 //CREATE Platform the Aimala DB
 router.post("/create", async (req, res, next) => {
-  console.log("Adding platform to the Aimala DB");
-  const newPlatform = await PlatformModel.create(req.body);
-  console.log(`${req.body.name} creado`);
-  return res.json({ status: 200, message: "New Platform Created" });
+  try {
+    console.log("Adding platform to the Aimala DB");
+    const newPlatform = await PlatformModel.create(req.body);
+    console.log(`${req.body.name} creado`);
+    return res.json({ status: 200, message: "New Platform Created" });
+  } catch (error) {
+    return res.status(500).json({ status: "Error creating platform" });
+  }
 });
 
 // EDITAR PLATAFORMA

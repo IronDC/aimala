@@ -27,10 +27,14 @@ router.get("/:id", async (req, res, next) => {
 
 //CREATE Game the Aimala DB
 router.post("/create", async (req, res, next) => {
-  console.log("Adding gametype to the Aimala DB");
-  const newGameType = await GameTypeModel.create(req.body);
-  console.log(`${req.body.gametype} creado`);
-  return res.json({ status: 200, message: "New GameType Created" });
+  try {
+    console.log("Adding gametype to the Aimala DB");
+    const newGameType = await GameTypeModel.create(req.body);
+    console.log(`${req.body.gametype} creado`);
+    return res.json({ status: 200, message: "New GameType Created" });
+  } catch (error) {
+    return res.status(500).json({ status: "Error Creating Gametype" });
+  }
 });
 // HAY QUE ASEGURARSE DE QUE EN LA URL LE METEMOS LA ID
 

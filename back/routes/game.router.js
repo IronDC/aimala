@@ -40,11 +40,15 @@ router.get("/:id", async (req, res, next) => {
 
 //CREATE Game the Aimala DB
 router.post("/create", async (req, res, next) => {
-  console.log("Adding game to the Aimala DB");
-  const newGame = await GameModel.create(req.body);
+  try {
+    console.log("Adding game to the Aimala DB");
+    const newGame = await GameModel.create(req.body);
 
-  console.log(`${req.body.title} creado`);
-  return res.json({ status: 200, message: "New Game Created" });
+    console.log(`${req.body.title} creado`);
+    return res.json({ status: 200, message: "New Game Created" });
+  } catch (error) {
+    return res.status(500).json({ status: "Error Adding Game" });
+  }
 });
 
 // EDITAR JUEGO (CARBALLO Y DAVID DEL FUTURO, HACED ESTO SOLO PARA ADMINS)
