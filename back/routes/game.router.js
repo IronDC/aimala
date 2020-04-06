@@ -7,10 +7,27 @@ const router = express.Router();
 // const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
+// GET ALL GAMES
 router.get("/", async (req, res, next) => {
   try {
     const games = await GameModel.find();
     return res.json(games);
+  } catch (error) {
+    return res.status(500).json({ status: "Game Not Found" });
+  }
+  // .populate('creator')
+  // .populate({ path: 'comments', populate: { path: 'author' } })
+  // .then((movies) => {
+  //   res.json(movies);
+  // })
+});
+
+// GET ONE GAME
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const game = await GameModel.findById(id);
+    return res.json(game);
   } catch (error) {
     return res.status(500).json({ status: "Game Not Found" });
   }

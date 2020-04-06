@@ -4,9 +4,21 @@ const GameTypeModel = require("../models/GameType");
 const router = express.Router();
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
+// GET ALL GAMETYPES
 router.get("/", async (req, res, next) => {
   try {
     const gametype = await GameTypeModel.find();
+    return res.json(gametype);
+  } catch (error) {
+    return res.status(500).json({ status: "GameType Not Found" });
+  }
+});
+
+// GET ONE GAMETYPE
+router.get("/:id", async (req, res, next) => {
+  try {
+    id = req.params.id;
+    const gametype = await GameTypeModel.findById(id);
     return res.json(gametype);
   } catch (error) {
     return res.status(500).json({ status: "GameType Not Found" });

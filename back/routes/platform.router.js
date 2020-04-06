@@ -4,19 +4,30 @@ const UserModel = require("../models/User");
 const router = express.Router();
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
-router.get('/',async (req, res, next) => {
-  try{
-    const platforms = await PlatformModel.find()
+// GET ALL PLATFORMS
+router.get("/", async (req, res, next) => {
+  try {
+    const platforms = await PlatformModel.find();
     return res.json(platforms);
   } catch (error) {
     return res.status(500).json({ status: "Platforms Not Found" });
   }
-    // .populate('creator')
-    // .populate({ path: 'comments', populate: { path: 'author' } })
-    // .then((movies) => {
-    //   res.json(movies);
-    // })
-    
+  // .populate('creator')
+  // .populate({ path: 'comments', populate: { path: 'author' } })
+  // .then((movies) => {
+  //   res.json(movies);
+  // })
+});
+
+// GET ONE PLATFORM
+router.get("/:id", async (req, res, next) => {
+  try {
+    id = req.params.id;
+    const platforms = await PlatformModel.findById(id);
+    return res.json(platforms);
+  } catch (error) {
+    return res.status(500).json({ status: "Platforms Not Found" });
+  }
 });
 
 //CREATE Platform the Aimala DB
@@ -33,7 +44,7 @@ router.put("/:id/edit", async (req, res, next) => {
   try {
     const id = req.params.id;
     console.log(`Editing Platform`);
-    await PlatformModel.findByIdAndUpdate(id,req.body, { new: true} );
+    await PlatformModel.findByIdAndUpdate(id, req.body, { new: true });
     return res.json({ status: "Edited Platform" });
   } catch (error) {
     return res.status(401).json({ status: "Platform Not Found" });

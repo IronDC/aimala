@@ -7,13 +7,25 @@ const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
 // FALTA UN MIDDLEWARE PARA DIFERENCIAR ENTRE ADMIN Y USER
 
-router.get('/',async (req, res, next) => {
-  try{
-    const article = await ArticleModel.find()
+// GET TODOS LOS ARTICULOS
+router.get("/", async (req, res, next) => {
+  try {
+    const article = await ArticleModel.find();
     return res.json(article);
   } catch (error) {
     return res.status(500).json({ status: "article Not Found" });
-  }    
+  }
+});
+
+// GET UN ARTICULO
+router.get("/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const article = await ArticleModel.findById(id);
+    return res.json(article);
+  } catch (error) {
+    return res.status(500).json({ status: "article Not Found" });
+  }
 });
 
 //CREATE ARTICLE
@@ -29,7 +41,7 @@ router.post("/create", async (req, res, next) => {
 router.put("/:id/edit", async (req, res, next) => {
   try {
     const id = req.params.id;
-    await ArticleModel.findByIdAndUpdate(id, req.body, {new: true});
+    await ArticleModel.findByIdAndUpdate(id, req.body, { new: true });
     return res.json({ status: "Article Edited" });
   } catch (error) {
     return res.status(401).json({ status: "Article Not Found" });
