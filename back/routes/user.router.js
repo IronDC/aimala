@@ -1,5 +1,6 @@
 const express = require("express");
 const UserModel = require("../models/User");
+const GameModel = require("../models/Game.js");
 const passport = require("passport");
 const _ = require("lodash");
 const router = express.Router();
@@ -94,5 +95,49 @@ router.get("/whoami", (req, res, next) => {
   if (req.user) return res.json(req.user);
   else return res.status(401).json({ status: "No user session present" });
 });
+
+router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
+  try {
+    console.log(req.user);
+    const gameid = req.params.id;
+    const userid = req.user.id;
+    console.log(`Adding game ${gameid} to user ${userid}`);
+    const user = await UserModel.findById(userid);
+    console.log(user);
+    user.gamesOwned.push(gameid);
+    user.save();
+    return res.json({ status: "Added Game to user" });
+  } catch (error) {
+    return res.status(401).json({ status: "Game Not Found" });
+  }
+});
+
+router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
+  try {
+    console.log(req.user);
+    const platformid = req.params.id;
+    const userid = req.user.id;
+    console.log(`Adding platform ${platformid} to user ${userid}`);
+    const user = await UserModel.findById(userid);
+    console.log(user);
+    user.platformsOwned.push(platformid);
+    user.save();
+    return res.json({ status: "Added Platform to user" });
+  } catch (error) {
+    return res.status(401).json({ status: "Platform Not Found" });
+  }
+});
+
+router.get('/',isLoggedIn(),async (req, res, next) => {
+  try{
+    const userid = req.user.id;
+    const user = await UserModel.findById(userid).populate('platformsOwned').populate('gamesOwned');
+    return res.json(user);
+  } catch (error) {
+    return res.status(500).json({ status: "User Not Found" });
+  }    
+});
+
+
 
 module.exports = router;
