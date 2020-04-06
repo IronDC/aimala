@@ -16,7 +16,7 @@ router.post("/signup", async (req, res, next) => {
     email,
     password,
     gamesOwned,
-    platformsOwned,
+    platformsOwned
   } = req.body;
 
   console.log(usertype, username, email, password, gamesOwned, platformsOwned);
@@ -29,10 +29,10 @@ router.post("/signup", async (req, res, next) => {
       email,
       password,
       gamesOwned,
-      platformsOwned,
+      platformsOwned
     });
     //Login user directly
-    req.logIn(newUser, (err) => {
+    req.logIn(newUser, err => {
       res.json(_.pick(req.user, ["username", "_id", "createdAt", "updateAt"]));
     });
     console.log(username, "User registered");
@@ -50,7 +50,7 @@ router.post("/login", (req, res, next) => {
     if (!user) {
       return res.json({ status: 401, message: fealureDetails.message });
     }
-    req.logIn(user, (err) => {
+    req.logIn(user, err => {
       if (err) {
         return res.status(500).json({ message: "Session seve went bad" });
       }
@@ -82,7 +82,7 @@ router.post("/edit", isLoggedIn(), async (req, res, next) => {
     await UserModel.findByIdAndUpdate(id, {
       username,
       email,
-      password,
+      password
     });
     return res.json({ status: "Edited Profile" });
   } catch (error) {
@@ -103,10 +103,13 @@ router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
     const gameid = req.params.id;
     const userid = req.user.id;
     console.log(`Adding game ${gameid} to user ${userid}`);
-    const user = await UserModel.findById(userid);
-    console.log(user);
-    user.gamesOwned.push(gameid);
-    user.save();
+    await UserModel.findOneAndUpdate(
+      { _id: userid },
+      {$addToSet:{ gamesOwned: gameid }},
+      {
+        new: true
+      }
+    );
     return res.json({ status: "Added Game to user" });
   } catch (error) {
     return res.status(401).json({ status: "Game Not Found" });
@@ -120,10 +123,14 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
     const platformid = req.params.id;
     const userid = req.user.id;
     console.log(`Adding platform ${platformid} to user ${userid}`);
-    const user = await UserModel.findById(userid);
-    console.log(user);
-    user.platformsOwned.push(platformid);
-    user.save();
+    await UserModel.findOneAndUpdate(
+      { _id: userid },
+      {$addToSet:{ platformsOwned: platformid }},
+      {
+        new: true
+      }
+    );
+
     return res.json({ status: "Added Platform to user" });
   } catch (error) {
     return res.status(401).json({ status: "Platform Not Found" });
