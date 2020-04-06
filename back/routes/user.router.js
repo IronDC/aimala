@@ -130,7 +130,7 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
   }
 });
 
-// GET USER
+// GET THE CURRENT USER
 router.get("/", isLoggedIn(), async (req, res, next) => {
   try {
     const userid = req.user.id;

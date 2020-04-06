@@ -1,12 +1,12 @@
 const isAdmin = (redirectRoute = "/") => (req, res, next) => {
   const usertype = req.user.usertype;
-  if (usertype === "admin") {
+  if (req.user && req.user.usertype === "admin") {
     return next();
   } else {
-    return res.redirect(redirectRoute);
+    return res.status(401).json({ message: "Unauthorized" });
   }
 };
 
 module.exports = {
-  isAdmin
+  isAdmin,
 };
