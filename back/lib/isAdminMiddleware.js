@@ -1,4 +1,4 @@
-const isAdmin = (redirectRoute = "/") => (req, res, next) => {
+const isAdmin = () => (req, res, next) => {
   const usertype = req.user.usertype;
   if (req.user && req.user.usertype === "admin") {
     return next();

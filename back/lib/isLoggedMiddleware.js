@@ -1,4 +1,4 @@
-const isLoggedIn = (redirectRoute = "/") => (req, res, next) => {
+const isLoggedIn = () => (req, res, next) => {
   if (req.user) {
     return next();
   } else {
@@ -6,7 +6,7 @@ const isLoggedIn = (redirectRoute = "/") => (req, res, next) => {
   }
 };
 
-const isLoggedOut = (redirectRoute = "/") => (req, res, next) => {
+const isLoggedOut = () => (req, res, next) => {
   if (!req.user) {
     return next();
   } else {

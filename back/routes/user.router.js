@@ -119,7 +119,6 @@ router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
 // ADD PLATFORM TO USER
 router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
   try {
-    console.log(req.user);
     const platformid = req.params.id;
     const userid = req.user.id;
     console.log(`Adding platform ${platformid} to user ${userid}`);
@@ -130,7 +129,6 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
         new: true
       }
     );
-
     return res.json({ status: "Added Platform to user" });
   } catch (error) {
     return res.status(401).json({ status: "Platform Not Found" });
