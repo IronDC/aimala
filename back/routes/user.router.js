@@ -16,7 +16,7 @@ router.post("/signup", async (req, res, next) => {
     email,
     password,
     gamesOwned,
-    platformsOwned
+    platformsOwned,
   } = req.body;
 
   console.log(usertype, username, email, password, gamesOwned, platformsOwned);
@@ -29,10 +29,10 @@ router.post("/signup", async (req, res, next) => {
       email,
       password,
       gamesOwned,
-      platformsOwned
+      platformsOwned,
     });
     //Login user directly
-    req.logIn(newUser, err => {
+    req.logIn(newUser, (err) => {
       res.json(_.pick(req.user, ["username", "_id", "createdAt", "updateAt"]));
     });
     console.log(username, "User registered");
@@ -50,7 +50,7 @@ router.post("/login", (req, res, next) => {
     if (!user) {
       return res.json({ status: 401, message: fealureDetails.message });
     }
-    req.logIn(user, err => {
+    req.logIn(user, (err) => {
       if (err) {
         return res.status(500).json({ message: "Session seve went bad" });
       }
@@ -82,7 +82,7 @@ router.post("/edit", isLoggedIn(), async (req, res, next) => {
     await UserModel.findByIdAndUpdate(id, {
       username,
       email,
-      password
+      password,
     });
     return res.json({ status: "Edited Profile" });
   } catch (error) {
@@ -96,6 +96,7 @@ router.get("/whoami", (req, res, next) => {
   else return res.status(401).json({ status: "No user session present" });
 });
 
+// ADD GAME TO USER
 router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
   try {
     console.log(req.user);
@@ -112,6 +113,7 @@ router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
   }
 });
 
+// ADD PLATFORM TO USER
 router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
   try {
     console.log(req.user);
@@ -128,16 +130,17 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
   }
 });
 
-router.get('/',isLoggedIn(),async (req, res, next) => {
-  try{
+// GET USER
+router.get("/", isLoggedIn(), async (req, res, next) => {
+  try {
     const userid = req.user.id;
-    const user = await UserModel.findById(userid).populate('platformsOwned').populate('gamesOwned');
+    const user = await UserModel.findById(userid)
+      .populate("platformsOwned")
+      .populate("gamesOwned");
     return res.json(user);
   } catch (error) {
     return res.status(500).json({ status: "User Not Found" });
-  }    
+  }
 });
-
-
 
 module.exports = router;
