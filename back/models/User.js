@@ -26,15 +26,15 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: [true, "Password is required"],
-      // match: [PASSWORD_PATTERN, "Invalid password pattern"]
+      match: [PASSWORD_PATTERN, "Invalid password pattern"],
     },
     gamesOwned: {
       type: [{ type: Schema.Types.ObjectId, ref: "Game" }],
-      default: []
+      default: [],
     },
     platformsOwned: {
       type: [{ type: Schema.Types.ObjectId, ref: "Platform" }],
-      default: []
+      default: [],
     },
     social: {
       steam: String,

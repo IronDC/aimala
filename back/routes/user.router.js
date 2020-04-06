@@ -116,12 +116,9 @@ router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
 // ADD PLATFORM TO USER
 router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
   try {
-    console.log(req.user);
     const platformid = req.params.id;
     const userid = req.user.id;
-    console.log(`Adding platform ${platformid} to user ${userid}`);
     const user = await UserModel.findById(userid);
-    console.log(user);
     user.platformsOwned.push(platformid);
     user.save();
     return res.json({ status: "Added Platform to user" });
