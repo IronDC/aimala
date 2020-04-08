@@ -91,6 +91,7 @@ export default function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
+                <MenuItem onClick={handleClose}>Sign Up / Sign In</MenuItem>
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>

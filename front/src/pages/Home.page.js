@@ -4,16 +4,11 @@ import Button from "@material-ui/core/Button";
 const HomePage = () => {
   return (
     <>
-      <h1>IronProfile</h1>
+      <h1>Aimala</h1>
       <p>
-        App lab-profile-app
-        <strong>A lo loco!!!!</strong>
+        Your favorite game library
+        <strong>Bring to you by the handsome duo David and Carballo</strong>
       </p>
-      <div>
-        <Button variant="contained" color="primary">
-          SignUp
-        </Button>
-      </div>
     </>
   );
 };
