@@ -11,6 +11,7 @@ import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import {Link} from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
@@ -53,13 +54,13 @@ export default function TemporaryDrawer() {
             <ListItemIcon>
               {index % 2 === 0 ? <SportsEsportsIcon /> : <VideogameAssetIcon />}
             </ListItemIcon>
-            <ListItemText primary={text} />
+            {text === "Homepage" ? <Link to="/"><ListItemText primary={text}></ListItemText></Link> : <ListItemText primary={text}></ListItemText>}
+            {/* <Link to="/"><ListItemText primary={text}></ListItemText></Link> */}
           </ListItem>
         ))}
       </List>
     </div>
   );
-
   return (
     <div>
       {["left"].map((anchor) => (

@@ -12,7 +12,8 @@ import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import TemporaryDrawer from "../Menu";
-import { Link } from "@material-ui/core";
+// import { Link } from "@material-ui/core";
+import {Link} from "react-router-dom"
 
 
 const useStyles = makeStyles((theme) => ({
@@ -93,7 +94,7 @@ export default function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}><Link to="/signup">Sign Up / Sign In</Link></MenuItem>
+                <MenuItem><Link to="/signup">Sign Up / Sign In</Link></MenuItem>
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
