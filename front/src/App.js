@@ -8,7 +8,6 @@ export const App = () => {
   return (
     <>
       <Router>
-        <TemporaryDrawer />
         <MenuAppBar />
         <Switch>
           <Route path="/" exact component={HomePage} />
