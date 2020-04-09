@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { doSignup, useUserSetter } from "./../../lib/authService";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const Input = styled.input`
@@ -15,13 +17,22 @@ const hasError = (errors, name) => {
 };
 
 const SignUp = () => {
-  const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
+  const history = useHistory();
+  const setUser = useUserSetter();
+  const { register, handleSubmit, errors } = useForm({
+    mode: "onBlur",
+    defaultValues: { username: "", password: "", email: "" }
+  });
 
   const onSubmit = data => {
-    console.log("Data is");
-    console.log(data);
+    doSignup(data).then(user => {
+      setUser(user);
+      history.push("/");
+      console.log(user);
+    });
   };
   console.log(errors);
+
   return (
     <>
       <h1>SignUp</h1>
@@ -45,23 +56,17 @@ const SignUp = () => {
         </div>
         <div>
           <label>Email</label>
-          {/* <Input
+          <Input
             name="email"
             className={hasError(errors, "email")}
-            type="email"
-            ref={register({required: true })}
-          /> */}
-          <Input
-        name="email"
-        className={hasError(errors, "email")}
-        ref={register({
-          required: 'Required',
-          pattern: {
-            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: "invalid email address"
-          }
-        })}
-      />
+            ref={register({
+              required: true,
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "invalid email address"
+              }
+            })}
+          />
         </div>
         <button type="submit">SignUp</button>
       </form>
