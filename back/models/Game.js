@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const gameSchema = new Schema(
   {
-    title: String,
+    title: {
+    type: String,
+    required: "title is required",
+  },
     gameType: {
       type: [{ type: Schema.Types.ObjectId, ref: "gameType" }],
       default: []
@@ -22,7 +25,8 @@ const gameSchema = new Schema(
     },
     status: {
       type: String,
-      enum: ["pending", "published"]
+      enum: ["pending", "published"],
+      default: "pending"
     },
     userCreator: {
       type: [{ type: Schema.Types.ObjectId, ref: "User" }],

@@ -18,7 +18,6 @@ router.use("/user", user);
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render("index");
+  res.status(200).json({status:"this is the back, go to localhost:1234"});
 });
-
 module.exports = router;

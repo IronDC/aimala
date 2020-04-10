@@ -10,32 +10,25 @@ const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 //SignUp
 router.post("/signup", async (req, res, next) => {
   console.log("Signup User Called");
-  const {
-    usertype,
-    username,
-    email,
-    password,
-    gamesOwned,
-    platformsOwned
-  } = req.body;
+  // const {
+  //   usertype,
+  //   username,
+  //   email,
+  //   password,
+  //   gamesOwned,
+  //   platformsOwned
+  // } = req.body;
 
-  console.log(usertype, username, email, password, gamesOwned, platformsOwned);
+  // console.log(usertype, username, email, password, gamesOwned, platformsOwned);
   //Create the User
-  const existinUser = await UserModel.findOne({ username });
+  const existinUser = await UserModel.findOne({username:req.body.username});
   if (!existinUser) {
-    const newUser = await UserModel.create({
-      usertype,
-      username,
-      email,
-      password,
-      gamesOwned,
-      platformsOwned
-    });
+    const newUser = await UserModel.create(req.body);
     //Login user directly
     req.logIn(newUser, err => {
       res.json(_.pick(req.user, ["username", "_id", "createdAt", "updateAt"]));
     });
-    console.log(username, "User registered");
+    console.log(req.body.username, "User registered");
   } else {
     res.json({ status: "User Exist" });
   }

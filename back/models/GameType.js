@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const gametypeSchema = new Schema(
   {
-    gametype: String,
+    gametype: {
+      type: String,
+      required: "gametype is required",
+    },
     description: String,
   },
   {

@@ -2,7 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const platformSchema = new Schema(
   {
-    name: String,
+    name: {
+      type: String,
+      required: "platform is required",
+    },
     year: Number,
     description: String,
     logo: {
