@@ -13,7 +13,7 @@ export const withAuthentication = Component => () => {
     // Try to get the current logged in user from our backend
     whoami()
       .then(user => {
-        console.error(`Welcome again user ${user.username}`);
+        console.log(`Welcome again user ${user.username}`);
         setUser(user);
       })
       .catch(e => {
