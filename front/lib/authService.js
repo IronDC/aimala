@@ -32,18 +32,18 @@ const api = axios.create({
   withCredentials: true
 });
 
-export const doSignup = async (username, password,email) => {
+export const doSignup = async (data) => {
   // Axios post a ruta /auth/signup en servidor
   // para crear un usuario en mongodb
   console.log(`Registrando usuario...`);
-  console.log(username, password,email);
+  console.log(data);
   const res = await api.post("/user/signup", {
-    username,
-    password,
-    email
+    username:data.username,
+    password: data.password,
+    email: data.email
   });
   console.log("Created User");
-  console.log(res.data);
+  console.log(`esto es res.data ${res.data}`);
   return res.data;
 };
 

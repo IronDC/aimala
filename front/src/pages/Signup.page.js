@@ -28,10 +28,10 @@ const SignUp = () => {
     doSignup(data).then(user => {
       setUser(user);
       history.push("/");
-      console.log(user);
+      console.log(`este es el usuario que mandamos ${user}`);
     });
   };
-  console.log(errors);
+  console.log(`es este el erro que sale ${errors}`);
 
   return (
     <>
@@ -40,8 +40,8 @@ const SignUp = () => {
         <div>
           <label>Username</label>
           <Input
-            className={hasError(errors, "usuario")}
-            name="usuario"
+            className={hasError(errors, "username")}
+            name="username"
             ref={register({ required: true })}
           />
         </div>
