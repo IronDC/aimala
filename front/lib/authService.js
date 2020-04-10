@@ -47,12 +47,11 @@ export const doSignup = async (data) => {
   return res.data;
 };
 
-export const doLogin = async (username, password,email) => {
+export const doLogin = async (data) => {
   console.log("Do Login");
   const res = await api.post("/user/login", {
-    username,
-    password,
-    email
+    username: data.username,
+    password:data.password,
   });
   console.log(res.data);
   return res.data;
