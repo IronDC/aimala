@@ -31,7 +31,7 @@ const SignUp = () => {
       console.log(`este es el usuario que mandamos ${user}`);
     });
   };
-  console.log(`es este el erro que sale ${errors}`);
+  console.log(errors);
 
   return (
     <>

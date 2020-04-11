@@ -28,7 +28,7 @@ const Login = () => {
     doLogin(data).then(user => {
       setUser(user);
       history.push("/");
-      console.log(`este es el usuario logeado ${data.user}`);
+      console.log(`este es el usuario logeado ${data.username}`);
     });
   };
   console.log(errors);
