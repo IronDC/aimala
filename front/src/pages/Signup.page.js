@@ -27,7 +27,7 @@ const SignUp = () => {
   const onSubmit = data => {
     doSignup(data).then(user => {
       setUser(user);
-      history.push("/");
+      history.push("/homeuser");
       console.log(`este es el usuario que mandamos ${user}`);
     });
   };
