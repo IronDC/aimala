@@ -29,18 +29,18 @@ export const useUserLogout = () => {
 
 const api = axios.create({
   baseURL: "http://localhost:3000",
-  withCredentials: true
+  withCredentials: true,
 });
 
 export const doSignup = async (data) => {
   // Axios post a ruta /auth/signup en servidor
   // para crear un usuario en mongodb
-  console.log(`Registrando usuario...`);
+  console.log(`Registing User...`);
   console.log(data);
   const res = await api.post("/user/signup", {
-    username:data.username,
+    username: data.username,
     password: data.password,
-    email: data.email
+    email: data.email,
   });
   console.log("Created User");
   console.log(`esto es res.data ${res.data}`);
@@ -51,7 +51,7 @@ export const doLogin = async (data) => {
   console.log("Do Login");
   const res = await api.post("/user/login", {
     username: data.username,
-    password:data.password,
+    password: data.password,
   });
   console.log(res.data);
   return res.data;
@@ -68,6 +68,3 @@ export const whoami = async () => {
   console.log(res.data);
   return res.data;
 };
-
-
-

@@ -13,8 +13,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import TemporaryDrawer from "../Menu";
 // import { Link } from "@material-ui/core";
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom";
+import { useUser, useUserLogout } from "../../../lib/authService";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +32,8 @@ export default function MenuAppBar() {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const user = useUser();
+  const handleLogout = useUserLogout();
   const open = Boolean(anchorEl);
 
   const handleChange = (event) => {
@@ -77,6 +79,11 @@ export default function MenuAppBar() {
                 onClick={handleMenu}
                 color="inherit"
               >
+                {user && (
+                  <Typography variant="body2" className={classes.title}>
+                    username
+                  </Typography>
+                )}
                 <AccountCircle />
               </IconButton>
               <Menu
@@ -94,10 +101,25 @@ export default function MenuAppBar() {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem><Link to="/signup">Sign Up</Link></MenuItem>
-                <MenuItem><Link to="/login">LogIn</Link></MenuItem>
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                {!user && (
+                  <MenuItem>
+                    <Link to="/signup">Sign Up</Link>
+                  </MenuItem>
+                )}
+                {!user && (
+                  <MenuItem>
+                    <Link to="/login">LogIn</Link>
+                  </MenuItem>
+                )}
+                {user && <MenuItem onClick={handleClose}>Profile</MenuItem>}
+                {user && <MenuItem onClick={handleClose}>My account</MenuItem>}
+                {user && (
+                  <MenuItem>
+                    <Link to="/login" onClick={handleLogout}>
+                      Logout
+                    </Link>
+                  </MenuItem>
+                )}
               </Menu>
             </div>
           )}
