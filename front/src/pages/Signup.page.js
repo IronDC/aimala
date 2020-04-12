@@ -21,13 +21,13 @@ const SignUp = () => {
   const setUser = useUserSetter();
   const { register, handleSubmit, errors } = useForm({
     mode: "onBlur",
-    defaultValues: { username: "", password: "", email: "" }
+    defaultValues: { username: "", password: "", email: "" },
   });
 
-  const onSubmit = data => {
-    doSignup(data).then(user => {
+  const onSubmit = (data) => {
+    doSignup(data).then((user) => {
       setUser(user);
-      history.push("/homeuser");
+      history.push("/");
       console.log(`este es el usuario que mandamos ${user}`);
     });
   };
@@ -63,8 +63,8 @@ const SignUp = () => {
               required: true,
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: "invalid email address"
-              }
+                message: "invalid email address",
+              },
             })}
           />
         </div>

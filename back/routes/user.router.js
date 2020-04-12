@@ -12,11 +12,11 @@ router.post("/signup", async (req, res, next) => {
   console.log("Signup User Called");
   delete req.body.usertype;
   //Create the User
-  const existinUser = await UserModel.findOne({username:req.body.username});
+  const existinUser = await UserModel.findOne({ username: req.body.username });
   if (!existinUser) {
     const newUser = await UserModel.create(req.body);
     //Login user directly
-    req.logIn(newUser, err => {
+    req.logIn(newUser, (err) => {
       res.json(_.pick(req.user, ["username", "_id", "createdAt", "updateAt"]));
     });
     console.log(req.body.username, "User registered");
@@ -34,7 +34,7 @@ router.post("/login", (req, res, next) => {
     if (!user) {
       return res.json({ status: 401, message: fealureDetails.message });
     }
-    req.logIn(user, err => {
+    req.logIn(user, (err) => {
       if (err) {
         return res.status(500).json({ message: "Session seve went bad" });
       }
@@ -66,7 +66,7 @@ router.post("/edit", isLoggedIn(), async (req, res, next) => {
     await UserModel.findByIdAndUpdate(id, {
       username,
       email,
-      password
+      password,
     });
     return res.json({ status: "Edited Profile" });
   } catch (error) {
@@ -89,9 +89,9 @@ router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
     console.log(`Adding game ${gameid} to user ${userid}`);
     await UserModel.findOneAndUpdate(
       { _id: userid },
-      {$addToSet:{ gamesOwned: gameid }},
+      { $addToSet: { gamesOwned: gameid } },
       {
-        new: true
+        new: true,
       }
     );
     return res.json({ status: "Added Game to user" });
@@ -108,9 +108,9 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
     console.log(`Adding platform ${platformid} to user ${userid}`);
     await UserModel.findOneAndUpdate(
       { _id: userid },
-      {$addToSet:{ platformsOwned: platformid }},
+      { $addToSet: { platformsOwned: platformid } },
       {
-        new: true
+        new: true,
       }
     );
     return res.json({ status: "Added Platform to user" });
