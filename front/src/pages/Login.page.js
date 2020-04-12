@@ -27,7 +27,7 @@ const Login = () => {
   const onSubmit = data => {
     doLogin(data).then(user => {
       setUser(user);
-      history.push("/");
+      history.push("/homeuser");
       console.log(`este es el usuario logeado ${data.username}`);
     });
   };
