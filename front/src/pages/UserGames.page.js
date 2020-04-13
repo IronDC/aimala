@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
-import {GameContext} from "../contexts/GameContext"
+import { GameContext } from "../contexts/GameContext";
 import { Link } from "react-router-dom";
+import { ButtonBack } from "../components/ButtonBack";
 
 const UserGames = () => {
-  const {games} = useContext(GameContext);
-  console.log(`this is the games ${games}`)
+  const { games } = useContext(GameContext);
+  console.log(`this is the games ${games}`);
 
   return (
     <>
+      <ButtonBack />
       <h1>MY GAMES</h1>
       <ul>
         {games.map((game) => (
