@@ -9,11 +9,13 @@ import OneGame from "./pages/OneGame.page";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { withAuthentication } from "../lib/withAuthentication";
 import { useUser, useUserLogout } from "../lib/authService";
+import GameContextProvider from "./contexts/GameContext";
 
 export const App = withAuthentication(() => {
   const user = useUser();
   return (
     <>
+    
       <Router>
         <MenuAppBar />
         <Switch>
@@ -21,8 +23,10 @@ export const App = withAuthentication(() => {
           {user && <Route path="/" exact component={UserHome} />}
           <Route path="/signup" exact component={SignUp} />
           <Route path="/login" exact component={Login} />
+          <GameContextProvider>
           <Route path="/usergames" exact component={UserGames} />
           <Route path="/:id" exact component={OneGame} />
+          </GameContextProvider>
         </Switch>
       </Router>
     </>

@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useContext } from "react";
+import { GameContext } from "../contexts/GameContext";
 import { Link } from "react-router-dom";
-import { GameDetails } from "../../lib/gamesService";
 
-const OneGame = (props) => {
-  const id = props.match.params.id;
-  const [game, setGame] = useState({});
-  // // const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    GameDetails(props).then((game) => setGame(game));
-    console.log(game);
-  }, [id]);
-
-  // GameDetails(props);
+const OneGame = props => {
+  const { findOneGame } = useContext(GameContext);
+  const id = props.match.params._id;
+  const game = findOneGame(id);
+  console.log(`this is the One Game ${game}`);
 
   return (
     <>
-      <p>HOLA</p>
-      <h1>{game.title}</h1>
+      <p>ONE GAME</p>
+      {/* <h1>{game.title}</h1>
       <div>
         <img src={game.cover} alt={game.title} width="150px" />
-      </div>
+      </div> */}
     </>
   );
 };
