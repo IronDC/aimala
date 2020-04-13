@@ -14,7 +14,7 @@ const UserGames = () => {
       <ul>
         {games.map((game) => (
           <li key={game._id}>
-            <Link to={`/${game._id}`}>
+            <Link to={`/game/${game._id}`}>
               <div>
                 <img src={game.cover} alt={game.title} width="150px" />
               </div>
