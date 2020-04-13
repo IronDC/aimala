@@ -1,14 +1,13 @@
-import React, { useContext} from "react";
+import React, { useContext } from "react";
 import { GameContext } from "../contexts/GameContext";
 import { Link } from "react-router-dom";
 
-const OneGame = props => {
+const OneGame = (props) => {
   const { findOneGame } = useContext(GameContext);
-  const id = props.match.params._id;
- const game = findOneGame(id);
+  const id = props.match.params.id;
+  const game = findOneGame(id);
   console.log(`this is the One Game ${game}`);
-
-
+  console.log(props);
 
   return (
     <>
