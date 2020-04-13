@@ -15,20 +15,20 @@ export const App = withAuthentication(() => {
   const user = useUser();
   return (
     <>
-    
-      <Router>
-        <MenuAppBar />
-        <Switch>
-          {!user && <Route path="/" exact component={HomePage} />}
-          {user && <Route path="/" exact component={UserHome} />}
-          <Route path="/signup" exact component={SignUp} />
-          <Route path="/login" exact component={Login} />
-          <GameContextProvider>
-          <Route path="/usergames" exact component={UserGames} />
-          <Route path="/:id" exact component={OneGame} />
-          </GameContextProvider>
-        </Switch>
-      </Router>
+      <GameContextProvider>
+        <Router>
+          <MenuAppBar />
+          <Switch>
+            {!user && <Route path="/" exact component={HomePage} />}
+            {user && <Route path="/" exact component={UserHome} />}
+            <Route path="/signup" exact component={SignUp} />
+            <Route path="/login" exact component={Login} />
+
+            <Route path="/usergames" exact component={UserGames} />
+            <Route path="/:id" component={OneGame} />
+          </Switch>
+        </Router>
+      </GameContextProvider>
     </>
   );
 });

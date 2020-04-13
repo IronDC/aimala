@@ -4,13 +4,14 @@ import { gamesFromApi } from "../../lib/gamesService";
 export const GameContext = createContext();
 const GameContextProvider = (props) => {
   const [games, setGames] = useState([]);
-  useEffect(() => {
-  gamesFromApi().then((games)=> setGames(games));
-}, []);
 
 const findOneGame = id => {
   return games.find(game => game.id === id);
 };
+
+useEffect(() => {
+  gamesFromApi().then((games)=> setGames(games));
+}, []);
 
   return(
     <GameContext.Provider value={{games, setGames,findOneGame}}>
