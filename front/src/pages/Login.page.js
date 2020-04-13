@@ -21,13 +21,13 @@ const Login = () => {
   const setUser = useUserSetter();
   const { register, handleSubmit, errors } = useForm({
     mode: "onBlur",
-    defaultValues: { username: "", password: ""}
+    defaultValues: { username: "", password: "" },
   });
 
-  const onSubmit = data => {
-    doLogin(data).then(user => {
+  const onSubmit = (data) => {
+    doLogin(data).then((user) => {
       setUser(user);
-      history.push("/homeuser");
+      history.push("/");
       console.log(`este es el usuario logeado ${data.username}`);
     });
   };
