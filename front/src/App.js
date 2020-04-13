@@ -22,7 +22,7 @@ export const App = withAuthentication(() => {
           <Route path="/signup" exact component={SignUp} />
           <Route path="/login" exact component={Login} />
           <Route path="/usergames" exact component={UserGames} />
-          <Route path="/onegame" exact component={OneGame} />
+          <Route path="/:id" exact component={OneGame} />
         </Switch>
       </Router>
     </>
