@@ -6,7 +6,7 @@ const GameContextProvider = (props) => {
   const [games, setGames] = useState([]);
 
 const findOneGame = id => {
-  return games.find(game => game.id === id);
+  return games.find(game => game._id === id);
 };
 
 useEffect(() => {
