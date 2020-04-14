@@ -13,8 +13,8 @@ const UserGames = () => {
       <h1>MY GAMES</h1>
       <ul>
         {games.map((game) => (
-          <li key={game._id}>
-            <Link to={`/game/${game._id}`}>
+          <li key={game.id}>
+            <Link to={`/game/${game.id}`}>
               <div>
                 <img src={game.cover} alt={game.title} width="150px" />
               </div>
