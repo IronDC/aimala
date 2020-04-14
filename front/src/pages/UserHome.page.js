@@ -66,7 +66,7 @@ const LinkText = styled(Link)`
 
 const UserHome = () => {
   const { article } = useContext(GameContext);
-  console.log(`Articles Receivend on UserHome:  ${article}`);
+  console.log(`Articles Received on UserHome:  ${article}`);
   return (
     <Container>
       <Section>
@@ -93,18 +93,18 @@ const UserHome = () => {
         </Col2>
         <List>
           <ul>
-            {article.map((article) => (
-              <li key={article.id}>
-                <Link to={`/article/${article.id}`}>
+            {article?.map(article => (
+              <li key={article?.id}>
+                <Link to={`/article/${article?.id}`}>
                   <div>
                     <img
-                      src={article.image}
-                      alt={article.title}
+                      src={article?.image}
+                      alt={article?.title}
                       width="150px"
                     />
                   </div>
                   <div>
-                    <h2>{article.title}</h2>
+                    <h2>{article?.title}</h2>
                   </div>
                 </Link>
               </li>
