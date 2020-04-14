@@ -19,6 +19,13 @@ export const platformsFromApi = async () => {
   return response.data.platformsOwned;
 };
 
+export const articlesFromApi = async () => {
+  const response = await api.get("/article");
+  console.info("ARTICLES IN DA JAUSE");
+  console.log(response.data);
+  return response.data;
+};
+
 // export const GameDetails = async (id) => {
 //   console.info("ONE GAME ID:");
 //   console.log(id);
