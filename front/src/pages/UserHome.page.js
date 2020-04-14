@@ -78,6 +78,7 @@ const UserHome = () => {
         </Col2>
       </Section>
       <Section>
+        {/* ESTA SECCIÓN DEBERÍA SER UN COMPONENTE */}
         <Col2>
           <VideogameAssetIcon className="icon-img" />
           <h2>
