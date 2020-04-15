@@ -11,24 +11,24 @@ import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   list: {
-    width: 250,
+    width: 250
   },
   fullList: {
-    width: "auto",
-  },
+    width: "auto"
+  }
 });
 
 export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
-    left: false,
+    left: false
   });
 
-  const toggleDrawer = (anchor, open) => (event) => {
+  const toggleDrawer = (anchor, open) => event => {
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
@@ -39,23 +39,27 @@ export default function TemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
+  const list = anchor => (
     <div
       className={clsx(classes.list, {
-        [classes.fullList]: anchor === "top" || anchor === "bottom",
+        [classes.fullList]: anchor === "top" || anchor === "bottom"
       })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Homepage", "My Games", "My Platforms"].map((text, index) => (
-          <ListItem button key={text}>
+        {[
+          { name: "Home", link: "/", text: "Homepage", icon: <SportsEsportsIcon /> },
+          { name: "Games", link: "/games", text: "Games Page", icon: <VideogameAssetIcon /> },
+          { name: "my Games", link: "/usergames", text: "My Games", icon: <VideogameAssetIcon /> },
+          { name: "my Platforms", link: "/platforms", text: "My Platforms", icon: <VideogameAssetIcon /> },
+        ].map((text,index) => (
+          <ListItem button key={index}>
             <ListItemIcon>
-              {index % 2 === 0 ? <SportsEsportsIcon /> : <VideogameAssetIcon />}
+              {text.icon}
             </ListItemIcon>
-            {text === "Homepage" ? <Link to="/"><ListItemText primary={text}></ListItemText></Link> : <ListItemText primary={text}></ListItemText>}
-            {/* <Link to="/"><ListItemText primary={text}></ListItemText></Link> */}
+              <Link to={text.link}><ListItemText primary={text.text}></ListItemText></Link>
           </ListItem>
         ))}
       </List>
@@ -63,7 +67,7 @@ export default function TemporaryDrawer() {
   );
   return (
     <div>
-      {["left"].map((anchor) => (
+      {["left"].map(anchor => (
         <React.Fragment key={anchor}>
           <IconButton
             edge="start"
