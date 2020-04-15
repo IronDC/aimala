@@ -4,7 +4,7 @@ import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import { Link } from "react-router-dom";
-import { GameContext } from "../contexts/GameContext";
+import { ArticleContext } from "../contexts/ArticleContext";
 
 const Container = styled.div`
   display: flex;
@@ -65,8 +65,8 @@ const LinkText = styled(Link)`
 `;
 
 const UserHome = () => {
-  const { article } = useContext(GameContext);
-  console.log(`Articles Received on UserHome:  ${article}`);
+  const { articles } = useContext(ArticleContext);
+  console.log(`Articles Received on UserHome:  ${articles}`);
   return (
     <Container>
       <Section>
@@ -93,7 +93,7 @@ const UserHome = () => {
         </Col2>
         <List>
           <ul>
-            {article?.map(article => (
+            {articles?.map(article => (
               <li key={article?.id}>
                 <Link to={`/article/${article?.id}`}>
                   <div>

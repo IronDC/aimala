@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { GameContext } from "../contexts/GameContext";
+import { PlatformContext } from "../contexts/PlatformContext";
 import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
 
 const OnePlatform = (props) => {
-  const { findOnePlatform } = useContext(GameContext);
+  const { findOnePlatform } = useContext(PlatformContext);
   const id = props.match.params.id;
   console.log(`this is the one game ${id}`);
   const platform = findOnePlatform(id);

@@ -21,7 +21,7 @@ export const platformsFromApi = async () => {
 
 export const articlesFromApi = async () => {
   const response = await api.get("/article");
-  console.info("ARTICLES IN DA JAUSE");
+  console.info("ARTICLES FROM API");
   console.log(response.data);
   return response.data;
 };

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { GameContext } from "../contexts/GameContext";
+import { PlatformContext } from "../contexts/PlatformContext";
 import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
 
 const UserPlatforms = () => {
-  const { platforms } = useContext(GameContext);
+  const { platforms } = useContext(PlatformContext);
   console.log(`this are the Platforms:  ${platforms}`);
 
   return (
