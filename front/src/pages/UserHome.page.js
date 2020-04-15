@@ -5,6 +5,7 @@ import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
 import MenuBookIcon from "@material-ui/icons/MenuBook";
 import { Link } from "react-router-dom";
 import { ArticleContext } from "../contexts/ArticleContext";
+import ArticleList from "../components/ArticleList";
 
 const Container = styled.div`
   display: flex;
@@ -67,6 +68,8 @@ const LinkText = styled(Link)`
 const UserHome = () => {
   const { articles } = useContext(ArticleContext);
   console.log(`Articles Received on UserHome:  ${articles}`);
+  const renderArticlesList = () =>
+    articles.map((article,index) => <ArticleList article={article} key={index} />);
   return (
     <Container>
       <Section>
@@ -92,24 +95,7 @@ const UserHome = () => {
           <h2>Articles</h2>
         </Col2>
         <List>
-          <ul>
-            {articles?.map(article => (
-              <li key={article?.id}>
-                <Link to={`/article/${article?.id}`}>
-                  <div>
-                    <img
-                      src={article?.image}
-                      alt={article?.title}
-                      width="150px"
-                    />
-                  </div>
-                  <div>
-                    <h2>{article?.title}</h2>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <ul>{renderArticlesList()}</ul>
         </List>
       </Section>
     </Container>
