@@ -4,7 +4,7 @@ import { GameOwnedContext } from "../contexts/GameOwnedContext";
 import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
 
-const OneGame = props => {
+const OneGame = (props) => {
   const { findOneGame } = useContext(GameContext);
   const { findOneOwnedGame } = useContext(GameOwnedContext);
   const id = props.match.params.id;
