@@ -33,6 +33,11 @@ export const gamesFromApi = async () => {
   return response.data;
 };
 
+export const addGametoUserFromApi = async (id) => {
+  const response = await api.put(`/user/${id}/addgame`);
+  return response.data;
+};
+
 // export const GameDetails = async (id) => {
 //   console.info("ONE GAME ID:");
 //   console.log(id);
