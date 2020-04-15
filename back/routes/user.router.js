@@ -87,14 +87,14 @@ router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
     const gameid = req.params.id;
     const userid = req.user.id;
     console.log(`Adding game ${gameid} to user ${userid}`);
-    await UserModel.findOneAndUpdate(
+    const user = await UserModel.findOneAndUpdate(
       { _id: userid },
       { $addToSet: { gamesOwned: gameid } },
       {
         new: true,
       }
-    );
-    return res.json({ status: "Added Game to user" });
+    ).populate("gamesOwned");
+    return res.json({ status: "Added Game to user", user });
   } catch (error) {
     return res.status(401).json({ status: "Game Not Found" });
   }
