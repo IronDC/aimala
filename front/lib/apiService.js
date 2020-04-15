@@ -12,6 +12,20 @@ export const gamesFromApi = async () => {
   return response.data.gamesOwned;
 };
 
+export const platformsFromApi = async () => {
+  const response = await api.get("/user");
+  console.info("PLATFORMS OWNED BY USER");
+  console.log(response.data.platformsOwned);
+  return response.data.platformsOwned;
+};
+
+export const articlesFromApi = async () => {
+  const response = await api.get("/article");
+  console.info("ARTICLES FROM API");
+  console.log(response.data);
+  return response.data;
+};
+
 // export const GameDetails = async (id) => {
 //   console.info("ONE GAME ID:");
 //   console.log(id);

@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 const gameSchema = new Schema(
   {
     title: {
-    type: String,
-    required: "title is required",
-  },
+      type: String,
+      required: "title is required"
+    },
     gameType: {
       type: [{ type: Schema.Types.ObjectId, ref: "gameType" }],
       default: []
@@ -35,7 +35,15 @@ const gameSchema = new Schema(
   },
 
   {
-    timestamps: true
+    timestamps: true,
+    toJSON: {
+      transform(doc, ret) {
+        ret.id = ret._id;
+        delete ret._id;
+        delete ret.__v;
+        return ret;
+      }
+    }
   }
 );
 const Game = mongoose.model("Game", gameSchema);
