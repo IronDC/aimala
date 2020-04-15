@@ -5,7 +5,7 @@ const api = axios.create({
   withCredentials: true,
 });
 
-export const gamesFromApi = async () => {
+export const gamesOwnedFromApi = async () => {
   const response = await api.get("/user");
   console.info("GAMES OWNED BY USER");
   console.log(response.data.gamesOwned);
@@ -22,6 +22,13 @@ export const platformsFromApi = async () => {
 export const articlesFromApi = async () => {
   const response = await api.get("/article");
   console.info("ARTICLES FROM API");
+  console.log(response.data);
+  return response.data;
+};
+
+export const gamesFromApi = async () => {
+  const response = await api.get("/game");
+  console.info("ALL GAMES FROM API");
   console.log(response.data);
   return response.data;
 };

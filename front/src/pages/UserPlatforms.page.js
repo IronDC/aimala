@@ -1,30 +1,19 @@
 import React, { useContext } from "react";
 import { PlatformContext } from "../contexts/PlatformContext";
-import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
+import PlatformList from "../components/PlatformList";
 
 const UserPlatforms = () => {
   const { platforms } = useContext(PlatformContext);
-  console.log(`this are the Platforms:  ${platforms}`);
+  console.log(`this is the platforms ${platforms}`);
+  const renderPlatformList = () =>
+    platforms.map(platform => <PlatformList platform={platform} key={platform.id} />);
 
   return (
     <>
       <ButtonBack />
-      <h1>MY PLATFORMS</h1>
-      <ul>
-        {platforms.map((platform) => (
-          <li key={platform.id}>
-            <Link to={`/platform/${platform.id}`}>
-              <div>
-                <img src={platform.image} alt={platform.name} width="150px" />
-              </div>
-              <div>
-                <h2>{platform.name}</h2>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <h1>MY GAMES</h1>
+      <ul>{renderPlatformList()}</ul>
     </>
   );
 };
