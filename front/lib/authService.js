@@ -43,7 +43,7 @@ export const doSignup = async (data) => {
     email: data.email,
   });
   console.log("Created User");
-  console.log(`esto es res.data ${res.data}`);
+  console.log(res.data);
   return res.data;
 };
 

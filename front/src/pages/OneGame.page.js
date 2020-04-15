@@ -3,6 +3,8 @@ import { GameContext } from "../contexts/GameContext";
 import { GameOwnedContext } from "../contexts/GameOwnedContext";
 import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const OneGame = (props) => {
   const { findOneGame } = useContext(GameContext);
@@ -22,7 +24,11 @@ const OneGame = (props) => {
         <img src={game?.cover} alt={game?.title} width="150px" />
       </div>
       <div>{game?.description}</div>
-      {!gameOwned && <button>Add to my Library</button>}
+      {!gameOwned && (
+        <Button variant="contained" color="primary" onSubmit>
+          Add to My Games Library
+        </Button>
+      )}
     </>
   );
 };
