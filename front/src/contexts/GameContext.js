@@ -4,6 +4,7 @@ import { gamesFromApi } from "../../lib/apiService";
 export const GameContext = createContext();
 const GameContextProvider = (props) => {
   const [games, setGames] = useState([]);
+  const [filter, setFilter] = useState("");
 
   // GAMES CONTEXT
   useEffect(() => {
@@ -19,6 +20,8 @@ const GameContextProvider = (props) => {
       value={{
         games,
         setGames,
+        filter,
+        setFilter,
         findOneGame,
       }}
     >
