@@ -10,13 +10,15 @@ import OneGame from "./pages/OneGame.page";
 import OnePlatform from "./pages/OnePlatform.page";
 import OneArticle from "./pages/OneArticle.page";
 import AllGames from "./pages/Games.page";
+import AllPlatforms from "./pages/Platforms.page";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { withAuthentication } from "../lib/withAuthentication";
 import { useUser, useUserLogout } from "../lib/authService";
 import GameOwnedContextProvider from "./contexts/GameOwnedContext";
-import PlatformContextProvider from "./contexts/PlatformContext";
+import PlatformOwnedContextProvider from "./contexts/PlatformOwnedContext";
 import ArticleContextProvider from "./contexts/ArticleContext";
 import GameContextProvider from "./contexts/GameContext";
+import PlatformContextProvider from "./contexts/PlatformContext";
 
 export const App = withAuthentication(() => {
   const user = useUser();
@@ -30,17 +32,20 @@ export const App = withAuthentication(() => {
           {!user && <Route path="/" exact component={HomePage} />}
           <ArticleContextProvider>
             <PlatformContextProvider>
-              <GameContextProvider>
-                <GameOwnedContextProvider>
-                  {user && <Route path="/" exact component={UserHome} />}
-                  <Route path="/article/:id" exact component={OneArticle} />
-                  <Route path="/usergames" exact component={UserGames} />
-                  <Route path="/game/:id" exact component={OneGame} />
-                  <Route path="/games" exact component={AllGames} />
-                </GameOwnedContextProvider>
-              </GameContextProvider>
-              <Route path="/platforms" exact component={UserPlatforms} />
-              <Route path="/platform/:id" exact component={OnePlatform} />
+              <PlatformOwnedContextProvider>
+                <GameContextProvider>
+                  <GameOwnedContextProvider>
+                    {user && <Route path="/" exact component={UserHome} />}
+                    <Route path="/article/:id" exact component={OneArticle} />
+                    <Route path="/usergames" exact component={UserGames} />
+                    <Route path="/game/:id" exact component={OneGame} />
+                    <Route path="/games" exact component={AllGames} />
+                  </GameOwnedContextProvider>
+                </GameContextProvider>
+                <Route path="/userplatforms" exact component={UserPlatforms} />
+                <Route path="/platform/:id" exact component={OnePlatform} />
+                <Route path="/platforms" exact component={AllPlatforms} />
+              </PlatformOwnedContextProvider>
             </PlatformContextProvider>
           </ArticleContextProvider>
         </Switch>

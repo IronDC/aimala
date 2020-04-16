@@ -106,14 +106,14 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
     const platformid = req.params.id;
     const userid = req.user.id;
     console.log(`Adding platform ${platformid} to user ${userid}`);
-    await UserModel.findOneAndUpdate(
+    const user = await UserModel.findOneAndUpdate(
       { _id: userid },
       { $addToSet: { platformsOwned: platformid } },
       {
         new: true,
       }
-    );
-    return res.json({ status: "Added Platform to user" });
+    ).populate("platformwOwned");
+    return res.json({ status: "Added Platform to user", user });
   } catch (error) {
     return res.status(401).json({ status: "Platform Not Found" });
   }

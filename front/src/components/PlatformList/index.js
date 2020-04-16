@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PlatformList = ({ platform }) => {
+const PlatformList = ({ platform, i }) => {
   return (
     <>
-      <li key={platform?.id}>
+      <li key={i}>
         <Link to={`/platform/${platform?.id}`}>
           <div>
             <img src={platform?.image} alt={platform?.name} width="150px" />

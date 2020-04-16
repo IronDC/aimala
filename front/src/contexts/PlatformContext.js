@@ -2,17 +2,16 @@ import React, { createContext, useState, useEffect } from "react";
 import { platformsFromApi } from "../../lib/apiService";
 
 export const PlatformContext = createContext();
-const PlatformContextProvider = props => {
+const PlatformContextProvider = (props) => {
   const [platforms, setPlatforms] = useState([]);
 
-
-  // PLATFORMS CONTEXT
+  // PLATFORM CONTEXT
   useEffect(() => {
-    platformsFromApi().then(platforms => setPlatforms(platforms));
+    platformsFromApi().then((platforms) => setPlatforms(platforms));
   }, []);
 
-  const findOnePlatform = id => {
-    return platforms.find(platforms => platforms.id === id);
+  const findOnePlatform = (id) => {
+    return platforms.find((platform) => platform.id === id);
   };
 
   return (
