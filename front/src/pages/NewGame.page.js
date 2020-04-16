@@ -17,6 +17,7 @@ const hasError = (errors, name) => {
 
 export const NewGame = () => {
   const { games, setGames } = useContext(GameContext);
+
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
   const history = useHistory();
 
@@ -40,6 +41,14 @@ export const NewGame = () => {
           />
         </InputContainer>
         <InputContainer>
+          <label>Description</label>
+          <input
+            className={hasError(errors, "description")}
+            name="description"
+            ref={register({ required: true })}
+          />
+        </InputContainer>
+        <InputContainer>
           <label>Publisher</label>
           <input
             name="publisher"
@@ -54,6 +63,14 @@ export const NewGame = () => {
             className={hasError(errors, "year")}
             type="number"
             ref={register({ min: 1950, required: true })}
+          />
+        </InputContainer>
+        <InputContainer>
+          <label>Trailer</label>
+          <input
+            name="trailer"
+            className={hasError(errors, "trailer")}
+            ref={register}
           />
         </InputContainer>
         <button type="submit">Create Game</button>

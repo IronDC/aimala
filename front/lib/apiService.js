@@ -31,11 +31,7 @@ export const addGametoUserFromApi = async (id) => {
 };
 
 export const newGameApi = async (data) => {
-  const response = await api.post(`/game/create`, {
-    title: data.title,
-    publisher: data.publisher,
-    year: data.year,
-  });
+  const response = await api.post(`/game/create`, data);
   return response.data;
 };
 
