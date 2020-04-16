@@ -7,7 +7,6 @@ import Input from "../components/Input";
 
 const AllGames = () => {
   const { games, filter, setFilter } = useContext(GameContext);
-  console.log(`this is the games ${games}`);
   const renderGameList = () =>
     games.map(
       (game) =>

@@ -65,6 +65,6 @@ export const doLogout = async () => {
 
 export const whoami = async () => {
   const res = await api.get("/user/whoami");
-  console.log(res.data);
+  console.log(`You are ${res.data.username}`);
   return res.data;
 };

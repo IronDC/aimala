@@ -15,7 +15,6 @@ const OneGame = (props) => {
   console.log(`this is the one game ${id}`);
   const game = findOneGame(id);
   const gameOwned = findOneOwnedGame(id);
-  console.log(game, id);
 
   const handleSubmit = (e) => {
     console.log("pulsado el boton");

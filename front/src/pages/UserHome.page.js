@@ -67,7 +67,6 @@ const LinkText = styled(Link)`
 
 const UserHome = () => {
   const { articles } = useContext(ArticleContext);
-  console.log(`Articles Received on UserHome:  ${articles}`);
   const renderArticlesList = () =>
     articles.map((article, index) => (
       <ArticleList article={article} key={index} />

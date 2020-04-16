@@ -7,8 +7,6 @@ import Input from "../components/Input";
 
 const AllPlatforms = () => {
   const { platforms, filter, setFilter } = useContext(PlatformContext);
-  console.log(`This are the Platforms:`);
-  console.log(platforms);
   const renderPlatformList = () =>
     platforms.map(
       (platform) =>

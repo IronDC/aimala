@@ -45,7 +45,7 @@ router.post("/create", async (req, res, next) => {
     const newGame = await GameModel.create(req.body);
 
     console.log(`${req.body.title} creado`);
-    return res.json({ status: 200, message: "New Game Created" });
+    return res.json({ status: "New Game Created", newGame });
   } catch (error) {
     return res.status(500).json({ status: "Error Adding Game" });
   }

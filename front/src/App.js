@@ -11,6 +11,7 @@ import OnePlatform from "./pages/OnePlatform.page";
 import OneArticle from "./pages/OneArticle.page";
 import AllGames from "./pages/Games.page";
 import AllPlatforms from "./pages/Platforms.page";
+import NewGame from "./pages/NewGame.page";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { withAuthentication } from "../lib/withAuthentication";
 import { useUser, useUserLogout } from "../lib/authService";
@@ -40,6 +41,7 @@ export const App = withAuthentication(() => {
                     <Route path="/usergames" exact component={UserGames} />
                     <Route path="/game/:id" exact component={OneGame} />
                     <Route path="/games" exact component={AllGames} />
+                    <Route path="/newgame" exact component={NewGame} />
                   </GameOwnedContextProvider>
                 </GameContextProvider>
                 <Route path="/userplatforms" exact component={UserPlatforms} />

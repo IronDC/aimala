@@ -7,29 +7,21 @@ const api = axios.create({
 
 export const gamesOwnedFromApi = async () => {
   const response = await api.get("/user");
-  console.info("GAMES OWNED BY USER");
-  console.log(response.data.gamesOwned);
   return response.data.gamesOwned;
 };
 
 export const platformsOwnedFromApi = async () => {
   const response = await api.get("/user");
-  console.info("PLATFORMS OWNED BY USER");
-  console.log(response.data.platformsOwned);
   return response.data.platformsOwned;
 };
 
 export const articlesFromApi = async () => {
   const response = await api.get("/article");
-  console.info("ARTICLES FROM API");
-  console.log(response.data);
   return response.data;
 };
 
 export const gamesFromApi = async () => {
   const response = await api.get("/game");
-  console.info("ALL GAMES FROM API");
-  console.log(response.data);
   return response.data;
 };
 
@@ -38,10 +30,17 @@ export const addGametoUserFromApi = async (id) => {
   return response.data;
 };
 
+export const newGameApi = async (data) => {
+  const response = await api.post(`/game/create`, {
+    title: data.title,
+    publisher: data.publisher,
+    year: data.year,
+  });
+  return response.data;
+};
+
 export const platformsFromApi = async () => {
   const response = await api.get("/platform");
-  console.info("ALL PLATFORMS FROM API");
-  console.log(response.data);
   return response.data;
 };
 
