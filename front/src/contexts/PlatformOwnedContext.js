@@ -4,6 +4,7 @@ import { platformsOwnedFromApi } from "../../lib/apiService";
 export const PlatformOwnedContext = createContext();
 const PlatformOwnedContextProvider = (props) => {
   const [platforms, setPlatforms] = useState([]);
+  const [filter, setFilter] = useState("");
 
   // PLATFORMS CONTEXT
   useEffect(() => {
@@ -20,6 +21,8 @@ const PlatformOwnedContextProvider = (props) => {
         platforms,
         setPlatforms,
         findOneOwnedPlatform,
+        filter,
+        setFilter,
       }}
     >
       {props.children}
