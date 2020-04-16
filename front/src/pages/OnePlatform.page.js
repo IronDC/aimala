@@ -14,7 +14,7 @@ const OnePlatform = (props) => {
   );
   const setUser = useUserSetter();
   const id = props.match.params.id;
-  console.log(`this is the one game ${id}`);
+  console.log(`this is the one platforms ${id}`);
   const platform = findOnePlatform(id);
   const platformOwned = findOneOwnedPlatform(id);
   console.log(platform, id);

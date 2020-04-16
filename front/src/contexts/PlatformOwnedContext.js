@@ -11,7 +11,7 @@ const PlatformOwnedContextProvider = (props) => {
   }, []);
 
   const findOneOwnedPlatform = (id) => {
-    return platforms.find((platforms) => platforms.id === id);
+    return platforms.find((platform) => platform.id === id);
   };
 
   return (
