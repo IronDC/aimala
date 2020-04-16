@@ -112,7 +112,7 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
       {
         new: true,
       }
-    ).populate("platformwOwned");
+    ).populate("platformsOwned");
     return res.json({ status: "Added Platform to user", user });
   } catch (error) {
     return res.status(401).json({ status: "Platform Not Found" });
