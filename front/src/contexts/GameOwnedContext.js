@@ -4,6 +4,7 @@ import { gamesOwnedFromApi } from "../../lib/apiService";
 export const GameOwnedContext = createContext();
 const GameOwnedContextProvider = (props) => {
   const [games, setGames] = useState([]);
+  const [filter, setFilter] = useState("");
 
   // GAMES CONTEXT
   useEffect(() => {
@@ -19,6 +20,8 @@ const GameOwnedContextProvider = (props) => {
       value={{
         games,
         setGames,
+        filter,
+        setFilter,
         findOneOwnedGame,
       }}
     >
