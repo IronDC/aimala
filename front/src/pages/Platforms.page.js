@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import { PlatformOwnedContext } from "../contexts/PlatformOwnedContext";
+import { PlatformContext } from "../contexts/PlatformContext";
+import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
 import PlatformList from "../components/PlatformList";
 
-const UserPlatforms = () => {
-  const { platforms } = useContext(PlatformOwnedContext);
-  console.log(`this is the platforms ${platforms}`);
+const AllPlatforms = () => {
+  const { platforms } = useContext(PlatformContext);
+  console.log(`This are the Platforms:`);
+  console.log(platforms);
   const renderPlatformList = () =>
     platforms.map((platform) => (
       <PlatformList platform={platform} key={platform.id} />
@@ -14,10 +16,10 @@ const UserPlatforms = () => {
   return (
     <>
       <ButtonBack />
-      <h1>USER PLATFORMS</h1>
+      <h1>ALL PLATFORMS</h1>
       <ul>{renderPlatformList()}</ul>
     </>
   );
 };
 
-export default UserPlatforms;
+export default AllPlatforms;

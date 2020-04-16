@@ -12,7 +12,7 @@ export const gamesOwnedFromApi = async () => {
   return response.data.gamesOwned;
 };
 
-export const platformsFromApi = async () => {
+export const platformsOwnedFromApi = async () => {
   const response = await api.get("/user");
   console.info("PLATFORMS OWNED BY USER");
   console.log(response.data.platformsOwned);
@@ -35,6 +35,18 @@ export const gamesFromApi = async () => {
 
 export const addGametoUserFromApi = async (id) => {
   const response = await api.put(`/user/${id}/addgame`);
+  return response.data;
+};
+
+export const platformsFromApi = async () => {
+  const response = await api.get("/platform");
+  console.info("ALL PLATFORMS FROM API");
+  console.log(response.data);
+  return response.data;
+};
+
+export const addPlatformtoUserFromApi = async (id) => {
+  const response = await api.put(`/user/${id}/addplatform`);
   return response.data;
 };
 

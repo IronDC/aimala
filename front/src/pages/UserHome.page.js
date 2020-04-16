@@ -69,7 +69,9 @@ const UserHome = () => {
   const { articles } = useContext(ArticleContext);
   console.log(`Articles Received on UserHome:  ${articles}`);
   const renderArticlesList = () =>
-    articles.map((article,index) => <ArticleList article={article} key={index} />);
+    articles.map((article, index) => (
+      <ArticleList article={article} key={index} />
+    ));
   return (
     <Container>
       <Section>
@@ -85,7 +87,7 @@ const UserHome = () => {
         <Col2>
           <VideogameAssetIcon className="icon-img" />
           <h2>
-            <LinkText to="/platforms">MyPlatforms</LinkText>
+            <LinkText to="/userplatforms">MyPlatforms</LinkText>
           </h2>
         </Col2>
       </Section>

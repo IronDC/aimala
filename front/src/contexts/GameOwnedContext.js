@@ -2,16 +2,16 @@ import React, { createContext, useState, useEffect } from "react";
 import { gamesOwnedFromApi } from "../../lib/apiService";
 
 export const GameOwnedContext = createContext();
-const GameOwnedContextProvider = props => {
+const GameOwnedContextProvider = (props) => {
   const [games, setGames] = useState([]);
 
   // GAMES CONTEXT
   useEffect(() => {
-    gamesOwnedFromApi().then(games => setGames(games));
+    gamesOwnedFromApi().then((games) => setGames(games));
   }, []);
 
-  const findOneOwnedGame = id => {
-    return games.find(game => game.id === id);
+  const findOneOwnedGame = (id) => {
+    return games.find((game) => game.id === id);
   };
 
   return (
@@ -19,7 +19,7 @@ const GameOwnedContextProvider = props => {
       value={{
         games,
         setGames,
-        findOneOwnedGame
+        findOneOwnedGame,
       }}
     >
       {props.children}
