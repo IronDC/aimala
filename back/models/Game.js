@@ -4,16 +4,14 @@ const gameSchema = new Schema(
   {
     title: {
       type: String,
-      required: "title is required"
+      required: "title is required",
     },
     gameType: {
       type: [{ type: Schema.Types.ObjectId, ref: "gameType" }],
-      default: []
+      default: [],
     },
     cover: {
-      type: String,
-      default:
-        "https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png"
+      type: Object,
     },
     description: String,
     publisher: String,
@@ -21,17 +19,17 @@ const gameSchema = new Schema(
     trailer: String,
     platforms: {
       type: [{ type: Schema.Types.ObjectId, ref: "Platforms" }],
-      default: []
+      default: [],
     },
     status: {
       type: String,
       enum: ["pending", "published"],
-      default: "pending"
+      default: "pending",
     },
     userCreator: {
       type: [{ type: Schema.Types.ObjectId, ref: "User" }],
-      default: []
-    }
+      default: [],
+    },
   },
 
   {
@@ -42,8 +40,8 @@ const gameSchema = new Schema(
         delete ret._id;
         delete ret.__v;
         return ret;
-      }
-    }
+      },
+    },
   }
 );
 const Game = mongoose.model("Game", gameSchema);

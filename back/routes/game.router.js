@@ -1,11 +1,11 @@
 const express = require("express");
 const GameModel = require("../models/Game");
-const UserModel = require("../models/User");
 // const passport = require("passport");
 // const _ = require("lodash");
 const router = express.Router();
 // const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
+const uploadCloudinaryAvatar = require("../lib/uploadMiddleware");
 
 // GET ALL GAMES
 router.get("/", async (req, res, next) => {
@@ -39,17 +39,30 @@ router.get("/:id", async (req, res, next) => {
 });
 
 //CREATE Game the Aimala DB
-router.post("/create", async (req, res, next) => {
-  try {
-    console.log("Adding game to the Aimala DB");
-    const newGame = await GameModel.create(req.body);
+router.post(
+  "/create",
+  uploadCloudinaryAvatar.single("cover"),
+  async (req, res, next) => {
+    try {
+      console.log("Adding game to the Aimala DB");
+      const { title, description, publisher, year, trailer } = req.body;
+      const newGame = await GameModel.create({
+        title,
+        description,
+        publisher,
+        year,
+        trailer,
+        userCreator: req.user.id,
+        cover: req.file,
+      });
 
-    console.log(`${req.body.title} creado`);
-    return res.json({ status: "New Game Created", newGame });
-  } catch (error) {
-    return res.status(500).json({ status: "Error Adding Game" });
+      console.log(`${req.body.title} creado`);
+      return res.json({ status: "New Game Created", newGame });
+    } catch (error) {
+      return res.status(500).json({ status: "Error Adding Game" });
+    }
   }
-});
+);
 
 // EDITAR JUEGO (CARBALLO Y DAVID DEL FUTURO, HACED ESTO SOLO PARA ADMINS)
 // HAY QUE ASEGURARSE DE QUE EN LA URL LE METEMOS LA ID

@@ -10,6 +10,9 @@ import { GameContext } from "../contexts/GameContext";
 import { newGameApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
 
+const cloudinary = require("cloudinary-core");
+const cl = cloudinary.Cloudinary.new({ cloud_name: "aimalacloud" });
+
 const hasError = (errors, name) => {
   if (name in errors) return "error";
   return "";
@@ -71,6 +74,15 @@ export const NewGame = () => {
             name="trailer"
             className={hasError(errors, "trailer")}
             ref={register}
+          />
+        </InputContainer>
+        <InputContainer>
+          <label>Image</label>
+          <input
+            name="cover"
+            type="file"
+            className={hasError(errors, "cover")}
+            ref={register()}
           />
         </InputContainer>
         <button type="submit">Create Game</button>
