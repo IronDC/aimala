@@ -32,7 +32,7 @@ const debug = require("debug")(
 
 const app = express();
 
-const whitelist = [process.env.FRONT_URL];
+const whitelist = ["http://localhost:1234"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
