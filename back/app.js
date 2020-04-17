@@ -44,7 +44,6 @@ const corsOptions = {
   credentials: true,
 };
 
-// Middleware Setup
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(cors(corsOptions));
