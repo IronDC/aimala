@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 // const hbs = require("hbs");
-const {withDbConnection} = require("./lib/withDbConnection");
+const { withDbConnection } = require("./lib/withDbConnection");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
@@ -23,7 +23,7 @@ mongoose
     );
   })
   .catch((err) => {
-    console.error("Error connecting to mongo", err);
+    console.error("Error connecting to Mongo", err);
   });
 const app_name = require("./package.json").name;
 const debug = require("debug")(
@@ -32,7 +32,7 @@ const debug = require("debug")(
 
 const app = express();
 
-const whitelist = ["http://localhost:1234"];
+const whitelist = [process.env.FRONT_URL];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
