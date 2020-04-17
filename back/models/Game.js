@@ -10,9 +10,7 @@ const gameSchema = new Schema(
       type: [{ type: Schema.Types.ObjectId, ref: "gameType" }],
       default: [],
     },
-    cover: {
-      type: Object,
-    },
+    cover: Object,
     description: String,
     publisher: String,
     year: Number,

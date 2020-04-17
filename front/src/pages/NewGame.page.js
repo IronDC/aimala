@@ -25,6 +25,10 @@ export const NewGame = () => {
   const history = useHistory();
 
   const onSubmit = (data) => {
+    const coverFile = data.cover[0];
+    data.cover = coverFile;
+    console.log("this is data");
+    console.log(data);
     newGameApi(data).then((data) => {
       setGames([...games, data.newGame]);
       history.push("/games");
@@ -77,7 +81,7 @@ export const NewGame = () => {
           />
         </InputContainer>
         <InputContainer>
-          <label>Image</label>
+          <label>Cover</label>
           <input
             name="cover"
             type="file"

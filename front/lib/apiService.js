@@ -30,7 +30,9 @@ export const addGametoUserFromApi = async (id) => {
   return response.data;
 };
 
-export const newGameApi = async (data) => {
+export const newGameApi = async (dataFile) => {
+  const data = new FormData();
+  data.append("cover",dataFile);
   const response = await api.post(`/game/create`, data);
   return response.data;
 };
