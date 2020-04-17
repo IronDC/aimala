@@ -32,8 +32,17 @@ export const addGametoUserFromApi = async (id) => {
 };
 
 export const newGameApi = async (dataFile) => {
+  console.log("this is Datafile");
+  console.log(dataFile);
   const data = new FormData();
-  data.append("cover", dataFile);
+  data.append("cover", dataFile.cover);
+  data.append("title", dataFile.title);
+  data.append("year", dataFile.year);
+  data.append("publisher",dataFile.publisher);
+  data.append("description", dataFile.description);
+  data.append("trailer",dataFile.trailer);
+  console.log("todos los campos con append");
+  console.log(data);
   const response = await api.post(`/game/create`, data);
   return response.data;
 };
