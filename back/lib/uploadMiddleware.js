@@ -2,12 +2,12 @@ const multer = require("multer");
 const cloudinaryStorage = require("multer-storage-cloudinary");
 const cloudinary = require("cloudinary");
 const _ = require("lodash");
-require('dotenv').config();
+require("dotenv").config();
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET
+  api_secret: process.env.CLOUDINARY_SECRET,
 });
 
 const storage = cloudinaryStorage({
@@ -16,7 +16,7 @@ const storage = cloudinaryStorage({
   allowedFormats: ["jpg", "png"],
   filename: function (req, file, cb) {
     const userID = _.get(req, "user.id");
-    const userFile = userID ? `aimala${userID}` : file;
+    const userFile = userID ? `aimala-${userID}-${_.random(0, 1000)}` : file;
     cb(undefined, userFile);
     console.log("the middleware cloudinary");
   },
