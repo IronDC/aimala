@@ -22,5 +22,5 @@ const storage = cloudinaryStorage({
   },
 });
 
-module.exports = uploadCloudinaryAvatar = multer({ storage });
+module.exports = uploadCloudinaryImage = multer({ storage });
 // module.exports = upload = multer({ dest: "uploads/" });
