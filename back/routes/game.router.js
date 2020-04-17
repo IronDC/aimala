@@ -43,9 +43,10 @@ router.post(
   "/create",
   uploadCloudinaryAvatar.single("cover"),
   async (req, res, next) => {
+    console.log(req)
     try {
       console.log("Adding game to the Aimala DB");
-      const { title, description, publisher, year, trailer } = req.body;
+      const { title, description, publisher, year, trailer} = req.body;
       const newGame = await GameModel.create({
         title,
         description,
@@ -53,7 +54,7 @@ router.post(
         year,
         trailer,
         userCreator: req.user.id,
-        cover: req.file,
+        cover:req.file,
       });
 
       console.log(`${req.body.title} creado`);
