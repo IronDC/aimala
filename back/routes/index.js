@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const router = express.Router();
 
@@ -18,6 +20,8 @@ router.use("/user", user);
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.status(200).json({status:"this is the back, go to localhost:1234"});
+  res
+    .status(200)
+    .json({ status: `this is the back, go to ${process.env.FRONT_URL}` });
 });
 module.exports = router;

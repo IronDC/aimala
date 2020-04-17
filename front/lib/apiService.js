@@ -1,7 +1,8 @@
 import axios from "axios";
+require("dotenv").config();
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: process.env.BACK_URL,
   withCredentials: true,
 });
 
@@ -32,7 +33,7 @@ export const addGametoUserFromApi = async (id) => {
 
 export const newGameApi = async (dataFile) => {
   const data = new FormData();
-  data.append("cover",dataFile);
+  data.append("cover", dataFile);
   const response = await api.post(`/game/create`, data);
   return response.data;
 };
