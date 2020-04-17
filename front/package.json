@@ -9,6 +9,8 @@
     "@material-ui/icons": "^4.9.1",
     "@types/react": "^16.9.32",
     "axios": "^0.19.2",
+    "cloudinary-core": "^2.8.2",
+    "lodash": "^4.17.15",
     "parcel": "^1.12.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

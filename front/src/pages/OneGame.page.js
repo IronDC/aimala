@@ -15,7 +15,6 @@ const OneGame = (props) => {
   console.log(`this is the one game ${id}`);
   const game = findOneGame(id);
   const gameOwned = findOneOwnedGame(id);
-  console.log(game, id);
 
   const handleSubmit = (e) => {
     console.log("pulsado el boton");
@@ -32,7 +31,7 @@ const OneGame = (props) => {
       <p>ONE GAME</p>
       <h1>{game?.title}</h1>
       <div>
-        <img src={game?.cover} alt={game?.title} width="150px" />
+        <img src={game?.cover.url} alt={game?.title} width="150px" />
       </div>
       <div>{game?.description}</div>
       {!gameOwned && (

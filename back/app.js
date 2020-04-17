@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const express = require("express");
 // const hbs = require("hbs");
-const {withDbConnection} = require("./lib/withDbConnection");
+const { withDbConnection } = require("./lib/withDbConnection");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
@@ -23,7 +23,7 @@ mongoose
     );
   })
   .catch((err) => {
-    console.error("Error connecting to mongo", err);
+    console.error("Error connecting to Mongo", err);
   });
 const app_name = require("./package.json").name;
 const debug = require("debug")(
@@ -44,7 +44,8 @@ const corsOptions = {
   credentials: true,
 };
 
-// Middleware Setup
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(cors(corsOptions));
 app.use(logger("dev"));
 app.use(bodyParser.json());

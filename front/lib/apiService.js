@@ -1,4 +1,5 @@
 import axios from "axios";
+require("dotenv").config();
 
 const api = axios.create({
   baseURL: "http://localhost:3000",
@@ -7,29 +8,21 @@ const api = axios.create({
 
 export const gamesOwnedFromApi = async () => {
   const response = await api.get("/user");
-  console.info("GAMES OWNED BY USER");
-  console.log(response.data.gamesOwned);
   return response.data.gamesOwned;
 };
 
 export const platformsOwnedFromApi = async () => {
   const response = await api.get("/user");
-  console.info("PLATFORMS OWNED BY USER");
-  console.log(response.data.platformsOwned);
   return response.data.platformsOwned;
 };
 
 export const articlesFromApi = async () => {
   const response = await api.get("/article");
-  console.info("ARTICLES FROM API");
-  console.log(response.data);
   return response.data;
 };
 
 export const gamesFromApi = async () => {
   const response = await api.get("/game");
-  console.info("ALL GAMES FROM API");
-  console.log(response.data);
   return response.data;
 };
 
@@ -38,10 +31,24 @@ export const addGametoUserFromApi = async (id) => {
   return response.data;
 };
 
+export const newGameApi = async (dataFile) => {
+  console.log("this is Datafile");
+  console.log(dataFile);
+  const data = new FormData();
+  data.append("cover", dataFile.cover);
+  data.append("title", dataFile.title);
+  data.append("year", dataFile.year);
+  data.append("publisher",dataFile.publisher);
+  data.append("description", dataFile.description);
+  data.append("trailer",dataFile.trailer);
+  console.log("todos los campos con append");
+  console.log(data);
+  const response = await api.post(`/game/create`, data);
+  return response.data;
+};
+
 export const platformsFromApi = async () => {
   const response = await api.get("/platform");
-  console.info("ALL PLATFORMS FROM API");
-  console.log(response.data);
   return response.data;
 };
 

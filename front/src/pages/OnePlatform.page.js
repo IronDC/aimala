@@ -17,7 +17,6 @@ const OnePlatform = (props) => {
   console.log(`this is the one platforms ${id}`);
   const platform = findOnePlatform(id);
   const platformOwned = findOneOwnedPlatform(id);
-  console.log(platform, id);
 
   const handleSubmit = (e) => {
     console.log("pulsado el boton");

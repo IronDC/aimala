@@ -10,6 +10,12 @@ const InputContainer = styled.div`
     display: flex;
     align-items: center;
   }
+  > label {
+    width: 50%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 export default InputContainer;
