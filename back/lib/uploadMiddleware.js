@@ -16,7 +16,7 @@ const storage = cloudinaryStorage({
   allowedFormats: ["jpg", "png"],
   filename: function (req, file, cb) {
     const userID = _.get(req, "user.id");
-    const userFile = userID ? `aimala-${userID}-${_.random(0, 1000)}` : file;
+    const userFile = userID ? `aimala-${userID}-${_.random(0, 100000)}` : file;
     cb(undefined, userFile);
     console.log("the middleware cloudinary");
   },
