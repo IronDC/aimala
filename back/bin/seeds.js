@@ -75,8 +75,10 @@ withDbConnection(async () => {
     {
       title: "Super Mario Bros",
       gameType: [],
-      cover:
-        "https://3.bp.blogspot.com/-Q-dQahgp1_g/VleJ8cqoGyI/AAAAAAAAWN8/YlzIqgSyUW4/s1600/MarioNES.jpg",
+      cover: {
+        url:
+          "https://3.bp.blogspot.com/-Q-dQahgp1_g/VleJ8cqoGyI/AAAAAAAAWN8/YlzIqgSyUW4/s1600/MarioNES.jpg",
+      },
       description:
         "Videojuego de plataformas, diseñado por Shigeru Miyamoto. El juego describe las aventuras de los hermanos Mario y Luigi que deben rescatar a la Princesa Peach del Reino Champiñón que fue secuestrada por el rey de los Koopas, Bowser",
       publisher: "Nintendo",
@@ -89,8 +91,10 @@ withDbConnection(async () => {
     {
       title: "Lemmings",
       gameType: [],
-      cover:
-        "https://www.mobygames.com/images/covers/l/67467-lemmings-amiga-front-cover.jpg",
+      cover: {
+        url:
+          "https://www.mobygames.com/images/covers/l/67467-lemmings-amiga-front-cover.jpg",
+      },
       description:
         "Consiste en controlar a lemmings a través de diversos obstáculos (barrancos, paredes, montañas, etc.) con el objetivo de llegar a una puerta final. Los lemmings pueden realizar una serie de acciones: construir escaleras, bloquear el paso a otros lemmings, lanzarse en paracaídas, etc. También tienen la opción de suicidarse.",
       publisher: "Rockstar North",
@@ -103,8 +107,10 @@ withDbConnection(async () => {
     {
       title: "Tomb Raider",
       gameType: [],
-      cover:
-        "http://www.masgamers.com/wp-content/uploads/2017/10/TOMBRAIDER1996PSX-1.jpg",
+      cover: {
+        url:
+          "http://www.masgamers.com/wp-content/uploads/2017/10/TOMBRAIDER1996PSX-1.jpg",
+      },
       description:
         "Narra las aventuras de Lara Croft, una arqueóloga británica en busca de tesoros y reliquias del mundo antiguo al más puro estilo de Indiana Jones. ",
       publisher: "Core Design",
