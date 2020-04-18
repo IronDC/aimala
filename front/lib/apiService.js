@@ -1,8 +1,8 @@
 import axios from "axios";
-require("dotenv").config();
+// require("dotenv").config();
 
 const api = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: process.env.BACK_URL,
   withCredentials: true,
 });
 
@@ -38,9 +38,9 @@ export const newGameApi = async (dataFile) => {
   data.append("cover", dataFile.cover);
   data.append("title", dataFile.title);
   data.append("year", dataFile.year);
-  data.append("publisher",dataFile.publisher);
+  data.append("publisher", dataFile.publisher);
   data.append("description", dataFile.description);
-  data.append("trailer",dataFile.trailer);
+  data.append("trailer", dataFile.trailer);
   console.log("todos los campos con append");
   console.log(data);
   const response = await api.post(`/game/create`, data);
