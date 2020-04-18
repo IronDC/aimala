@@ -5,7 +5,7 @@ const GameModel = require("../models/Game");
 const router = express.Router();
 // const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
-const uploadCloudinaryAvatar = require("../lib/uploadMiddleware");
+const uploadCloudinaryImage = require("../lib/uploadMiddleware");
 
 // GET ALL GAMES
 router.get("/", async (req, res, next) => {
@@ -41,12 +41,12 @@ router.get("/:id", async (req, res, next) => {
 //CREATE Game the Aimala DB
 router.post(
   "/create",
-  uploadCloudinaryAvatar.single("cover"),
+  uploadCloudinaryImage.single("cover"),
   async (req, res, next) => {
-    console.log(req)
+    console.log(req);
     try {
       console.log("Adding game to the Aimala DB");
-      const { title, description, publisher, year, trailer} = req.body;
+      const { title, description, publisher, year, trailer } = req.body;
       const newGame = await GameModel.create({
         title,
         description,
@@ -54,7 +54,7 @@ router.post(
         year,
         trailer,
         userCreator: req.user.id,
-        cover:req.file,
+        cover: req.file,
       });
 
       console.log(`${req.body.title} creado`);
