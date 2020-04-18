@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext } from "react";
-require("dotenv").config();
+// require("dotenv").config();
 
 export const UserContext = React.createContext();
 
