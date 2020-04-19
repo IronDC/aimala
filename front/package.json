@@ -24,6 +24,7 @@
     "@babel/core": "^7.9.0"
   },
   "scripts": {
+    "start-local": "parcel index.html",
     "start": "serve dist",
     "build": "parcel build index.html"
   },
