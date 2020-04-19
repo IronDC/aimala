@@ -10,8 +10,8 @@ const AllPlatforms = () => {
   const renderPlatformList = () =>
     platforms.map(
       (platform) =>
-        (platform.name.toLowerCase().includes(filter.toLowerCase()) ||
-          platform.description
+        (platform?.name.toLowerCase().includes(filter.toLowerCase()) ||
+          platform?.description
             .toLowerCase()
             .includes(filter.toLowerCase())) && (
           <PlatformList platform={platform} key={platform.id} />

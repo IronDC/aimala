@@ -13,11 +13,7 @@ const platformSchema = new Schema(
       default:
         "https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png"
     },
-    image: {
-      type: String,
-      default:
-        "https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png"
-    },
+    image: Object,
     gamepad: {
       type: String,
       default:
