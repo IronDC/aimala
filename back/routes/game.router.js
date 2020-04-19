@@ -43,7 +43,6 @@ router.post(
   "/create",
   uploadCloudinaryImage.single("cover"),
   async (req, res, next) => {
-    console.log(req);
     try {
       console.log("Adding game to the Aimala DB");
       const { title, description, publisher, year, trailer } = req.body;

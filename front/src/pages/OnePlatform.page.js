@@ -39,7 +39,7 @@ const OnePlatform = (props) => {
       </div>
       <div>{platform?.description}</div>
       <div>
-        <img src={platform?.image} alt={platform?.name} width="150px" />
+        <img src={platform?.image.url} alt={platform?.name} width="150px" />
       </div>
       <div>
         <img src={platform?.gamepad} alt={platform?.name} width="150px" />

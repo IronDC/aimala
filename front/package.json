@@ -17,16 +17,14 @@
     "react-hook-form": "^5.3.1",
     "react-is": "^16.13.1",
     "react-router-dom": "^5.1.2",
-    "serve": "^11.3.0",
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
   },
   "scripts": {
-    "start-local": "parcel index.html",
-    "start": "serve dist",
-    "build": "parcel build index.html"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
   },
   "keywords": [],
   "author": "",

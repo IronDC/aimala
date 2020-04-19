@@ -31,16 +31,30 @@ router.get("/:id", async (req, res, next) => {
 });
 
 //CREATE Platform the Aimala DB
-router.post("/create", async (req, res, next) => {
-  try {
-    console.log("Adding platform to the Aimala DB");
-    const newPlatform = await PlatformModel.create(req.body);
-    console.log(`${req.body.name} creado`);
-    return res.json({ status: 200, message: "New Platform Created" });
-  } catch (error) {
-    return res.status(500).json({ status: "Error creating platform" });
+router.post(
+  "/create",
+  uploadCloudinaryImage.single("image"),
+  async (req, res, next) => {
+    try {
+      console.log("Adding platform to the Aimala DB");
+      const { name, description, year } = req.body;
+      const newPlatform = await PlatformModel.create({
+        name,
+        description,
+        year,
+        image: req.file,
+      });
+      console.log(`${req.body.name} creado`);
+      return res.json({
+        status: 200,
+        message: "New Platform Created",
+        newPlatform,
+      });
+    } catch (error) {
+      return res.status(500).json({ status: "Error creating platform" });
+    }
   }
-});
+);
 
 // EDITAR PLATAFORMA
 
