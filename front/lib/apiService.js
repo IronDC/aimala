@@ -2,7 +2,7 @@ import axios from "axios";
 // require("dotenv").config();
 
 const api = axios.create({
-  baseURL: process.env.BACK_URL,
+  baseURL:process.env.BACK_URL,
   withCredentials: true,
 });
 
