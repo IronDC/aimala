@@ -32,8 +32,6 @@ export const addGametoUserFromApi = async (id) => {
 };
 
 export const newGameApi = async (dataFile) => {
-  console.log("this is Datafile");
-  console.log(dataFile);
   const data = new FormData();
   data.append("cover", dataFile.cover);
   data.append("title", dataFile.title);
@@ -54,6 +52,18 @@ export const platformsFromApi = async () => {
 
 export const addPlatformtoUserFromApi = async (id) => {
   const response = await api.put(`/user/${id}/addplatform`);
+  return response.data;
+};
+
+export const newPlatformApi = async (dataFile) => {
+  console.log("this is Datafile");
+  console.log(dataFile);
+  const data = new FormData();
+  data.append("image", dataFile.image);
+  data.append("name", dataFile.name);
+  data.append("year", dataFile.year);
+  data.append("description", dataFile.description);
+  const response = await api.post(`/platform/create`, data);
   return response.data;
 };
 
