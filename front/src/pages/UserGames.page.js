@@ -20,7 +20,7 @@ const UserGames = () => {
       <ButtonBack />
       <Input setFilter={setFilter} />
       <h1>MY GAMES</h1>
-      <ul>{renderGameList()}</ul>
+      {renderGameList()}
     </>
   );
 };
