@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ArticleList = ({ article, index }) => {
+const ArticleList = ({ article }) => {
   const classes = useStyles();
   return (
     <>
