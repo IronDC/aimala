@@ -82,13 +82,10 @@ const UserHome = () => {
         </Col2>
       </Section>
       <Section>
-        {/* ESTA SECCIÓN DEBERÍA SER UN COMPONENTE */}
-        <Col2>
-          <VideogameAssetIcon className="icon-img" />
-          <h2>
-            <LinkText to="/userplatforms">MyPlatforms</LinkText>
-          </h2>
-        </Col2>
+        <VideogameAssetIcon className="icon-img" />
+        <h2>
+          <LinkText to="/userplatforms">MyPlatforms</LinkText>
+        </h2>
       </Section>
       <Section>
         <Col2>
