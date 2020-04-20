@@ -21,7 +21,8 @@ const useStyles = makeStyles({
     flex: "1 0 auto",
   },
   cover: {
-    width: 151,
+    width: 100,
+    alignItems: "right",
   },
 });
 
@@ -42,9 +43,9 @@ const GameList = ({ game, i }) => {
           </CardContent>
         </div>
         <CardMedia
-          //component="img" // ESTE COMPONENT HACE QUE SE MUESTRE LA IMAGEN PERO MAL, SI LO QUITO NO SE MUESTRA
+          component="img" // ESTE COMPONENT HACE QUE SE MUESTRE LA IMAGEN PERO MAL, SI LO QUITO NO SE MUESTRA
           className={classes.cover}
-          alt={game.title}
+          //alt={game.title}
           image={game.cover.url}
           title={game.title}
         />
