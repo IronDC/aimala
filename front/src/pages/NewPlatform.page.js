@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { PlatformContext } from "../contexts/PlatformContext";
 import { newPlatformApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
+import withProtected from "../../lib/protectRoute.hoc";
 
 const cloudinary = require("cloudinary-core");
 const cl = cloudinary.Cloudinary.new({ cloud_name: "aimalacloud" });

@@ -9,8 +9,11 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import VideogameAssetIcon from "@material-ui/icons/VideogameAsset";
+import GamepadIcon from "@material-ui/icons/Gamepad";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import HomeIcon from "@material-ui/icons/Home";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
@@ -54,19 +57,19 @@ export default function TemporaryDrawer() {
             name: "Home",
             link: "/",
             text: "Homepage",
-            icon: <SportsEsportsIcon />,
+            icon: <HomeIcon />,
           },
           {
             name: "My Games",
             link: "/usergames",
             text: "My Games",
-            icon: <VideogameAssetIcon />,
+            icon: <SportsEsportsIcon />,
           },
           {
             name: "My Platforms",
             link: "/userplatforms",
             text: "My Platforms",
-            icon: <VideogameAssetIcon />,
+            icon: <GamepadIcon />,
           },
           {
             name: "All Games",
@@ -78,19 +81,19 @@ export default function TemporaryDrawer() {
             name: "All Platforms",
             link: "/platforms",
             text: "Platforms Page",
-            icon: <VideogameAssetIcon />,
+            icon: <GamepadIcon />,
           },
           {
             name: "New Game",
             link: "/newgame",
             text: "New Game",
-            icon: <SportsEsportsIcon />,
+            icon: <AddCircleIcon />,
           },
           {
             name: "New Platform",
             link: "/newplatform",
             text: "New Platform",
-            icon: <SportsEsportsIcon />,
+            icon: <AddCircleIcon />,
           },
         ].map((text, index) => (
           <ListItem button key={index}>
