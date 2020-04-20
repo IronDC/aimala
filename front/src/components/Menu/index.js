@@ -86,6 +86,12 @@ export default function TemporaryDrawer() {
             text: "New Game",
             icon: <SportsEsportsIcon />,
           },
+          {
+            name: "New Platform",
+            link: "/newplatform",
+            text: "New Platform",
+            icon: <SportsEsportsIcon />,
+          },
         ].map((text, index) => (
           <ListItem button key={index}>
             <ListItemIcon>{text.icon}</ListItemIcon>

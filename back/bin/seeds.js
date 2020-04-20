@@ -154,8 +154,10 @@ withDbConnection(async () => {
         "Nintendo Entertainment System, también conocida como NES o en Japón conocida como FAMICOM​, es la segunda consola de sobremesa de Nintendo, y es una videoconsola de ocho bits perteneciente a la tercera generación en la industria de los videojuegos",
       logo:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/NES_logo.svg/225px-NES_logo.svg.png",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/NES-Console-Set.png/250px-NES-Console-Set.png",
+      image: {
+        url:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/NES-Console-Set.png/250px-NES-Console-Set.png",
+      },
       gamepad:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/NES_controller.jpg/200px-NES_controller.jpg",
     },
@@ -165,8 +167,10 @@ withDbConnection(async () => {
       description:
         "The Amiga 500, also known as the A500, is the first low-end Commodore Amiga 16/32-bit multimedia home/personal computer. It was announced at the winter Consumer Electronics Show in January 1987 – at the same time as the high-end Amiga 2000 – and competed directly against the Atari 520ST.",
       logo: "https://gbatemp.net/gc/images/plav.png",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Amiga500_system.jpg/300px-Amiga500_system.jpg",
+      image: {
+        url:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Amiga500_system.jpg/300px-Amiga500_system.jpg",
+      },
       gamepad:
         "https://lh3.googleusercontent.com/-Y2IzrVRTJeE/Wj9vsl0LOjI/AAAAAAAADno/AqQs6nNAxbsaM4JZBgXmyRbsKJVeP82XwCHMYCw/fullsizeoutput_9007.jpeg?imgmax=1600",
     },
@@ -177,8 +181,10 @@ withDbConnection(async () => {
         "Es una videoconsola de sobremesa de 32 bits lanzada por Sony Computer Entertainment considerada la más exitosa de su generación.  Tuvo gran éxito al implantar el CD-ROM y gracias a títulos como Gran Turismo, Metal Gear o Final Fantasy.",
       logo:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/1024px-Playstation_logo_colour.svg.png",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/PSX-Console-wController.png/1920px-PSX-Console-wController.png",
+      image: {
+        url:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/PSX-Console-wController.png/1920px-PSX-Console-wController.png",
+      },
       gamepad:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/PSX-Original-Controller.jpg/800px-PSX-Original-Controller.jpg",
     },
