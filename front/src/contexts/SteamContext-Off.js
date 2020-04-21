@@ -1,15 +1,18 @@
 import React, { createContext, useState, useEffect } from "react";
 // import { gamesFromApi } from "../../lib/apiService";
 import { gamesFromSteamApi } from "../../lib/steamApiService";
+import {useUser} from "../../lib/authService";
 
 export const SteamContext = createContext();
 const SteamContextProvider = (props) => {
   const [steamGames, setSteamGames] = useState([]);
-  // const [filter, setFilter] = useState("");
+  const user = useUser();
+  console.log(user);
+  const id = user.steamid;
 
   // GAMES CONTEXT
   useEffect(() => {
-    gamesFromApi().then((steamGames) => setSteamGames(steamGames));
+    gamesFromSteamApi(id).then((steamGames) => setSteamGames(steamGames));
   }, []);
 
   // const findOneGame = (id) => {
@@ -17,17 +20,14 @@ const SteamContextProvider = (props) => {
   // };
 
   return (
-    <GameContext.Provider
+    <SteamContext.Provider
       value={{
-        games,
-        setGames,
-        filter,
-        setFilter,
-        findOneGame,
+        steamGames,
+        setSteamGames,
       }}
     >
       {props.children}
-    </GameContext.Provider>
+    </SteamContext.Provider>
   );
 };
 

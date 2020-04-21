@@ -1,14 +1,13 @@
 import axios from "axios";
-// require("dotenv").config();
+
 
 const api = axios.create({
-  baseURL: process.env.BACK_URL,
-  withCredentials: true,
+  baseURL: process.env.STEAMURL,
 });
 
-const api = axios.create({
-  steamURL: `${process.env.STEAMURL_PART1}:steamid${process.env.STEAMURL_PART2}`,
-});
-
-gamesfromsteamapi (id) =>
-get.steamURL
+export const gamesFromSteamApi = async () => {
+  console.log("hola mundo");
+  const response = await api.get();
+  console.log(response);
+  return response.data;
+};

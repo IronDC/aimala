@@ -9,6 +9,7 @@ import styled from "styled-components";
 // import { GameContext } from "../contexts/GameContext";
 import { addSteamidFromApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
+import { useUser, useUserSetter } from "./../../lib/authService";
 
 const hasError = (errors, name) => {
   if (name in errors) return "error";
@@ -16,19 +17,20 @@ const hasError = (errors, name) => {
 };
 
 export const NewPlatformSteam = () => {
-  // const { games, setGames } = useContext(GameContext);
+  const setUser = useUserSetter();
+  const user = useUser();
 
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
   const history = useHistory();
 
   const onSubmit = (data) => {
-    console.log("Steamid to add: ", data);
     addSteamidFromApi(data.steamid).then((data) => {
-      // setGames([...games, data.newGame]);
-      history.push("/userplatforms");
+      setUser(data.user);
+      history.push("/gamessteam");
     });
   };
   console.log(`Errores de validacion ${errors}`);
+
   return (
     <>
       <h1>ADD STEAM ACCOUNT</h1>
