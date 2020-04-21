@@ -22,7 +22,7 @@ const UserPlatforms = () => {
       <ButtonBack />
       <Input setFilter={setFilter} />
       <h1>USER PLATFORMS</h1>
-      <ul>{renderPlatformList()}</ul>
+      {renderPlatformList()}
     </>
   );
 };
