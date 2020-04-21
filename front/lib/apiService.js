@@ -2,7 +2,7 @@ import axios from "axios";
 // require("dotenv").config();
 
 const api = axios.create({
-  baseURL:process.env.BACK_URL,
+  baseURL: process.env.BACK_URL,
   withCredentials: true,
 });
 
@@ -67,31 +67,7 @@ export const newPlatformApi = async (dataFile) => {
   return response.data;
 };
 
-// export const GameDetails = async (id) => {
-//   console.info("ONE GAME ID:");
-//   console.log(id);
-//   const response = await api.get(`/game/${id}`);
-//   console.info("ONE GAME");
-//   console.log(response.data);
-//   return response.data;
-// };
-
-// export const beerDetails = async (id) => {
-//   const response = await beersApi.get(`/beers/${id}`);
-//   return response.data;
-// };
-
-// export const randomBeer = async () => {
-//   const response = await beersApi.get("/beers/random");
-//   return response.data;
-// };
-
-// export const createBeer = async (data) => {
-//   const response = await beersApi.post(`/beers/new`, data);
-//   return response.data;
-// };
-
-// export const searchBeers = async (query) => {
-//   const response = await beersApi.get(`/beers/search?q=${query}`);
-//   return response.data;
-// };
+export const addSteamidFromApi = async (id) => {
+  const response = await api.put(`/user/${id}/addsteam`);
+  return response.data;
+};
