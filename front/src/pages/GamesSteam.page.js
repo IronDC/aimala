@@ -13,7 +13,7 @@ const GamesSteam = () => {
   useEffect(() => {
     gamesFromSteamApi().then((steamGames) => {
       setSteamGames(steamGames);
-      console.log(steamGames);
+      console.log(steamGames.data.response.games);
     })
   }, []);
   // const renderGameList = () =>
