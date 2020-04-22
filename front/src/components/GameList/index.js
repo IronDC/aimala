@@ -21,14 +21,14 @@ const useStyles = makeStyles({
     flex: "1 0 auto",
   },
   image: {
-    width: 150,
-    height: 150,
-    backgroundSize: "contain",
+    width: 120,
+    height: 135,
+    backgroundSize: "cover",
   },
   link: {
     display: "flex",
     width: "100vw",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
   },
 });
 
