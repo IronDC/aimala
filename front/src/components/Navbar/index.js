@@ -81,11 +81,12 @@ export default function MenuAppBar() {
               >
                 {user && (
                   <Typography variant="body2" className={classes.title}>
-                    username
+                    {user.username}
                   </Typography>
                 )}
                 <AccountCircle />
               </IconButton>
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -111,8 +112,8 @@ export default function MenuAppBar() {
                     <Link to="/login">LogIn</Link>
                   </MenuItem>
                 )}
-                {user && <MenuItem onClick={handleClose}>Profile</MenuItem>}
-                {user && <MenuItem onClick={handleClose}>My account</MenuItem>}
+                {/* {user && <MenuItem onClick={handleClose}>Profile</MenuItem>}
+                {user && <MenuItem onClick={handleClose}>My account</MenuItem>} */}
                 {user && (
                   <MenuItem>
                     <Link to="/login" onClick={handleLogout}>
