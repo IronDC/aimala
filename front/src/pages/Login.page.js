@@ -26,9 +26,16 @@ const Login = () => {
 
   const onSubmit = (data) => {
     doLogin(data).then((user) => {
-      setUser(user);
-      history.push("/");
-      console.log(`este es el usuario logeado ${data.username}`);
+      console.log(user);
+      if(user.username){
+        setUser(user);
+        history.push("/");
+        console.log(`este es el usuario logeado ${data.username}`);
+      } else {
+        console.log("Usuario no encontrado...");
+        history.push("/login");
+      };
+
     });
   };
   console.log(errors);
