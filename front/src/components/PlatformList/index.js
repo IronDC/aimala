@@ -1,19 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const PlatformList = ({ platform, i }) => {
+const PlatformList = ({ platform }) => {
   return (
     <>
-      <li key={i}>
-        <Link to={`/platform/${platform?.id}`}>
-          <div>
-            <img src={platform?.image.url} alt={platform?.name} width="150px" />
-          </div>
-          <div>
-            <h2>{platform?.name}</h2>
-          </div>
-        </Link>
-      </li>
+      <Link to={`/platform/${platform?.id}`}>
+        <div>
+          <img src={platform?.image.url} alt={platform?.name} width="150px" />
+        </div>
+        <div>
+          <h2>{platform?.name}</h2>
+        </div>
+      </Link>
     </>
   );
 };

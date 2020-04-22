@@ -119,6 +119,26 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
   }
 });
 
+// ADD STEAM ID TO USER
+router.put("/:steamid/addsteam", isLoggedIn(), async (req, res, next) => {
+  try {
+    console.log(req.user);
+    const steamid = req.params.steamid;
+    const userid = req.user.id;
+    console.log(`Adding Steam ID ${steamid} to user ${userid}`);
+    const user = await UserModel.findOneAndUpdate(
+      { _id: userid },
+      { steamid: steamid },
+      {
+        new: true,
+      }
+    );
+    return res.json({ status: "Added SteamID to user", user });
+  } catch (error) {
+    return res.status(401).json({ status: "Error Adding SteamID" });
+  }
+});
+
 // GET THE CURRENT USER
 router.get("/", isLoggedIn(), async (req, res, next) => {
   try {

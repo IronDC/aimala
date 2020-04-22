@@ -34,16 +34,16 @@ const OnePlatform = (props) => {
       <p>ONE PLATFORM</p>
       <h1>{platform?.name}</h1>
       <p>{platform?.year}</p>
-      <div>
+      {/* <div>
         <img src={platform?.logo} alt={platform?.name} width="150px" />
-      </div>
+      </div> */}
       <div>{platform?.description}</div>
       <div>
         <img src={platform?.image.url} alt={platform?.name} width="150px" />
       </div>
-      <div>
+      {/* <div>
         <img src={platform?.gamepad} alt={platform?.name} width="150px" />
-      </div>
+      </div> */}
       {!platformOwned && (
         <Button variant="contained" color="primary" onClick={handleSubmit}>
           Add to my Library

@@ -20,8 +20,15 @@ const useStyles = makeStyles({
   content: {
     flex: "1 0 auto",
   },
-  cover: {
-    width: 151,
+  image: {
+    width: 120,
+    height: 135,
+    backgroundSize: "cover",
+  },
+  link: {
+    display: "flex",
+    width: "100vw",
+    justifyContent: "space-between",
   },
 });
 
@@ -30,7 +37,7 @@ const GameList = ({ game, i }) => {
   console.log(game);
   return (
     <Card className={classes.root} key={i}>
-      <Link to={`/game/${game.id}`}>
+      <Link to={`/game/${game.id}`} className={classes.link}>
         <div className={classes.details}>
           <CardContent className={classes.content}>
             <Typography component="h5" variant="h5">
@@ -41,12 +48,13 @@ const GameList = ({ game, i }) => {
             </Typography>
           </CardContent>
         </div>
+
         <CardMedia
-          //component="img" // ESTE COMPONENT HACE QUE SE MUESTRE LA IMAGEN PERO MAL, SI LO QUITO NO SE MUESTRA
-          className={classes.cover}
+          className={classes.image}
           alt={game.title}
           image={game.cover.url}
           title={game.title}
+          height="100px"
         />
       </Link>
     </Card>

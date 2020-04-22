@@ -21,6 +21,8 @@ import ArticleContextProvider from "./contexts/ArticleContext";
 import GameContextProvider from "./contexts/GameContext";
 import PlatformContextProvider from "./contexts/PlatformContext";
 import NewPlatform from "./pages/NewPlatform.page";
+import NewPlatformSteam from "./pages/NewPlatformSteam.page";
+import GamesSteam from "./pages/GamesSteam.page";
 
 export const App = withAuthentication(() => {
   const user = useUser();
@@ -43,12 +45,22 @@ export const App = withAuthentication(() => {
                     <Route path="/game/:id" exact component={OneGame} />
                     <Route path="/games" exact component={AllGames} />
                     <Route path="/newgame" exact component={NewGame} />
+                    <Route
+                      path="/userplatforms"
+                      exact
+                      component={UserPlatforms}
+                    />
+                    <Route path="/platform/:id" exact component={OnePlatform} />
+                    <Route path="/platforms" exact component={AllPlatforms} />
+                    <Route
+                      path="/newplatform/steam"
+                      exact
+                      component={NewPlatformSteam}
+                    />
+                    <Route path="/newplatform" exact component={NewPlatform} />
+                    <Route path="/gamessteam" exact component={GamesSteam} />
                   </GameOwnedContextProvider>
                 </GameContextProvider>
-                <Route path="/userplatforms" exact component={UserPlatforms} />
-                <Route path="/platform/:id" exact component={OnePlatform} />
-                <Route path="/platforms" exact component={AllPlatforms} />
-                <Route path="/newplatform" exact component={NewPlatform} />
               </PlatformOwnedContextProvider>
             </PlatformContextProvider>
           </ArticleContextProvider>
