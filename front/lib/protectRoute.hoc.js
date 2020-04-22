@@ -7,9 +7,8 @@ export const withProtected = (
   Component,
   { redirect = true, redirectTo = "/" } = {} // options are always present
 ) => (props) => {
-  console.log("Vamos a ver que sale aqui");
   const user = useUser();
-  if (!user) {
+  if (user) {
     // If we have a user, then render the component
     return <Component />;
   } else {
