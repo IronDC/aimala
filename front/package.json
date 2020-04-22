@@ -24,9 +24,8 @@
     "@babel/core": "^7.9.0"
   },
   "scripts": {
-    "start": "serve dist",
-    "build": "parcel build index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
   },
   "keywords": [],
   "author": "",
