@@ -24,8 +24,8 @@
     "@babel/core": "^7.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve dist"
+    "start": "serve dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
