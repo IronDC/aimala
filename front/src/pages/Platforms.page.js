@@ -9,23 +9,38 @@ import { withProtected } from "../../lib/protectRoute.hoc";
 const AllPlatforms = () => {
   const { platforms, filter, setFilter } = useContext(PlatformContext);
   const renderPlatformList = () =>
-    platforms.map(
-      (platform) =>{
-        console.log(platform?.name);
-        return (platform?.name.toLowerCase().includes(filter.toLowerCase()) ||
+    platforms.map((platform) => {
+      console.log(platform?.name);
+      return (
+        (platform?.name.toLowerCase().includes(filter.toLowerCase()) ||
           platform?.description
             .toLowerCase()
             .includes(filter.toLowerCase())) && (
           <PlatformList platform={platform} key={platform.id} />
-        )}
-    );
+        )
+      );
+    });
 
   return (
     <>
       <ButtonBack />
       <Input setFilter={setFilter} />
       <h1>ALL PLATFORMS</h1>
-      <ul>{renderPlatformList()}</ul>
+
+      <Link to="/newplatform/steam">
+        <div>
+          <img
+            src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_steam-512.png"
+            alt="Steam"
+            width="150px"
+          />
+        </div>
+        <div>
+          <h2>Steam</h2>
+        </div>
+      </Link>
+
+      {renderPlatformList()}
     </>
   );
 };

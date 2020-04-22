@@ -17,9 +17,7 @@ withDbConnection(async () => {
       password: "aimala10",
       gamesOwned: [],
       platformsOwned: [],
-      social: {
-        steam: String,
-      },
+      steamid: "",
     },
     {
       usertype: "admin",
@@ -28,9 +26,7 @@ withDbConnection(async () => {
       password: "aimala10",
       gamesOwned: [],
       platformsOwned: [],
-      social: {
-        steam: String,
-      },
+      steamid: "",
     },
     {
       usertype: "user",
@@ -39,9 +35,7 @@ withDbConnection(async () => {
       password: "aimala10",
       gamesOwned: [],
       platformsOwned: [],
-      social: {
-        steam: String,
-      },
+      steamid: "",
     },
   ]);
   console.log(">>> Users Created: carballo, david, marc");
