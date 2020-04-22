@@ -16,7 +16,7 @@ const hasError = (errors, name) => {
   return "";
 };
 
-export const NewPlatformSteam = () => {
+const NewPlatformSteam = () => {
   const setUser = useUserSetter();
   const user = useUser();
 
