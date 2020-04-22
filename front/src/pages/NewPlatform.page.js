@@ -14,7 +14,7 @@ const hasError = (errors, name) => {
   return "";
 };
 
-export const NewPlatform = () => {
+ const NewPlatform = () => {
   const { platforms, setPlatforms } = useContext(PlatformContext);
 
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
@@ -26,7 +26,9 @@ export const NewPlatform = () => {
     console.log("this is data");
     console.log(data);
     newPlatformApi(data).then((data) => {
-      setPlatforms([...platforms, data.NewPlatform]);
+      console.log("data Platforms");
+      console.log(data);
+      setPlatforms([...platforms, data.newPlatform]);
       history.push("/platforms");
     });
   };
@@ -75,4 +77,4 @@ export const NewPlatform = () => {
   );
 };
 
-export default NewPlatform;
+export default withProtected(NewPlatform);

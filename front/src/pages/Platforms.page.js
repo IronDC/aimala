@@ -11,13 +11,12 @@ const AllPlatforms = () => {
   const { platforms, filter, setFilter } = useContext(PlatformContext);
   const user = useUser();
   console.log("User SteamId");
-  console.log(user.steamid);
   const renderPlatformList = () =>
     platforms.map((platform) => {
-      console.log(platform?.name);
+      console.log(platform.name);
       return (
-        (platform?.name.toLowerCase().includes(filter.toLowerCase()) ||
-          platform?.description
+        (platform.name.toLowerCase().includes(filter.toLowerCase()) ||
+          platform.description
             .toLowerCase()
             .includes(filter.toLowerCase())) && (
           <PlatformList platform={platform} key={platform.id} />
@@ -30,7 +29,7 @@ const AllPlatforms = () => {
       <ButtonBack />
       <Input setFilter={setFilter} />
       <h1>ALL PLATFORMS</h1>
-      {user.steamid === undefined ? <Link to="/newplatform/steam">
+      {user?.steamid === "" ? <Link to="/newplatform/steam">
         <div>
           <img
             src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_steam-512.png"
