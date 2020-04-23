@@ -18,14 +18,16 @@
     "react-is": "^16.13.1",
     "react-router-dom": "^5.1.2",
     "react-spinners-kit": "^1.9.1",
+    "serve": "^11.3.0",
     "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html"
+    "start": "serve dist",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "keywords": [],
   "author": "",

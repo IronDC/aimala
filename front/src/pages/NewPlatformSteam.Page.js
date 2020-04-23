@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 // import { GameOwnedContext } from "../contexts/GameOwnedContext";
-import { Link } from "react-router-dom";
-import { ButtonBack } from "../components/ButtonBack";
+// import { Link } from "react-router-dom";
+// import { ButtonBack } from "../components/ButtonBack";
 // import GameList from "../components/GameList";
 import InputContainer from "../components/Input/style";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
+// import styled from "styled-components";
 // import { GameContext } from "../contexts/GameContext";
 import { addSteamidFromApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
@@ -16,7 +16,7 @@ const hasError = (errors, name) => {
   return "";
 };
 
-export const NewPlatformSteam = () => {
+const NewPlatformSteam = () => {
   const setUser = useUserSetter();
   const user = useUser();
 
