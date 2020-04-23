@@ -51,23 +51,23 @@ const UserGames = () => {
     <>
       <ButtonBack />
       <Container>
-        <H1>MY GAMES</H1>
+        <H1>My Games</H1>
         <SearchText>Search</SearchText>
         <Input setFilter={setFilter} />
         {user?.steamid === "" ? (
           <VirtualPlatSection>
             <VirtualPlatformContainer>
-              <Link to="/newplatform/steam">
+              <Link to="/gamessteam">
                 <img src={SteamIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
             <VirtualPlatformContainer>
-              <Link to="/gamesteam">
+              <Link to="/usergames">
                 <img src={XboxIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
             <VirtualPlatformContainer>
-              <Link to="/gamesteam">
+              <Link to="/usergames">
                 <img src={PsnIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
@@ -75,17 +75,17 @@ const UserGames = () => {
         ) : (
           <VirtualPlatSection>
             <VirtualPlatformContainer>
-              <Link to="/gamesteam">
+              <Link to="/gamessteam">
                 <img src={SteamIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
             <VirtualPlatformContainer>
-              <Link to="/gamesteam">
+              <Link to="/usergames">
                 <img src={XboxIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
             <VirtualPlatformContainer>
-              <Link to="/gamesteam">
+              <Link to="/usergames">
                 <img src={PsnIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>

@@ -6,6 +6,29 @@ import PlatformList from "../components/PlatformList";
 import Input from "../components/Input";
 // import { withProtected } from "../../lib/protectRoute.hoc";
 import { useUser } from "../../lib/authService";
+import styled from "styled-components";
+import SteamIcon from "./../../public/images/steam-icon.png";
+import XboxIcon from "./../../public/images/xbox-icon.png";
+import PsnIcon from "./../../public/images/psn-icon.png";
+import Container from "../components/Container";
+import TextContainer from "../components/TextContainer";
+import Box from "@material-ui/core/Box";
+
+const VirtualPlatformContainer = styled.div`
+  margin: 10px;
+`;
+
+const VirtualPlatSection = styled.div`
+  display: flex;
+  padding: 10px;
+  margin: 0 auto;
+`;
+
+const H1 = styled.h1`
+  font-family: "Roboto";
+  font-size: 1.5em;
+  margin: 0 auto;
+`;
 
 const AllPlatforms = () => {
   const { platforms, filter, setFilter } = useContext(PlatformContext);
@@ -27,37 +50,75 @@ const AllPlatforms = () => {
   return (
     <>
       <ButtonBack />
-      <Input setFilter={setFilter} />
-      <h1>ALL PLATFORMS</h1>
-      {user?.steamid === "" ? (
-        <Link to="/newplatform/steam">
-          <div>
-            <img
-              src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_steam-512.png"
-              alt="Steam"
-              width="100px"
-            />
-          </div>
-          <div>
-            <h2>Steam</h2>
-          </div>
-        </Link>
-      ) : (
-        <Link to="/gamessteam">
-          <div>
-            <img
-              src="https://cdn3.iconfinder.com/data/icons/social-media-2169/24/social_media_social_media_logo_steam-512.png"
-              alt="Steam"
-              width="100px"
-            />
-          </div>
-          <div>
-            <h2>Steam</h2>
-          </div>
-        </Link>
-      )}
-
-      {renderPlatformList()}
+      <Container>
+        <H1>Search Platform</H1>
+        <TextContainer>
+          <Box
+            textAlign="center"
+            fontSize="1rem"
+            fontFamily="Roboto, Helvetica"
+          >
+            Search and add platforms to your DB here
+          </Box>
+        </TextContainer>
+        <TextContainer>
+          <Box
+            textAlign="center"
+            fontSize="1rem"
+            fontFamily="Roboto, Helvetica"
+          >
+            Digital Platforms
+          </Box>
+        </TextContainer>
+        {user?.steamid === "" ? (
+          <VirtualPlatSection>
+            <VirtualPlatformContainer>
+              <Link to="/gamessteam">
+                <img src={SteamIcon} alt="Steam" width="80px" />
+              </Link>
+            </VirtualPlatformContainer>
+            <VirtualPlatformContainer>
+              <Link to="/usergames">
+                <img src={XboxIcon} alt="Steam" width="80px" />
+              </Link>
+            </VirtualPlatformContainer>
+            <VirtualPlatformContainer>
+              <Link to="/usergames">
+                <img src={PsnIcon} alt="Steam" width="80px" />
+              </Link>
+            </VirtualPlatformContainer>
+          </VirtualPlatSection>
+        ) : (
+          <VirtualPlatSection>
+            <VirtualPlatformContainer>
+              <Link to="/gamessteam">
+                <img src={SteamIcon} alt="Steam" width="80px" />
+              </Link>
+            </VirtualPlatformContainer>
+            <VirtualPlatformContainer>
+              <Link to="/usergames">
+                <img src={XboxIcon} alt="Steam" width="80px" />
+              </Link>
+            </VirtualPlatformContainer>
+            <VirtualPlatformContainer>
+              <Link to="/usergames">
+                <img src={PsnIcon} alt="Steam" width="80px" />
+              </Link>
+            </VirtualPlatformContainer>
+          </VirtualPlatSection>
+        )}
+        <TextContainer>
+          <Box
+            textAlign="center"
+            fontSize="1rem"
+            fontFamily="Roboto, Helvetica"
+          >
+            Regular Platforms
+          </Box>
+        </TextContainer>
+        <Input setFilter={setFilter} />
+        {renderPlatformList()}
+      </Container>
     </>
   );
 };
