@@ -14,7 +14,7 @@ import AllPlatforms from "./pages/Platforms.page";
 import NewGame from "./pages/NewGame.page";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { withAuthentication } from "../lib/withAuthentication";
-import { useUser, useUserLogout } from "../lib/authService";
+import { useUser } from "../lib/authService";
 import GameOwnedContextProvider from "./contexts/GameOwnedContext";
 import PlatformOwnedContextProvider from "./contexts/PlatformOwnedContext";
 import ArticleContextProvider from "./contexts/ArticleContext";

@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { GameContext } from "../contexts/GameContext";
-import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
 import GameList from "../components/GameList";
 import Input from "../components/Input";

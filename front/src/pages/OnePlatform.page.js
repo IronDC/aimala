@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { PlatformOwnedContext } from "../contexts/PlatformOwnedContext";
 import { PlatformContext } from "../contexts/PlatformContext";
 import { useUserSetter } from "./../../lib/authService";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
 import Button from "@material-ui/core/Button";
 import { addPlatformtoUserFromApi } from "../../lib/apiService";
