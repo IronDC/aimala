@@ -15,6 +15,8 @@ const OneGame = (props) => {
   console.log(`this is the one game ${id}`);
   const game = findOneGame(id);
   const gameOwned = findOneOwnedGame(id);
+  console.log(gameOwned);
+  let trailerURL = `https://www.youtube.com/embed/${game?.trailer}`;
 
   const handleSubmit = (e) => {
     console.log("pulsado el boton");
@@ -30,10 +32,15 @@ const OneGame = (props) => {
       <ButtonBack />
       <p>ONE GAME</p>
       <h1>{game?.title}</h1>
+      <p>{game?.publisher}</p>
+      <p>{game?.year}</p>
       <div>
         <img src={game?.cover.url} alt={game?.title} width="150px" />
       </div>
       <div>{game?.description}</div>
+      <div>
+        <iframe width="250" height="200" src={trailerURL} />
+      </div>
       {!gameOwned && (
         <Button variant="contained" color="primary" onClick={handleSubmit}>
           Add to my Library
