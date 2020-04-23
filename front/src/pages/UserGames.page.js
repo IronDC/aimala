@@ -56,7 +56,7 @@ const UserGames = () => {
         {user?.steamid === "" ? (
           <VirtualPlatSection>
             <VirtualPlatformContainer>
-              <Link to="/gamessteam">
+              <Link to="/newplatform/steam">
                 <img src={SteamIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
