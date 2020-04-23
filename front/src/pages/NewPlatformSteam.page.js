@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 // import { GameContext } from "../contexts/GameContext";
 import { addSteamidFromApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
-import { useUser, useUserSetter } from "./../../lib/authService";
+import { useUser, useUserSetter } from "../../lib/authService";
 
 const hasError = (errors, name) => {
   if (name in errors) return "error";
