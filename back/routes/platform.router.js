@@ -36,7 +36,6 @@ router.post(
   uploadCloudinaryImage.single("image"),
   async (req, res, next) => {
     try {
-      console.log("Adding platform to the Aimala DB");
       const { name, description, year } = req.body;
       const newPlatform = await PlatformModel.create({
         name,
@@ -44,7 +43,6 @@ router.post(
         year,
         image: req.file,
       });
-      console.log(`${req.body.name} creado`);
       return res.json({
         status: 200,
         message: "New Platform Created",
@@ -61,7 +59,6 @@ router.post(
 router.put("/:id/edit", async (req, res, next) => {
   try {
     const id = req.params.id;
-    console.log(`Editing Platform`);
     await PlatformModel.findByIdAndUpdate(id, req.body, { new: true });
     return res.json({ status: "Edited Platform" });
   } catch (error) {
@@ -92,7 +89,6 @@ router.put("/:id/edit", async (req, res, next) => {
 router.delete("/:id", isLoggedIn(), async (req, res, next) => {
   try {
     const platformid = req.params.id;
-    console.log(`Platform's id to delete ${platformid}`);
     await PlatformModel.findByIdAndDelete(platformid);
     return res.json({ status: "Platform Deleted" });
   } catch (error) {

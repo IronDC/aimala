@@ -28,9 +28,7 @@ router.get("/:id", async (req, res, next) => {
 //CREATE Game the Aimala DB
 router.post("/create", async (req, res, next) => {
   try {
-    console.log("Adding gametype to the Aimala DB");
     const newGameType = await GameTypeModel.create(req.body);
-    console.log(`${req.body.gametype} creado`);
     return res.json({ status: 200, message: "New GameType Created" });
   } catch (error) {
     return res.status(500).json({ status: "Error Creating Gametype" });
@@ -53,7 +51,6 @@ router.put("/:id/edit", isLoggedIn(), async (req, res, next) => {
 router.delete("/:id", isLoggedIn(), async (req, res, next) => {
   try {
     const gametypeid = req.params.id;
-    console.log(`Id game for delete ${gametypeid}`);
     await GameTypeModel.findByIdAndDelete(gametypeid);
     return res.json({ status: "GameType Deleted" });
   } catch (error) {

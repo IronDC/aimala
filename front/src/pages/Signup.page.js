@@ -29,7 +29,7 @@ const SignUp = () => {
     doSignup(data).then((user) => {
       setUser(user);
       history.push("/");
-      console.log(`este es el usuario que mandamos ${user}`);
+      console.log(`User sent: ${user}`);
     });
   };
   console.log(errors);

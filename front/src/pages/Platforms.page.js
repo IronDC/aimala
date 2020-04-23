@@ -33,10 +33,8 @@ const H1 = styled.h1`
 const AllPlatforms = () => {
   const { platforms, filter, setFilter } = useContext(PlatformContext);
   const user = useUser();
-  console.log(user.steamid);
   const renderPlatformList = () =>
     platforms.map((platform) => {
-      console.log(platform.name);
       return (
         (platform.name.toLowerCase().includes(filter.toLowerCase()) ||
           platform.description

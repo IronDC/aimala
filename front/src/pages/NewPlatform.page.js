@@ -14,7 +14,7 @@ const hasError = (errors, name) => {
   return "";
 };
 
- const NewPlatform = () => {
+const NewPlatform = () => {
   const { platforms, setPlatforms } = useContext(PlatformContext);
 
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
@@ -23,11 +23,7 @@ const hasError = (errors, name) => {
   const onSubmit = (data) => {
     const imageFile = data.image[0];
     data.image = imageFile;
-    console.log("this is data");
-    console.log(data);
     newPlatformApi(data).then((data) => {
-      console.log("data Platforms");
-      console.log(data);
       setPlatforms([...platforms, data.newPlatform]);
       history.push("/platforms");
     });

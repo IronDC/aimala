@@ -5,7 +5,7 @@ const { hashPassword, checkHashed } = require("../../lib/hashing");
 
 passport.use(
   new LocalStrategy(async (username, password, done) => {
-    console.log(username, password);
+    console.log("Login in");
     try {
       const foundUser = await User.findOne({ username });
       if (foundUser) {

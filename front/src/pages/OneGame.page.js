@@ -12,14 +12,11 @@ const OneGame = (props) => {
   const { findOneOwnedGame, setGames } = useContext(GameOwnedContext);
   const setUser = useUserSetter();
   const id = props.match.params.id;
-  console.log(`this is the one game ${id}`);
   const game = findOneGame(id);
   const gameOwned = findOneOwnedGame(id);
-  console.log(gameOwned);
   let trailerURL = `https://www.youtube.com/embed/${game?.trailer}`;
 
   const handleSubmit = (e) => {
-    console.log("pulsado el boton");
     e.preventDefault();
     addGametoUserFromApi(id).then((data) => {
       setGames(data.user.gamesOwned);

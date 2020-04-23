@@ -6,7 +6,6 @@ import { ButtonBack } from "../components/ButtonBack";
 const OneArticle = (props) => {
   const { findOneArticle } = useContext(ArticleContext);
   const id = props.match.params.id;
-  console.log(`this is the article ${id}`);
   const article = findOneArticle(id);
 
   return (

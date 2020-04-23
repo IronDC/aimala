@@ -27,14 +27,12 @@ export const NewGame = () => {
   const onSubmit = (data) => {
     const coverFile = data.cover[0];
     data.cover = coverFile;
-    console.log("this is data");
-    console.log(data);
     newGameApi(data).then((data) => {
       setGames([...games, data.newGame]);
       history.push("/games");
     });
   };
-  console.log(`Errores de validacion ${errors}`);
+  // console.log(`Errores de validacion ${errors}`);
   return (
     <>
       <h1>Create New Game</h1>

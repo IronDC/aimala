@@ -14,15 +14,12 @@ const OnePlatform = (props) => {
   );
   const setUser = useUserSetter();
   const id = props.match.params.id;
-  console.log(`this is the one platforms ${id}`);
   const platform = findOnePlatform(id);
   const platformOwned = findOneOwnedPlatform(id);
 
   const handleSubmit = (e) => {
-    console.log("pulsado el boton");
     e.preventDefault();
     addPlatformtoUserFromApi(id).then((data) => {
-      console.log(data.user);
       setPlatforms(data.user.platformsOwned);
       setUser(data.user);
     });

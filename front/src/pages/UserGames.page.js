@@ -38,7 +38,6 @@ const VirtualPlatSection = styled.div`
 const UserGames = () => {
   const { games, filter, setFilter } = useContext(GameOwnedContext);
   const user = useUser();
-  console.log(user);
   const renderGameList = () =>
     games.map(
       (game) =>

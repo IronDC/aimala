@@ -44,18 +44,16 @@ const Login = () => {
 
   const onSubmit = (data) => {
     doLogin(data).then((user) => {
-      console.log(user);
       if (user.username) {
         setUser(user);
         history.push("/");
-        console.log(`este es el usuario logeado ${data.username}`);
+        console.log(`Welcome ${data.username}`);
       } else {
-        console.log("Usuario no encontrado...");
+        console.log("Insert Coint to try again");
         history.push("/login");
       }
     });
   };
-  console.log(errors);
 
   return (
     <Container>

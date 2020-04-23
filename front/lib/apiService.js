@@ -39,8 +39,6 @@ export const newGameApi = async (dataFile) => {
   data.append("publisher", dataFile.publisher);
   data.append("description", dataFile.description);
   data.append("trailer", dataFile.trailer);
-  console.log("todos los campos con append");
-  console.log(data);
   const response = await api.post(`/game/create`, data);
   return response.data;
 };
@@ -56,8 +54,6 @@ export const addPlatformtoUserFromApi = async (id) => {
 };
 
 export const newPlatformApi = async (dataFile) => {
-  console.log("this is Datafile");
-  console.log(dataFile);
   const data = new FormData();
   data.append("image", dataFile.image);
   data.append("name", dataFile.name);
