@@ -3,6 +3,7 @@ import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 import marioluigi from "../../public/images/mario-luigi.gif";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -54,9 +55,10 @@ const HomePage = () => {
         </Box>
       </TextContainer>
       <ButtonContainer>
-        <Button variant="contained" color="primary" href="/login">
+        <Link to="/login">Login</Link>
+        {/* <Button variant="contained" color="primary" href="/login">
           Login
-        </Button>
+        </Button> */}
       </ButtonContainer>
       <TextContainer>
         <Box textAlign="center" fontSize="1rem" fontFamily="Roboto, Helvetica">
@@ -64,9 +66,10 @@ const HomePage = () => {
         </Box>
       </TextContainer>
       <ButtonContainer>
-        <Button variant="outlined" color="primary" href="/signup">
+        <Link to="/signup">Signup</Link>
+        {/* <Button variant="outlined" color="primary" href="/signup">
           Signup
-        </Button>
+        </Button> */}
       </ButtonContainer>
       <ImgContainer>
         <img src={marioluigi} alt="Mario" width="350px" />
