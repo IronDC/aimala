@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import { doSignup, useUserSetter } from "./../../lib/authService";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import InputContainer from "./../components/Input/style";
 
 const Input = styled.input`
-  font-size: 1.3em;
+  font-size: 1em;
   &.error {
     border-color: red;
   }
@@ -37,15 +38,15 @@ const SignUp = () => {
     <>
       <h1>SignUp</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <InputContainer>
           <label>Username</label>
           <Input
             className={hasError(errors, "username")}
             name="username"
             ref={register({ required: true })}
           />
-        </div>
-        <div>
+        </InputContainer>
+        <InputContainer>
           <label>Password</label>
           <Input
             name="password"
@@ -53,8 +54,8 @@ const SignUp = () => {
             type="password"
             ref={register({ required: true })}
           />
-        </div>
-        <div>
+        </InputContainer>
+        <InputContainer>
           <label>Email</label>
           <Input
             name="email"
@@ -67,7 +68,7 @@ const SignUp = () => {
               },
             })}
           />
-        </div>
+        </InputContainer>
         <button type="submit">SignUp</button>
       </form>
     </>
