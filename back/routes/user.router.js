@@ -39,7 +39,13 @@ router.post("/login", (req, res, next) => {
         return res.status(500).json({ message: "Session seve went bad" });
       }
       return res.json(
-        _.pick(req.user, ["username", "_id", "createdAt", "updateAt", "steamid"])
+        _.pick(req.user, [
+          "username",
+          "_id",
+          "createdAt",
+          "updateAt",
+          "steamid",
+        ])
       );
     });
   })(req, res, next);

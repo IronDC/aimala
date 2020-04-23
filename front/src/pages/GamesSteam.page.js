@@ -18,7 +18,12 @@ const GamesSteam = () => {
   }, []);
 
   const renderSteamList = () =>
-    steamGames.map((game) => game.name.toLowerCase().includes(filter.toLowerCase()) && <SteamList game={game} key={game.appid} />);
+    steamGames.map(
+      (game) =>
+        game.name.toLowerCase().includes(filter.toLowerCase()) && (
+          <SteamList game={game} key={game.appid} />
+        )
+    );
 
   return (
     <>

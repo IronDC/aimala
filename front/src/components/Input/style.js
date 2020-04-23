@@ -6,10 +6,11 @@ const InputContainer = styled.div`
     border: 1px solid lightgray;
     height: 30px;
     width: 50%;
-    margin: 20px auto;
+    margin: 10px auto;
     display: flex;
     align-items: center;
     border-radius: 5px;
+    background-color: white;
   }
   > label {
     width: 50%;

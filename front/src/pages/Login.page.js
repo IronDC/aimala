@@ -4,12 +4,29 @@ import { doLogin, useUserSetter } from "../../lib/authService";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import InputContainer from "./../components/Input/style";
+import Btn from "./../components/Btn";
+import Container from "./../components/Container";
 
 const Input = styled.input`
-  font-size: 1em;
-  &.error {
-    border-color: red;
-  }
+  border: none;
+  border-bottom: 1px solid black;
+  height: 50px;
+  width: 100%;
+  padding: 15px 5px 5px 15px;
+  color: black;
+  font-size: 20px;
+`;
+
+const Label = styled.label`
+  font-weight: 700;
+  margin-top: 1rem;
+  color: #dadada;
+`;
+
+const ButtonText = styled.button`
+  font: "Roboto";
+  color: whitesmoke;
+  font-size: 20px;
 `;
 
 const hasError = (errors, name) => {
@@ -28,25 +45,28 @@ const Login = () => {
   const onSubmit = (data) => {
     doLogin(data).then((user) => {
       console.log(user);
-      if(user.username){
+      if (user.username) {
         setUser(user);
         history.push("/");
         console.log(`este es el usuario logeado ${data.username}`);
       } else {
         console.log("Usuario no encontrado...");
         history.push("/login");
-      };
-
+      }
     });
   };
   console.log(errors);
 
   return (
-    <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Container>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        // className={classes.root}
+        // noValidate
+        // autoComplete="off"
+      >
         <InputContainer>
-          <label>Username</label>
+          <Label>Username</Label>
           <Input
             className={hasError(errors, "username")}
             name="username"
@@ -54,7 +74,7 @@ const Login = () => {
           />
         </InputContainer>
         <InputContainer>
-          <label>Password</label>
+          <Label>Password</Label>
           <Input
             name="password"
             className={hasError(errors, "password")}
@@ -62,9 +82,11 @@ const Login = () => {
             ref={register({ required: true })}
           />
         </InputContainer>
-        <button type="submit">Login</button>
+        <Btn>
+          <ButtonText type="submit">Login</ButtonText>
+        </Btn>
       </form>
-    </>
+    </Container>
   );
 };
 

@@ -29,7 +29,7 @@ export const useUserLogout = () => {
 };
 
 const api = axios.create({
-  baseURL:process.env.BACK_URL,
+  baseURL: process.env.BACK_URL,
   withCredentials: true,
 });
 
@@ -50,6 +50,7 @@ export const doSignup = async (data) => {
 
 export const doLogin = async (data) => {
   console.log("Do Login");
+  console.log(data);
   const res = await api.post("/user/login", {
     username: data.username,
     password: data.password,

@@ -7,7 +7,6 @@ import TextContainer from "../components/TextContainer";
 import Btn from "../components/Btn";
 import LinkText from "../components/LinkText";
 
-
 const HomePage = () => {
   return (
     <Container>
@@ -16,6 +15,7 @@ const HomePage = () => {
         fontSize="2rem"
         fontFamily="Roboto, Helvetica"
         fontWeight="fontWeightBold"
+        color="#595959"
       >
         Aimala
       </Box>
