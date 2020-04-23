@@ -1,62 +1,12 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import Button from "@material-ui/core/Button";
-import styled from "styled-components";
 import marioluigi from "../../public/images/mario-luigi.gif";
-import { Link } from "react-router-dom";
+import Container from "../components/Container";
+import ImgContainer from "../components/ImgContainer";
+import TextContainer from "../components/TextContainer";
+import Btn from "../components/Btn";
+import LinkText from "../components/LinkText";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 0 auto;
-  width: 100vw;
-  height: 100vh;
-  padding-top: 30px;
-`;
-const ImgContainer = styled.div`
-  flex-direction: column;
-  margin: 0 auto;
-  width: 100vw;
-  padding-top: 50px;
-`;
-
-const TextContainer = styled.div`
-  display:flex;
-  justify-content: center;
-  padding: 20px;
-  color: grey;
-`;
-
-const ButtonContainer = styled.div`
-  padding-right: 50px;
-  padding-left: 50px;
-  margin: 0 auto;
-  background: #dbebda;
-  border-radius: 5px;
-  color: #333;
-  display: block;
-  font-size: 16px;
-  line-height: 1;
-  max-width: 100px;
-  text-align: center;
-  padding: 10px 20px;
-  transition: all ease 2000;
-  &:hover {
-    transition: all ease 2000;
-    background: #628165;
-    color: #fff;
-  }
-`;
-
-const LinkText = styled(Link)`
-  color: black;
-  text-decoration: none;
-  font-family: 'Roboto';
-  &:hover {
-    color: blue;
-  }
-`;
 
 const HomePage = () => {
   return (
@@ -80,23 +30,17 @@ const HomePage = () => {
           Please
         </Box>
       </TextContainer>
-      <ButtonContainer>
+      <Btn>
         <LinkText to="/login">Login</LinkText>
-        {/* <Button variant="contained" color="primary" href="/login">
-          Login
-        </Button> */}
-      </ButtonContainer>
+      </Btn>
       <TextContainer>
         <Box textAlign="center" fontSize="1rem" fontFamily="Roboto, Helvetica">
           or
         </Box>
       </TextContainer>
-      <ButtonContainer>
+      <Btn>
         <LinkText to="/signup">Signup</LinkText>
-        {/* <Button variant="outlined" color="primary" href="/signup">
-          Signup
-        </Button> */}
-      </ButtonContainer>
+      </Btn>
       <ImgContainer>
         <img src={marioluigi} alt="Mario" width="350px" />
       </ImgContainer>

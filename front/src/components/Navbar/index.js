@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  colorPrimary:{
+    backgroundColor:"#ffa600",
+  },
 }));
 
 export default function MenuAppBar() {
@@ -56,7 +59,7 @@ export default function MenuAppBar() {
           label={auth ? 'Logout' : 'Login'}
         />
       </FormGroup> */}
-      <AppBar position="static">
+      <AppBar position="static" className={classes.colorPrimary}>
         <Toolbar>
           {/* <IconButton
             edge="start"
