@@ -7,6 +7,7 @@ const Container = styled.div`
   margin: 0 auto;
   width: 100vw;
   padding-top: 30px;
+  text-align:center;
 `;
 
 export default Container;
