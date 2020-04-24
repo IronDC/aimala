@@ -5,6 +5,8 @@ import { gamesFromSteamApi } from "../../lib/steamApiService";
 import SteamList from "../components/SteamList";
 import Input from "../components/Input";
 import withProtected from "../../lib/protectRoute.hoc";
+import H1 from "../components/H1Item";
+import Container from "../components/Container";
 
 const GamesSteam = () => {
   const user = useUser();
@@ -29,9 +31,11 @@ const GamesSteam = () => {
   return (
     <>
       <ButtonBack />
-      <Input setFilter={setFilter} />
-      <h1>Steam Games</h1>
-      {renderSteamList()}
+      <Container>
+        <H1>Steam Games</H1>
+        <Input setFilter={setFilter} />
+        {renderSteamList()}
+      </Container>
     </>
   );
 };
