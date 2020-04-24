@@ -20,6 +20,7 @@ import Divider from "@material-ui/core/Divider";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import { withTheme } from "@material-ui/core";
+import H1 from "../components/H1Item";
 
 const VirtualPlatformContainer = styled.div`
   margin: 10px;
@@ -28,12 +29,6 @@ const VirtualPlatformContainer = styled.div`
 const VirtualPlatSection = styled.div`
   display: flex;
   padding: 10px;
-  margin: 0 auto;
-`;
-
-const H1 = styled.h1`
-  font-family: "Roboto";
-  font-size: 1.5em;
   margin: 0 auto;
 `;
 
