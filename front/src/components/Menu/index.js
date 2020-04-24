@@ -83,18 +83,6 @@ export default function TemporaryDrawer() {
             text: "Search Platforms",
             icon: <GamepadIcon />,
           },
-          {
-            name: "Add Game (Eliminar)",
-            link: "/newgame",
-            text: "Add Game (Eliminar)",
-            icon: <AddCircleIcon />,
-          },
-          {
-            name: "Add Platform (Eliminar)",
-            link: "/newplatform",
-            text: "Add Platform (Eliminar)",
-            icon: <AddCircleIcon />,
-          },
         ].map((text, index) => (
           <ListItem button key={index}>
             <ListItemIcon>{text.icon}</ListItemIcon>

@@ -14,6 +14,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Container from "../components/Container";
 import H1 from "../components/H1Item";
+import { Link } from "react-router-dom";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} style={{ width: 345 }} />;
@@ -28,6 +30,10 @@ const AllGames = () => {
           <GameList game={game} key={game.id} />
         )
     );
+
+  const AddButton = {
+    backgroundColor: "white",
+  };
 
   return (
     <>
@@ -45,15 +51,27 @@ const AllGames = () => {
         </TextContainer>
         <Input setFilter={setFilter} />
         {renderGameList()}
-        <ListItemLink href="/newgame">
-          <ListItem button>
-            <ListItemIcon>
-              <SportsEsportsIcon className="icon-img" />
-            </ListItemIcon>
-            <ListItemText primary="Add New Game" />
-          </ListItem>
-        </ListItemLink>
-        <Divider />
+        <TextContainer>
+          <Box
+            textAlign="center"
+            fontSize="1rem"
+            fontFamily="Roboto, Helvetica"
+          >
+            ¿Game not found?
+          </Box>
+        </TextContainer>
+        <List component="nav" aria-label="main user sections">
+          <Divider />
+          <Link to="/newgame">
+            <ListItem button style={AddButton}>
+              <ListItemIcon>
+                <AddCircleIcon className="icon-img" />
+              </ListItemIcon>
+              <ListItemText primary="Create New Game" />
+            </ListItem>
+          </Link>
+          <Divider />
+        </List>
       </Container>
     </>
   );

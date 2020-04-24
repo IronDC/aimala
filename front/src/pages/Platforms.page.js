@@ -13,7 +13,13 @@ import Container from "../components/Container";
 import TextContainer from "../components/TextContainer";
 import Box from "@material-ui/core/Box";
 import withProtected from "../../lib/protectRoute.hoc";
-
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import { withTheme } from "@material-ui/core";
 
 const VirtualPlatformContainer = styled.div`
   margin: 10px;
@@ -30,6 +36,10 @@ const H1 = styled.h1`
   font-size: 1.5em;
   margin: 0 auto;
 `;
+
+const AddButton = {
+  backgroundColor: "white",
+};
 
 const AllPlatforms = () => {
   const { platforms, filter, setFilter } = useContext(PlatformContext);
@@ -117,6 +127,27 @@ const AllPlatforms = () => {
         </TextContainer>
         <Input setFilter={setFilter} />
         {renderPlatformList()}
+        <TextContainer>
+          <Box
+            textAlign="center"
+            fontSize="1rem"
+            fontFamily="Roboto, Helvetica"
+          >
+            ¿Platform not found?
+          </Box>
+        </TextContainer>
+        <List component="nav" aria-label="main user sections">
+          <Divider />
+          <Link to="/newplatform">
+            <ListItem button style={AddButton}>
+              <ListItemIcon>
+                <AddCircleIcon className="icon-img" />
+              </ListItemIcon>
+              <ListItemText primary="Create New Platform" />
+            </ListItem>
+          </Link>
+          <Divider />
+        </List>
       </Container>
     </>
   );
