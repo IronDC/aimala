@@ -5,6 +5,17 @@ import { addSteamidFromApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
 import { useUser, useUserSetter } from "../../lib/authService";
 import withProtected from "../../lib/protectRoute.hoc";
+import Label from "../components/Label";
+import InputItem from "../components/InputItem";
+import ButtonText from "../components/ButtonText";
+import styled from "styled-components";
+import Container from "../components/Container";
+import TextContainer from "../components/TextContainer";
+import {Link} from "react-router-dom";
+
+const FormItem = styled.form`
+  padding-top: 30px;
+`;
 
 const hasError = (errors, name) => {
   if (name in errors) return "error";
@@ -26,20 +37,21 @@ const NewPlatformSteam = () => {
   };
 
   return (
-    <>
-      <h1>ADD STEAM ACCOUNT</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Container>
+      <FormItem onSubmit={handleSubmit(onSubmit)}>
         <InputContainer>
-          <label>Your STEAM ID</label>
-          <input
+          <Label>Add your STEAM ID</Label>
+          <InputItem
             className={hasError(errors, "steamid")}
             name="steamid"
             ref={register({ required: true })}
           />
         </InputContainer>
-        <button type="submit">Add Steam ID</button>
-      </form>
-    </>
+        <ButtonText type="submit">Submit</ButtonText>
+      </FormItem>
+      <TextContainer>Do you want to know how to get your SteamId?</TextContainer>
+      <TextContainer><Link>Click here</Link></TextContainer>
+    </Container>
   );
 };
 
