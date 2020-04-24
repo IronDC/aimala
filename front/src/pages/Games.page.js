@@ -13,13 +13,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Container from "../components/Container";
-import { withTheme } from "@material-ui/core";
-
-const H1 = styled.h1`
-  font-family: "Roboto";
-  font-size: 1.5em;
-  margin: 0 auto;
-`;
+import H1 from "../components/H1Item";
 
 function ListItemLink(props) {
   return <ListItem button component="a" {...props} style={{ width: 345 }} />;

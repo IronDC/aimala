@@ -10,12 +10,8 @@ import { Link } from "react-router-dom";
 import SteamIcon from "./../../public/images/steam-icon.png";
 import XboxIcon from "./../../public/images/xbox-icon.png";
 import PsnIcon from "./../../public/images/psn-icon.png";
-
-const H1 = styled.h1`
-  font-family: "Roboto";
-  font-size: 1.5em;
-  margin: 0 auto;
-`;
+import H1 from "./../components/H1Item";
+import withProtected from "../../lib/protectRoute.hoc";
 
 const SearchText = styled.p`
   font-family: "Roboto";
@@ -96,4 +92,4 @@ const UserGames = () => {
   );
 };
 
-export default UserGames;
+export default withProtected(UserGames);

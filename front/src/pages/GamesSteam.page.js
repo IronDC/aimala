@@ -4,6 +4,7 @@ import { useUser } from "./../../lib/authService";
 import { gamesFromSteamApi } from "../../lib/steamApiService";
 import SteamList from "../components/SteamList";
 import Input from "../components/Input";
+import withProtected from "../../lib/protectRoute.hoc";
 
 const GamesSteam = () => {
   const user = useUser();
@@ -35,4 +36,4 @@ const GamesSteam = () => {
   );
 };
 
-export default GamesSteam;
+export default withProtected(GamesSteam);

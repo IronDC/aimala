@@ -1,15 +1,10 @@
 import React, { useContext } from "react";
-// import { GameOwnedContext } from "../contexts/GameOwnedContext";
-// import { Link } from "react-router-dom";
-// import { ButtonBack } from "../components/ButtonBack";
-// import GameList from "../components/GameList";
 import InputContainer from "../components/Input/style";
 import { useForm } from "react-hook-form";
-// import styled from "styled-components";
-// import { GameContext } from "../contexts/GameContext";
 import { addSteamidFromApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
 import { useUser, useUserSetter } from "../../lib/authService";
+import withProtected from "../../lib/protectRoute.hoc";
 
 const hasError = (errors, name) => {
   if (name in errors) return "error";
@@ -29,7 +24,6 @@ const NewPlatformSteam = () => {
       history.push("/gamessteam");
     });
   };
-  console.log(`Errores de validacion ${errors}`);
 
   return (
     <>
@@ -49,4 +43,4 @@ const NewPlatformSteam = () => {
   );
 };
 
-export default NewPlatformSteam;
+export default withProtected(NewPlatformSteam);

@@ -29,7 +29,6 @@ router.get("/gamessteam", async (req, res, next) => {
     steamid = req.user.steamid;
     const gamesSteam = await getGamesSteam.get(
       `${process.env.STEAMURL2}`+steamid);
-    console.log(gamesSteam);
     return res.status(200).json(gamesSteam.data);
   } catch (err) {
     console.log(err);
