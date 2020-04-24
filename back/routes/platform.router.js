@@ -12,11 +12,6 @@ router.get("/", async (req, res, next) => {
   } catch (error) {
     return res.status(500).json({ status: "Platforms Not Found" });
   }
-  // .populate('creator')
-  // .populate({ path: 'comments', populate: { path: 'author' } })
-  // .then((movies) => {
-  //   res.json(movies);
-  // })
 });
 
 // GET ONE PLATFORM
@@ -54,8 +49,6 @@ router.post(
   }
 );
 
-// EDITAR PLATAFORMA
-
 router.put("/:id/edit", async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -65,26 +58,6 @@ router.put("/:id/edit", async (req, res, next) => {
     return res.status(401).json({ status: "Platform Not Found" });
   }
 });
-
-// GUARDAR PLATAFORMA EN USER.PLATFORMSOWNED
-
-// router.put("/:id/add", isLoggedIn(), async (req, res, next) => {
-//   try {
-//     console.log(req.user);
-//     const platformid = req.params.id;
-//     const userid = req.user.id;
-//     console.log(`Adding platform ${platformid} to user ${userid}`);
-//     const user = await UserModel.findById(userid);
-//     console.log(user);
-//     user.platformsOwned.push(platformid);
-//     user.save();
-//     return res.json({ status: "Added Platform to user" });
-//   } catch (error) {
-//     return res.status(401).json({ status: "Platform Not Found" });
-//   }
-// });
-
-// BORRAR JUEGO DE LA BBDD GENERAL
 
 router.delete("/:id", isLoggedIn(), async (req, res, next) => {
   try {
