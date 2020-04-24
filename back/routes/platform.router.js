@@ -33,7 +33,7 @@ router.get("/:id", async (req, res, next) => {
 //CREATE Platform the Aimala DB
 router.post(
   "/create",
-  // uploadCloudinaryImage.single("image"),
+  uploadCloudinaryImage.single("image"),
   async (req, res, next) => {
     try {
       const { name, description, year } = req.body;
@@ -41,7 +41,7 @@ router.post(
         name,
         description,
         year,
-        // image: req.file,
+        image: req.file,
       });
       return res.json({
         status: 200,
