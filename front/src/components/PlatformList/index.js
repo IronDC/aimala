@@ -42,6 +42,9 @@ const PlatformList = ({ platform }) => {
             <Typography component="h5" variant="h5">
               {platform?.name}
             </Typography>
+            <Typography variant="subtitle1" color="textSecondary">
+              {platform?.year}
+            </Typography>
             {/* <Typography variant="subtitle1" color="textSecondary">
               {game.publisher}
             </Typography> */}
