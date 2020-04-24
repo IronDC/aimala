@@ -1,6 +1,5 @@
 const express = require("express");
 const GameTypeModel = require("../models/GameType");
-//const UserModel = require("../models/User");
 const router = express.Router();
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
@@ -34,7 +33,6 @@ router.post("/create", async (req, res, next) => {
     return res.status(500).json({ status: "Error Creating Gametype" });
   }
 });
-// HAY QUE ASEGURARSE DE QUE EN LA URL LE METEMOS LA ID
 
 router.put("/:id/edit", isLoggedIn(), async (req, res, next) => {
   try {
@@ -45,8 +43,6 @@ router.put("/:id/edit", isLoggedIn(), async (req, res, next) => {
     return res.status(401).json({ status: "GameType Not Found" });
   }
 });
-
-// BORRAR JUEGO DE LA BBDD GENERAL
 
 router.delete("/:id", isLoggedIn(), async (req, res, next) => {
   try {

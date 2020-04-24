@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useContext } from "react";
-// require("dotenv").config();
 
 export const UserContext = React.createContext();
 
@@ -34,8 +33,6 @@ const api = axios.create({
 });
 
 export const doSignup = async (data) => {
-  // Axios post a ruta /auth/signup en servido
-  // para crear un usuario en mongodb
   console.log(`Registering User...`);
   const res = await api.post("/user/signup", {
     username: data.username,

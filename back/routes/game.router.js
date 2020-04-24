@@ -1,13 +1,9 @@
 const express = require("express");
 const GameModel = require("../models/Game");
-// const passport = require("passport");
-// const _ = require("lodash");
 const router = express.Router();
-// const { hashPassword, checkHashed } = require("../lib/hashing");
 const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 const uploadCloudinaryImage = require("../lib/uploadMiddleware");
 
-// GET ALL GAMES
 router.get("/", async (req, res, next) => {
   try {
     const games = await GameModel.find();
@@ -15,14 +11,8 @@ router.get("/", async (req, res, next) => {
   } catch (error) {
     return res.status(500).json({ status: "Game Not Found" });
   }
-  // .populate('creator')
-  // .populate({ path: 'comments', populate: { path: 'author' } })
-  // .then((movies) => {
-  //   res.json(movies);
-  // })
 });
 
-// GET ONE GAME
 router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -31,14 +21,8 @@ router.get("/:id", async (req, res, next) => {
   } catch (error) {
     return res.status(500).json({ status: "Game Not Found" });
   }
-  // .populate('creator')
-  // .populate({ path: 'comments', populate: { path: 'author' } })
-  // .then((movies) => {
-  //   res.json(movies);
-  // })
 });
 
-//CREATE Game the Aimala DB
 router.post(
   "/create",
   uploadCloudinaryImage.single("cover"),
@@ -64,9 +48,6 @@ router.post(
   }
 );
 
-// EDITAR JUEGO (CARBALLO Y DAVID DEL FUTURO, HACED ESTO SOLO PARA ADMINS)
-// HAY QUE ASEGURARSE DE QUE EN LA URL LE METEMOS LA ID
-
 router.put("/:id/edit", isLoggedIn(), async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -77,26 +58,6 @@ router.put("/:id/edit", isLoggedIn(), async (req, res, next) => {
     return res.status(401).json({ status: "Game Not Found" });
   }
 });
-
-// GUARDAR JUEGO EN USER.GAMESOWNED
-
-// router.put("/:id/add", isLoggedIn(), async (req, res, next) => {
-//   try {
-//     console.log(req.user);
-//     const gameid = req.params.id;
-//     const userid = req.user.id;
-//     console.log(`Adding game ${gameid} to user ${userid}`);
-//     const user = await UserModel.findById(userid);
-//     console.log(user);
-//     user.gamesOwned.push(gameid);
-//     user.save();
-//     return res.json({ status: "Added Game to user" });
-//   } catch (error) {
-//     return res.status(401).json({ status: "Game Not Found" });
-//   }
-// });
-
-// BORRAR JUEGO DE LA BBDD GENERAL
 
 router.delete("/:id", isLoggedIn(), async (req, res, next) => {
   try {
