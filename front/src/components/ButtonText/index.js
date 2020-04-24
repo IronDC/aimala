@@ -7,8 +7,6 @@ const ButtonText = styled.button`
   background: #007ab3;
   border:none;
   transition: all ease 2000;
-  /* padding-right: 50px;
-  padding-left: 50px; */
   margin: 0 auto;
   border-radius: 5px;
   display: block;

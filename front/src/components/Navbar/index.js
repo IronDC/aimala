@@ -12,7 +12,6 @@ import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import TemporaryDrawer from "../Menu";
-// import { Link } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { useUser, useUserLogout } from "../../../lib/authService";
 
@@ -53,22 +52,8 @@ export default function MenuAppBar() {
 
   return (
     <div className={classes.root}>
-      {/* <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup> */}
       <AppBar position="static" className={classes.colorPrimary}>
         <Toolbar>
-          {/* <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon />
-          </IconButton> */}
           <TemporaryDrawer />
           <Typography variant="h6" className={classes.title}>
             Aimala
@@ -115,8 +100,6 @@ export default function MenuAppBar() {
                     <Link to="/login">LogIn</Link>
                   </MenuItem>
                 )}
-                {/* {user && <MenuItem onClick={handleClose}>Profile</MenuItem>}
-                {user && <MenuItem onClick={handleClose}>My account</MenuItem>} */}
                 {user && (
                   <MenuItem>
                     <Link to="/login" onClick={handleLogout}>
