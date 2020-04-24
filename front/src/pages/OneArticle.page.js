@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { ArticleContext } from "../contexts/ArticleContext";
-// import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
 
 const OneArticle = (props) => {

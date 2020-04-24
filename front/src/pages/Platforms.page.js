@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
 import PlatformList from "../components/PlatformList";
 import Input from "../components/Input";
-// import { withProtected } from "../../lib/protectRoute.hoc";
 import { useUser } from "../../lib/authService";
 import styled from "styled-components";
 import SteamIcon from "./../../public/images/steam-icon.png";
@@ -13,6 +12,8 @@ import PsnIcon from "./../../public/images/psn-icon.png";
 import Container from "../components/Container";
 import TextContainer from "../components/TextContainer";
 import Box from "@material-ui/core/Box";
+import withProtected from "../../lib/protectRoute.hoc";
+
 
 const VirtualPlatformContainer = styled.div`
   margin: 10px;

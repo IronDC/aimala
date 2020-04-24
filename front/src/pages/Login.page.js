@@ -6,27 +6,14 @@ import styled from "styled-components";
 import InputContainer from "./../components/Input/style";
 import Btn from "./../components/Btn";
 import Container from "./../components/Container";
+import InputItem from "./../components/InputItem";
+import Label from "./../components/Label";
+import ButtonText from "./../components/ButtonText";
 
-const Input = styled.input`
-  border: none;
-  border-bottom: 1px solid black;
-  height: 50px;
-  width: 100%;
-  padding: 15px 5px 5px 15px;
-  color: black;
-  font-size: 20px;
-`;
-
-const Label = styled.label`
-  font-weight: 700;
-  margin-top: 1rem;
-  color: #dadada;
-`;
-
-const ButtonText = styled.button`
-  font: "Roboto";
-  color: whitesmoke;
-  font-size: 20px;
+const Input = styled(InputItem)`
+  &.error {
+    border-color: red;
+  }
 `;
 
 const hasError = (errors, name) => {
@@ -49,7 +36,7 @@ const Login = () => {
         history.push("/");
         console.log(`Welcome ${data.username}`);
       } else {
-        console.log("Insert Coint to try again");
+        console.log("Insert Coin to try again");
         history.push("/login");
       }
     });
@@ -57,12 +44,7 @@ const Login = () => {
 
   return (
     <Container>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        // className={classes.root}
-        // noValidate
-        // autoComplete="off"
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <InputContainer>
           <Label>Username</Label>
           <Input
@@ -80,9 +62,7 @@ const Login = () => {
             ref={register({ required: true })}
           />
         </InputContainer>
-        <Btn>
           <ButtonText type="submit">Login</ButtonText>
-        </Btn>
       </form>
     </Container>
   );

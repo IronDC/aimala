@@ -5,6 +5,17 @@ import { PlatformContext } from "../contexts/PlatformContext";
 import { newPlatformApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
 import withProtected from "../../lib/protectRoute.hoc";
+import Btn from "./../components/Btn";
+import Container from "./../components/Container";
+import InputItem from "./../components/InputItem";
+import Label from "./../components/Label";
+import ButtonText from "./../components/ButtonText";
+import H1 from "../components/H1Item";
+import styled from "styled-components";
+
+const FormItem = styled.form`
+  padding-top: 30px;
+`;
 
 const cloudinary = require("cloudinary-core");
 const cl = cloudinary.Cloudinary.new({ cloud_name: "aimalacloud" });
@@ -30,28 +41,28 @@ const NewPlatform = () => {
   };
   console.log(`Errores de validacion ${errors}`);
   return (
-    <>
-      <h1>Create New Platform</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Container>
+      <H1>Create New Platform</H1>
+      <FormItem onSubmit={handleSubmit(onSubmit)}>
         <InputContainer>
-          <label>Name</label>
-          <input
+          <Label>Name</Label>
+          <InputItem
             className={hasError(errors, "name")}
             name="name"
             ref={register({ required: true })}
           />
         </InputContainer>
         <InputContainer>
-          <label>Description</label>
-          <input
+          <Label>Description</Label>
+          <InputItem
             className={hasError(errors, "description")}
             name="description"
             ref={register({ required: true })}
           />
         </InputContainer>
         <InputContainer>
-          <label>Year</label>
-          <input
+          <Label>Year</Label>
+          <InputItem
             name="year"
             className={hasError(errors, "year")}
             type="number"
@@ -59,17 +70,17 @@ const NewPlatform = () => {
           />
         </InputContainer>
         <InputContainer>
-          <label>Image</label>
-          <input
+          <Label>Image</Label>
+          <InputItem
             name="image"
             type="file"
             className={hasError(errors, "image")}
             ref={register()}
           />
         </InputContainer>
-        <button type="submit">Create Platform</button>
-      </form>
-    </>
+          <ButtonText type="submit">Submit</ButtonText>
+      </FormItem>
+    </Container>
   );
 };
 

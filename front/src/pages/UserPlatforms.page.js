@@ -3,6 +3,7 @@ import { PlatformOwnedContext } from "../contexts/PlatformOwnedContext";
 import { ButtonBack } from "../components/ButtonBack";
 import PlatformList from "../components/PlatformList";
 import Input from "../components/Input";
+import withProtected from "../../lib/protectRoute.hoc";
 
 const UserPlatforms = () => {
   const { platforms, filter, setFilter } = useContext(PlatformOwnedContext);
@@ -27,4 +28,4 @@ const UserPlatforms = () => {
   );
 };
 
-export default UserPlatforms;
+export default withProtected(UserPlatforms);
