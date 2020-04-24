@@ -1,21 +1,24 @@
-import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+import styled from "styled-components";
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
-
-const Btn = () => {
-  const classes = useStyles();
-  return (
-    <Button variant="contained" color="default" className={classes.button}>
-      {children}
-    </Button>
-  );
-};
+const Btn = styled.div`
+  padding-right: 50px;
+  padding-left: 50px;
+  margin: 0 auto;
+  background: #007ab3;
+  border-radius: 5px;
+  color: #ffa600;
+  display: block;
+  font-size: 16px;
+  line-height: 1;
+  max-width: 100px;
+  text-align: center;
+  padding: 10px 20px;
+  transition: all ease 2000;
+  &:hover {
+    transition: all ease 2000;
+    background: #628165;
+    color: #fff;
+  }
+`;
 
 export default Btn;

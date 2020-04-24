@@ -72,28 +72,16 @@ export default function TemporaryDrawer() {
             icon: <GamepadIcon />,
           },
           {
-            name: "All Games",
+            name: "Search Games",
             link: "/games",
-            text: "Games Page",
+            text: "Search Games",
             icon: <VideogameAssetIcon />,
           },
           {
-            name: "All Platforms",
+            name: "Search Platforms",
             link: "/platforms",
-            text: "Platforms Page",
+            text: "Search Platforms",
             icon: <GamepadIcon />,
-          },
-          {
-            name: "New Game",
-            link: "/newgame",
-            text: "New Game",
-            icon: <AddCircleIcon />,
-          },
-          {
-            name: "New Platform",
-            link: "/newplatform",
-            text: "New Platform",
-            icon: <AddCircleIcon />,
           },
         ].map((text, index) => (
           <ListItem button key={index}>

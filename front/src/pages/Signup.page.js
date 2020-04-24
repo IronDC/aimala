@@ -2,10 +2,15 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { doSignup, useUserSetter } from "./../../lib/authService";
 import { useHistory } from "react-router-dom";
+import InputContainer from "./../components/Input/style";
+import Btn from "./../components/Btn";
+import Container from "./../components/Container";
+import InputItem from "./../components/InputItem";
+import Label from "./../components/Label";
+import ButtonText from "./../components/ButtonText";
 import styled from "styled-components";
 
-const Input = styled.input`
-  font-size: 1.3em;
+const Input = styled(InputItem)`
   &.error {
     border-color: red;
   }
@@ -28,34 +33,33 @@ const SignUp = () => {
     doSignup(data).then((user) => {
       setUser(user);
       history.push("/");
-      console.log(`este es el usuario que mandamos ${user}`);
+      console.log(`User sent: ${user}`);
     });
   };
   console.log(errors);
 
   return (
-    <>
-      <h1>SignUp</h1>
+    <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Username</label>
+        <InputContainer>
+          <Label>Username</Label>
           <Input
             className={hasError(errors, "username")}
             name="username"
             ref={register({ required: true })}
           />
-        </div>
-        <div>
-          <label>Password</label>
+        </InputContainer>
+        <InputContainer>
+          <Label>Password</Label>
           <Input
             name="password"
             className={hasError(errors, "password")}
             type="password"
             ref={register({ required: true })}
           />
-        </div>
-        <div>
-          <label>Email</label>
+        </InputContainer>
+        <InputContainer>
+          <Label>Email</Label>
           <Input
             name="email"
             className={hasError(errors, "email")}
@@ -67,10 +71,10 @@ const SignUp = () => {
               },
             })}
           />
-        </div>
-        <button type="submit">SignUp</button>
+        </InputContainer>
+          <ButtonText type="submit">SignUp</ButtonText>
       </form>
-    </>
+    </Container>
   );
 };
 

@@ -30,9 +30,7 @@ router.get("/:id", async (req, res, next) => {
 
 //CREATE ARTICLE
 router.post("/create", async (req, res, next) => {
-  console.log("Creating Article");
   const newArticle = await ArticleModel.create(req.body);
-  console.log(`CREADO ${req.body.title}`);
   return res.json({ status: 200, message: "Article Saved" });
 });
 
@@ -71,7 +69,6 @@ router.put("/:id/edit", async (req, res, next) => {
 router.delete("/:id", isLoggedIn(), async (req, res, next) => {
   try {
     const articleid = req.params.id;
-    console.log(`Article's id to delete ${articleid}`);
     await ArticleModel.findByIdAndDelete(articleid);
     return res.json({ status: "Article Deleted" });
   } catch (error) {

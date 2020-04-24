@@ -4,6 +4,7 @@ import { useUser } from "./../../lib/authService";
 import { gamesFromSteamApi } from "../../lib/steamApiService";
 import SteamList from "../components/SteamList";
 import Input from "../components/Input";
+import withProtected from "../../lib/protectRoute.hoc";
 
 const GamesSteam = () => {
   const user = useUser();
@@ -18,7 +19,12 @@ const GamesSteam = () => {
   }, []);
 
   const renderSteamList = () =>
-    steamGames.map((game) => game.name.toLowerCase().includes(filter.toLowerCase()) && <SteamList game={game} key={game.appid} />);
+    steamGames.map(
+      (game) =>
+        game.name.toLowerCase().includes(filter.toLowerCase()) && (
+          <SteamList game={game} key={game.appid} />
+        )
+    );
 
   return (
     <>
@@ -30,4 +36,4 @@ const GamesSteam = () => {
   );
 };
 
-export default GamesSteam;
+export default withProtected(GamesSteam);

@@ -36,7 +36,6 @@ const useStyles = makeStyles({
 
 const SteamList = ({ game, appid }) => {
   const classes = useStyles();
-  console.log(game);
   let steamURLicon;
   if (game.img_icon_url == "") {
     steamURLicon = defaultGameIcon;

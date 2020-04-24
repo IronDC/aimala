@@ -34,7 +34,6 @@ const useStyles = makeStyles({
 
 const GameList = ({ game, i }) => {
   const classes = useStyles();
-  console.log(game);
   return (
     <Card className={classes.root} key={i}>
       <Link to={`/game/${game.id}`} className={classes.link}>

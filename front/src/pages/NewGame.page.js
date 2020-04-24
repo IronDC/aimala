@@ -1,14 +1,24 @@
 import React, { useContext } from "react";
-// import { GameOwnedContext } from "../contexts/GameOwnedContext";
 import { Link } from "react-router-dom";
 import { ButtonBack } from "../components/ButtonBack";
-// import GameList from "../components/GameList";
 import InputContainer from "../components/Input/style";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
 import { GameContext } from "../contexts/GameContext";
 import { newGameApi } from "../../lib/apiService";
 import { useHistory } from "react-router-dom";
+import Btn from "./../components/Btn";
+import Container from "./../components/Container";
+import InputItem from "./../components/InputItem";
+import Label from "./../components/Label";
+import ButtonText from "./../components/ButtonText";
+import H1 from "../components/H1Item";
+import styled from "styled-components";
+import withProtected from "../../lib/protectRoute.hoc";
+
+const FormItem = styled.form`
+  padding-top:30px;
+`;
+
 
 const cloudinary = require("cloudinary-core");
 const cl = cloudinary.Cloudinary.new({ cloud_name: "aimalacloud" });
@@ -18,7 +28,7 @@ const hasError = (errors, name) => {
   return "";
 };
 
-export const NewGame = () => {
+const NewGame = () => {
   const { games, setGames } = useContext(GameContext);
 
   const { register, handleSubmit, errors } = useForm({ mode: "onBlur" });
@@ -27,45 +37,43 @@ export const NewGame = () => {
   const onSubmit = (data) => {
     const coverFile = data.cover[0];
     data.cover = coverFile;
-    console.log("this is data");
-    console.log(data);
     newGameApi(data).then((data) => {
       setGames([...games, data.newGame]);
       history.push("/games");
     });
   };
-  console.log(`Errores de validacion ${errors}`);
+  // console.log(`Errores de validacion ${errors}`);
   return (
-    <>
-      <h1>Create New Game</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <Container>
+      <H1>Create New Game</H1>
+      <FormItem onSubmit={handleSubmit(onSubmit)}>
         <InputContainer>
-          <label>Title</label>
-          <input
+          <Label>Title</Label>
+          <InputItem
             className={hasError(errors, "title")}
             name="title"
             ref={register({ required: true })}
           />
         </InputContainer>
         <InputContainer>
-          <label>Description</label>
-          <input
+          <Label>Description</Label>
+          <InputItem
             className={hasError(errors, "description")}
             name="description"
             ref={register({ required: true })}
           />
         </InputContainer>
         <InputContainer>
-          <label>Publisher</label>
-          <input
+          <Label>Publisher</Label>
+          <InputItem
             name="publisher"
             className={hasError(errors, "publisher")}
             ref={register({ required: true })}
           />
         </InputContainer>
         <InputContainer>
-          <label>Year</label>
-          <input
+          <Label>Year</Label>
+          <InputItem
             name="year"
             className={hasError(errors, "year")}
             type="number"
@@ -73,26 +81,26 @@ export const NewGame = () => {
           />
         </InputContainer>
         <InputContainer>
-          <label>Trailer</label>
-          <input
+          <Label>Trailer</Label>
+          <InputItem
             name="trailer"
             className={hasError(errors, "trailer")}
             ref={register}
           />
         </InputContainer>
         <InputContainer>
-          <label>Cover</label>
-          <input
+          <Label>Cover</Label>
+          <InputItem
             name="cover"
             type="file"
             className={hasError(errors, "cover")}
             ref={register()}
           />
         </InputContainer>
-        <button type="submit">Create Game</button>
-      </form>
-    </>
+          <ButtonText type="submit">Submit</ButtonText>
+      </FormItem>
+    </Container>
   );
 };
 
-export default NewGame;
+export default withProtected(NewGame);

@@ -22,50 +22,45 @@ export const useUserIsLoading = () => {
 export const useUserLogout = () => {
   const userState = useContext(UserContext);
   return async () => {
-    console.log("log out!");
+    console.log("Logged Out");
     userState.setUser(null);
     return doLogout();
   };
 };
 
 const api = axios.create({
-  baseURL:process.env.BACK_URL,
+  baseURL: process.env.BACK_URL,
   withCredentials: true,
 });
 
 export const doSignup = async (data) => {
   // Axios post a ruta /auth/signup en servido
   // para crear un usuario en mongodb
-  console.log(`Registing User...`);
-  console.log(data);
+  console.log(`Registering User...`);
   const res = await api.post("/user/signup", {
     username: data.username,
     password: data.password,
     email: data.email,
   });
   console.log("Created User");
-  console.log(res.data);
   return res.data;
 };
 
 export const doLogin = async (data) => {
-  console.log("Do Login");
+  console.log("Login user...");
   const res = await api.post("/user/login", {
     username: data.username,
     password: data.password,
   });
-  console.log(res.data);
   return res.data;
 };
 
 export const doLogout = async () => {
   const res = await api.get("/user/logout");
-  console.log(res.data);
   return res.data;
 };
 
 export const whoami = async () => {
   const res = await api.get("/user/whoami");
-  console.log(`You are ${res.data.username}`);
   return res.data;
 };

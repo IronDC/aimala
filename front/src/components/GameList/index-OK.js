@@ -20,7 +20,6 @@ const useStyles = makeStyles({
 
 const GameList = ({ game, i }) => {
   const classes = useStyles();
-  console.log(game);
   return (
     <Card className={classes.root} key={i}>
       <CardActionArea>

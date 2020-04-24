@@ -9,7 +9,6 @@ const { isLoggedIn, isLoggedOut } = require("../lib/isLoggedMiddleware");
 
 //SignUp
 router.post("/signup", async (req, res, next) => {
-  console.log("Signup User Called");
   delete req.body.usertype;
   //Create the User
   const existinUser = await UserModel.findOne({ username: req.body.username });
@@ -19,7 +18,7 @@ router.post("/signup", async (req, res, next) => {
     req.logIn(newUser, (err) => {
       res.json(_.pick(req.user, ["username", "_id", "createdAt", "updateAt"]));
     });
-    console.log(req.body.username, "User registered");
+    console.log("User registered");
   } else {
     res.json({ status: "User Exist" });
   }
@@ -28,7 +27,6 @@ router.post("/signup", async (req, res, next) => {
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user, fealureDetails) => {
     if (err) {
-      console.log(err);
       return res.json({ status: 500, message: "Autentication Error" });
     }
     if (!user) {
@@ -39,7 +37,13 @@ router.post("/login", (req, res, next) => {
         return res.status(500).json({ message: "Session seve went bad" });
       }
       return res.json(
-        _.pick(req.user, ["username", "_id", "createdAt", "updateAt", "steamid"])
+        _.pick(req.user, [
+          "username",
+          "_id",
+          "createdAt",
+          "updateAt",
+          "steamid",
+        ])
       );
     });
   })(req, res, next);
@@ -62,7 +66,6 @@ router.post("/edit", isLoggedIn(), async (req, res, next) => {
   try {
     const id = req.user._id;
     const { username, email, password } = req.body;
-    console.log(`Editing user con id: ${req.user}`);
     await UserModel.findByIdAndUpdate(id, {
       username,
       email,
@@ -83,10 +86,8 @@ router.get("/whoami", (req, res, next) => {
 // ADD GAME TO USER
 router.put("/:id/addgame", isLoggedIn(), async (req, res, next) => {
   try {
-    console.log(req.user);
     const gameid = req.params.id;
     const userid = req.user.id;
-    console.log(`Adding game ${gameid} to user ${userid}`);
     const user = await UserModel.findOneAndUpdate(
       { _id: userid },
       { $addToSet: { gamesOwned: gameid } },
@@ -105,7 +106,6 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
   try {
     const platformid = req.params.id;
     const userid = req.user.id;
-    console.log(`Adding platform ${platformid} to user ${userid}`);
     const user = await UserModel.findOneAndUpdate(
       { _id: userid },
       { $addToSet: { platformsOwned: platformid } },
@@ -122,10 +122,8 @@ router.put("/:id/addplatform", isLoggedIn(), async (req, res, next) => {
 // ADD STEAM ID TO USER
 router.put("/:steamid/addsteam", isLoggedIn(), async (req, res, next) => {
   try {
-    console.log(req.user);
     const steamid = req.params.steamid;
     const userid = req.user.id;
-    console.log(`Adding Steam ID ${steamid} to user ${userid}`);
     const user = await UserModel.findOneAndUpdate(
       { _id: userid },
       { steamid: steamid },

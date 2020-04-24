@@ -3,9 +3,14 @@ import { useForm } from "react-hook-form";
 import { doLogin, useUserSetter } from "../../lib/authService";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import InputContainer from "./../components/Input/style";
+import Btn from "./../components/Btn";
+import Container from "./../components/Container";
+import InputItem from "./../components/InputItem";
+import Label from "./../components/Label";
+import ButtonText from "./../components/ButtonText";
 
-const Input = styled.input`
-  font-size: 1.3em;
+const Input = styled(InputItem)`
   &.error {
     border-color: red;
   }
@@ -26,44 +31,40 @@ const Login = () => {
 
   const onSubmit = (data) => {
     doLogin(data).then((user) => {
-      console.log(user);
-      if(user.username){
+      if (user.username) {
         setUser(user);
         history.push("/");
-        console.log(`este es el usuario logeado ${data.username}`);
+        console.log(`Welcome ${data.username}`);
       } else {
-        console.log("Usuario no encontrado...");
+        console.log("Insert Coin to try again");
         history.push("/login");
-      };
-
+      }
     });
   };
-  console.log(errors);
 
   return (
-    <>
-      <h1>Login</h1>
+    <Container>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Username</label>
+        <InputContainer>
+          <Label>Username</Label>
           <Input
             className={hasError(errors, "username")}
             name="username"
             ref={register({ required: true })}
           />
-        </div>
-        <div>
-          <label>Password</label>
+        </InputContainer>
+        <InputContainer>
+          <Label>Password</Label>
           <Input
             name="password"
             className={hasError(errors, "password")}
             type="password"
             ref={register({ required: true })}
           />
-        </div>
-        <button type="submit">Login</button>
+        </InputContainer>
+          <ButtonText type="submit">Login</ButtonText>
       </form>
-    </>
+    </Container>
   );
 };
 

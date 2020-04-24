@@ -38,7 +38,7 @@ withDbConnection(async () => {
       steamid: "",
     },
   ]);
-  console.log(">>> Users Created: carballo, david, marc");
+  console.log(">>> Users Created");
   // ARTICLES
   await dropIfExists(Article);
   await Article.deleteMany();
@@ -61,7 +61,7 @@ withDbConnection(async () => {
         "https://www.raspberrypi.org/app/uploads/2019/06/lemmings-original-large-1574x1080.jpg",
     },
   ]);
-  console.log(">>> Articles Created: 2");
+  console.log(">>> Articles Created");
   // GAMES
   await dropIfExists(Game);
   await Game.deleteMany();
@@ -115,7 +115,7 @@ withDbConnection(async () => {
       userCreator: [],
     },
   ]);
-  console.log(">>> Games Created: Super Mario Bros, Lemmings, Tomb Raider");
+  console.log(">>> Games Created");
   // GAMETYPES
   await dropIfExists(Gametype);
   await Gametype.deleteMany();
@@ -136,7 +136,6 @@ withDbConnection(async () => {
         "Género de videojuegos centrado en las armas y otros combates basados ​​en armas. El género comparte rasgos comunes con los juego de acción.",
     },
   ]);
-  console.log(">>> Gametypes Created: Plataformas, Acción, Shooter");
   // PLATFORMS
   await dropIfExists(Platform);
   await Platform.deleteMany();
@@ -183,5 +182,5 @@ withDbConnection(async () => {
         "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/PSX-Original-Controller.jpg/800px-PSX-Original-Controller.jpg",
     },
   ]);
-  console.log(">>> Platforms Created: Nintendo NES, Amiga 500, Playstation");
+  console.log(">>> Platforms Created");
 });

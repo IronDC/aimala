@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import GamepadIcon from "@material-ui/icons/Gamepad";
 import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
-// import { Link } from "react-router-dom";
 import { ArticleContext } from "../contexts/ArticleContext";
 import ArticleList from "../components/ArticleList";
 import List from "@material-ui/core/List";
@@ -11,20 +10,12 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 0 auto;
-  width: 100vw;
-  height: 100vh;
-`;
+import withProtected from "../../lib/protectRoute.hoc";
+import {Link} from "react-router-dom";
 
 const Section = styled.section`
   width: 100vw;
   height: 33%;
-  background-color: white;
 `;
 
 const ArticlesList = styled.div`
@@ -45,18 +36,9 @@ const ArticlesList = styled.div`
   }
 `;
 
-// const c = styled(Link)`
-//   color: black;
-//   text-decoration: none;
-//   &:hover {
-//     color: blue;
-//   }
-// `;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
   },
 }));
@@ -73,34 +55,34 @@ const UserHome = () => {
       <ArticleList article={article} key={index} />
     ));
   return (
-    <Container>
+    <>
       <div className={classes.root}>
         <List component="nav" aria-label="main user sections">
-          <ListItemLink href="/usergames">
+          <Link to="/usergames">
             <ListItem button>
               <ListItemIcon>
                 <SportsEsportsIcon className="icon-img" />
               </ListItemIcon>
               <ListItemText primary="My Games" />
             </ListItem>
-          </ListItemLink>
+          </Link>
           <Divider />
-          <ListItemLink href="/userplatforms">
+          <Link to="/userplatforms">
             <ListItem button>
               <ListItemIcon>
                 <GamepadIcon className="icon-img" />
               </ListItemIcon>
               <ListItemText primary="My Platforms" />
             </ListItem>
-          </ListItemLink>
+          </Link>
         </List>
         <Divider />
       </div>
       <Section>
         <ArticlesList>{renderArticlesList()}</ArticlesList>
       </Section>
-    </Container>
+    </>
   );
 };
 
-export default UserHome;
+export default withProtected(UserHome);
