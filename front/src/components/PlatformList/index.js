@@ -45,9 +45,6 @@ const PlatformList = ({ platform }) => {
             <Typography variant="subtitle1" color="textSecondary">
               {platform?.year}
             </Typography>
-            {/* <Typography variant="subtitle1" color="textSecondary">
-              {game.publisher}
-            </Typography> */}
           </CardContent>
         </div>
 
