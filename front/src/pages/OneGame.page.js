@@ -68,6 +68,14 @@ const OneGame = (props) => {
           <Typography variant="body2" color="textSecondary" component="p">
             {game?.description}
           </Typography>
+          <iframe
+            width="310"
+            height="180"
+            src={trailerURL}
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
         </CardContent>
       </Card>
     </>
