@@ -50,7 +50,7 @@ const NewPlatformSteam = () => {
         <ButtonText type="submit">Submit</ButtonText>
       </FormItem>
       <TextContainer>Do you want to know how to get your SteamId?</TextContainer>
-      <TextContainer><Link>Click here</Link></TextContainer>
+      <TextContainer><Link to="#">Click here</Link></TextContainer>
     </Container>
   );
 };

@@ -36,10 +36,10 @@ const userSchema = new Schema(
       type: [{ type: Schema.Types.ObjectId, ref: "Platform" }],
       default: [],
     },
-    steamid:{
+    steamid: {
       type: String,
-      default:"",
-    } 
+      default: "",
+    },
   },
   {
     timestamps: true,
