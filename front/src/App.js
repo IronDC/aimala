@@ -23,6 +23,7 @@ import PlatformContextProvider from "./contexts/PlatformContext";
 import NewPlatform from "./pages/NewPlatform.page";
 import NewPlatformSteam from "./pages/NewPlatformSteam.page";
 import GamesSteam from "./pages/GamesSteam.page";
+import NotFound from "./pages/NotFound.page";
 
 export const App = withAuthentication(() => {
   const user = useUser();
@@ -59,6 +60,7 @@ export const App = withAuthentication(() => {
                     />
                     <Route path="/newplatform" exact component={NewPlatform} />
                     <Route path="/gamessteam" exact component={GamesSteam} />
+                    <Route path="/notfound" exact component={NotFound} />
                   </GameOwnedContextProvider>
                 </GameContextProvider>
               </PlatformOwnedContextProvider>

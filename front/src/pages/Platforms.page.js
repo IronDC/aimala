@@ -82,12 +82,12 @@ const AllPlatforms = () => {
               </Link>
             </VirtualPlatformContainer>
             <VirtualPlatformContainer>
-              <Link to="/usergames">
+              <Link to="/notfound">
                 <img src={XboxIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
             <VirtualPlatformContainer>
-              <Link to="/usergames">
+              <Link to="/notfound">
                 <img src={PsnIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
@@ -100,12 +100,12 @@ const AllPlatforms = () => {
               </Link>
             </VirtualPlatformContainer>
             <VirtualPlatformContainer>
-              <Link to="/usergames">
+              <Link to="/notfound">
                 <img src={XboxIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
             <VirtualPlatformContainer>
-              <Link to="/usergames">
+              <Link to="/notfound">
                 <img src={PsnIcon} alt="Steam" width="80px" />
               </Link>
             </VirtualPlatformContainer>
