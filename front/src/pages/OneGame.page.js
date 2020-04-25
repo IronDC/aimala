@@ -13,6 +13,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,24 +53,31 @@ const OneGame = (props) => {
           Add to my Library
         </Button>
       )}
-      <Container>
-        <Card className={classes.root}>
-          <CardHeader title={game?.title} subheader={game?.publisher} />
-          <CardMedia
-            className={classes.media}
-            image={game?.cover.url}
-            title={game?.title}
-          />
-          <CardContent>
-            <Typography variant="body1" color="textSecondary" component="p">
-              Year: {game?.year}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {game?.description}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Container>
+
+      <Card className={classes.root}>
+        <CardHeader title={game?.title} subheader={game?.publisher} />
+        <CardMedia
+          className={classes.media}
+          image={game?.cover.url}
+          title={game?.title}
+        />
+        <CardContent>
+          <Typography variant="body1" color="textSecondary" component="p">
+            Year: {game?.year}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {game?.description}
+          </Typography>
+          <iframe
+            width="310"
+            height="180"
+            src={trailerURL}
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          ></iframe>
+        </CardContent>
+      </Card>
     </>
   );
 };
