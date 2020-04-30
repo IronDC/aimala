@@ -68,7 +68,7 @@ withDbConnection(async () => {
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tortor mauris, aliquam sed aliquam blandit, elementum et lacus. Praesent eu volutpat ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin auctor dapibus viverra. Proin non dictum ante. Sed finibus ornare ex, eget pulvinar metus facilisis eu. Curabitur sed odio odio. Cras malesuada nunc justo, at cursus nibh feugiat sed. Praesent ut libero dolor. Aliquam quis pulvinar leo. Nunc quis auctor lectus. Donec pharetra tristique aliquam. Maecenas venenatis scelerisque orci, eget tincidunt nulla feugiat quis.",
       image:
-        "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/2400/public/media/image/2020/04/dualsense-ps5-1914107.jpg",
+        "https://blog.us.playstation.com/tachyon/sites/3/2020/04/49746632758_f9b3e73dc2_ka.jpg",
     },
     {
       gameRelated: [],
