@@ -30,8 +30,26 @@ withDbConnection(async () => {
     },
     {
       usertype: "user",
-      username: "marc",
-      email: "marc@marc.com",
+      username: "diego",
+      email: "diego@diego.com",
+      password: "aimala10",
+      gamesOwned: [],
+      platformsOwned: [],
+      steamid: "",
+    },
+    {
+      usertype: "user",
+      username: "alex",
+      email: "alex@alex.com",
+      password: "aimala10",
+      gamesOwned: [],
+      platformsOwned: [],
+      steamid: "",
+    },
+    {
+      usertype: "user",
+      username: "simon",
+      email: "simon@simon.com",
       password: "aimala10",
       gamesOwned: [],
       platformsOwned: [],
@@ -46,19 +64,30 @@ withDbConnection(async () => {
     {
       gameRelated: [],
       platformRelated: [],
-      title: "Example Article for development purpouses",
+      title: "Sony presenta el Dualsense de PS5",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tortor mauris, aliquam sed aliquam blandit, elementum et lacus. Praesent eu volutpat ex. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin auctor dapibus viverra. Proin non dictum ante. Sed finibus ornare ex, eget pulvinar metus facilisis eu. Curabitur sed odio odio. Cras malesuada nunc justo, at cursus nibh feugiat sed. Praesent ut libero dolor. Aliquam quis pulvinar leo. Nunc quis auctor lectus. Donec pharetra tristique aliquam. Maecenas venenatis scelerisque orci, eget tincidunt nulla feugiat quis.",
-      image: "https://wallpapercave.com/wp/04FoKF7.png",
+      image:
+        "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/2400/public/media/image/2020/04/dualsense-ps5-1914107.jpg",
     },
     {
       gameRelated: [],
       platformRelated: [],
-      title: "Another article, also for development",
+      title:
+        "Nintendo confirma que 160.000 cuentas han sido afectadas por un hackeo masivo",
       text:
-        "Donec eu justo ut tellus tempor ultricies. Curabitur tristique a nibh aliquam aliquet. Donec viverra consectetur egestas. Nunc vulputate mi vitae egestas scelerisque. Nam egestas fermentum sem sed ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. In a felis a erat condimentum sollicitudin. Nam at feugiat ipsum, id eleifend odio. Nulla faucibus massa vel pretium convallis. Praesent sit amet eros dolor. Nam cursus bibendum purus sit amet consectetur.",
+        "Nintendo Switch ha sufrido un intento de hackeo masivo que podríamos catalogar como exitoso tras la información que acaba de compartir Nintendo. La compañía ha informado que más de 160.000 cuentas se han visto afectadas por este suceso.",
       image:
-        "https://www.raspberrypi.org/app/uploads/2019/06/lemmings-original-large-1574x1080.jpg",
+        "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/styles/2400/public/media/image/2020/03/nintendo-switch-online-1894321.jpg",
+    },
+    {
+      gameRelated: [],
+      platformRelated: [],
+      title: "Red Dead Redemption 2 llegará en mayo a Xbox Game Pass",
+      text:
+        "Red Dead Redemption 2, el último título de Rockstar Games, llegará al catálogo de tarifa plana de Microsoft el próximo 7 de mayo. Según ha confirmado Xbox, el lanzamiento incluye el contenido adicional del Modo Historia, el Modo Foto con todas las funciones y acceso gratuito a Red Dead Online. ",
+      image:
+        "https://i.kinja-img.com/gawker-media/image/upload/c_scale,f_auto,fl_progressive,q_80,w_1600/sgjbuogs7sfcimiu936m.jpg",
     },
   ]);
   console.log(">>> Articles Created");
@@ -66,6 +95,36 @@ withDbConnection(async () => {
   await dropIfExists(Game);
   await Game.deleteMany();
   await Game.create([
+    {
+      title: "Borderlands 3",
+      gameType: [],
+      cover: {
+        url: "https://assets-jpcust.jwpsrv.com/thumbnails/azkncaps-720.jpg",
+      },
+      description: "El juego al que Carballo va a dedicar las próximas 24/72h.",
+      publisher: "Gearbox",
+      year: "2019",
+      trailer: "Q-o3cuQo5as",
+      platforms: [],
+      status: "pending",
+      userCreator: [],
+    },
+    {
+      title: "Doom Eternal",
+      gameType: [],
+      cover: {
+        url:
+          "https://s3.gaming-cdn.com/images/products/2669/271x377/doom-eternal-cover.jpg",
+      },
+      description:
+        "Doom Eternal es un videojuego de acción y disparos en primera persona desarrollado por id Software y publicado por Bethesda Softworks.​ Es el quinto título principal de la serie Doom y la secuela directa del juego estrenado en 2016.",
+      publisher: "id Software",
+      year: "2020",
+      trailer: "qgvV4GE8vVA",
+      platforms: [],
+      status: "pending",
+      userCreator: [],
+    },
     {
       title: "Super Mario Bros",
       gameType: [],
@@ -110,6 +169,38 @@ withDbConnection(async () => {
       publisher: "Core Design",
       year: "1996",
       trailer: "x1Lp3D2tUFg",
+      platforms: [],
+      status: "pending",
+      userCreator: [],
+    },
+    {
+      title: "Animal Crossing: New Horizons",
+      gameType: [],
+      cover: {
+        url:
+          "https://sgfm.elcorteingles.es/SGFM/dctm/MEDIA03/202001/13/00197580504765____4__640x640.jpg",
+      },
+      description:
+        "Animal Crossing es una serie de videojuegos de simulación de vida publicada por Nintendo, en la que el jugador vive en un pueblo habitado por animales antropomórficos, llevando a cabo diversas actividades.",
+      publisher: "Nintendo",
+      year: "2020",
+      trailer: "5YPxiTLMcdg",
+      platforms: [],
+      status: "pending",
+      userCreator: [],
+    },
+    {
+      title: "Barbarian: The Ultimate Warrior",
+      gameType: [],
+      cover: {
+        url:
+          "https://alchetron.com/cdn/barbarian-the-ultimate-warrior-fdd1e921-f512-4c37-9c5e-04a0dc60c7f-resize-750.jpeg",
+      },
+      description:
+        "Este es un videojuego de lucha que les da a los jugadores control sobre bárbaros con espada. En el modo de dos jugadores del videojuego, estos enfrentan a sus personajes entre sí. También tiene un modo para un jugador, en el que el bárbaro del jugador enfrenta una serie de desafíos establecidos por un mago malvado para rescatar a una princesa.",
+      publisher: "Palace Software",
+      year: "1987",
+      trailer: "vPlDqnM5zek",
       platforms: [],
       status: "pending",
       userCreator: [],
@@ -180,6 +271,32 @@ withDbConnection(async () => {
       },
       gamepad:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/PSX-Original-Controller.jpg/800px-PSX-Original-Controller.jpg",
+    },
+    {
+      name: "Amstrad CPC 6128",
+      year: "1985",
+      description:
+        "El Amstrad CPC 6128 fue un ordenador doméstico creado y comercializado por la empresa británica Amstrad Consumer Plc en 1985.",
+      logo: "https://gbatemp.net/gc/images/plav.png",
+      image: {
+        url:
+          "https://www.retrogamer.net/wp-content/uploads/2014/04/amstardcpc6128-300x289.png",
+      },
+      gamepad:
+        "https://lh3.googleusercontent.com/-Y2IzrVRTJeE/Wj9vsl0LOjI/AAAAAAAADno/AqQs6nNAxbsaM4JZBgXmyRbsKJVeP82XwCHMYCw/fullsizeoutput_9007.jpeg?imgmax=1600",
+    },
+    {
+      name: "Dreamcast",
+      year: "1998",
+      description:
+        "Dreamcast (ドリームキャスト) es la sexta y última consola de videojuegos hasta ahora producida por Sega. Fue desarrollada en cooperación con Hitachi y Microsoft.",
+      logo: "https://gbatemp.net/gc/images/plav.png",
+      image: {
+        url:
+          "https://static.hsbnoticias.com/sites/default/files/styles/original/public/gallery/2019/09/consola-13.jpg",
+      },
+      gamepad:
+        "https://lh3.googleusercontent.com/-Y2IzrVRTJeE/Wj9vsl0LOjI/AAAAAAAADno/AqQs6nNAxbsaM4JZBgXmyRbsKJVeP82XwCHMYCw/fullsizeoutput_9007.jpeg?imgmax=1600",
     },
   ]);
   console.log(">>> Platforms Created");
