@@ -16,12 +16,11 @@ import styled from "styled-components";
 import withProtected from "../../lib/protectRoute.hoc";
 
 const FormItem = styled.form`
-  padding-top:30px;
+  padding-top: 30px;
 `;
 
-
 const cloudinary = require("cloudinary-core");
-const cl = cloudinary.Cloudinary.new({ cloud_name: "aimalacloud" });
+// const cl = cloudinary.Cloudinary.new({ cloud_name: "aimalacloud" });
 
 const hasError = (errors, name) => {
   if (name in errors) return "error";
@@ -97,7 +96,7 @@ const NewGame = () => {
             ref={register()}
           />
         </InputContainer>
-          <ButtonText type="submit">Submit</ButtonText>
+        <ButtonText type="submit">Submit</ButtonText>
       </FormItem>
     </Container>
   );
