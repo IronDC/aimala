@@ -42,7 +42,7 @@ const NewGame = () => {
       history.push("/games");
     });
   };
-  // console.log(`Errores de validacion ${errors}`);
+
   return (
     <Container>
       <H1>Create New Game</H1>
