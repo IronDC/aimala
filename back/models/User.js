@@ -21,7 +21,7 @@ const userSchema = new Schema(
       match: [EMAIL_PATTERN, "Please fill a valid email address"],
       unique: false,
       default: null,
-      lowecase: true,
+      lowercase: true,
     },
     password: {
       type: String,
