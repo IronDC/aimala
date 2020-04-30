@@ -16,12 +16,11 @@ import styled from "styled-components";
 import withProtected from "../../lib/protectRoute.hoc";
 
 const FormItem = styled.form`
-  padding-top:30px;
+  padding-top: 30px;
 `;
 
-
 const cloudinary = require("cloudinary-core");
-const cl = cloudinary.Cloudinary.new({ cloud_name: "aimalacloud" });
+// const cl = cloudinary.Cloudinary.new({ cloud_name: "aimalacloud" });
 
 const hasError = (errors, name) => {
   if (name in errors) return "error";
@@ -35,6 +34,10 @@ const NewGame = () => {
   const history = useHistory();
 
   const onSubmit = (data) => {
+    console.log(`DATOS DEL FORMULARIO <<<<<<<`);
+    console.log(data);
+    console.log(`DATOS DEL FORMULARIO - COVER <<<<<<<`);
+    console.log(data.cover);
     const coverFile = data.cover[0];
     data.cover = coverFile;
     newGameApi(data).then((data) => {
@@ -97,7 +100,7 @@ const NewGame = () => {
             ref={register()}
           />
         </InputContainer>
-          <ButtonText type="submit">Submit</ButtonText>
+        <ButtonText type="submit">Submit</ButtonText>
       </FormItem>
     </Container>
   );
