@@ -28,11 +28,6 @@ router.post(
   uploadCloudinaryImage.single("cover"),
   async (req, res, next) => {
     try {
-      console.log("CREAMOS EL JUEGO EN GAME.ROUTER <<<<<<<<<<<<<");
-      console.log("REQ.BODY <<<<<<<<<<<<<");
-      console.log(req.body);
-      console.log("REQ.FILE <<<<<<<<<<<<<");
-      console.log(req.file);
       const { title, description, publisher, year, trailer } = req.body;
       const newGame = await GameModel.create({
         title,

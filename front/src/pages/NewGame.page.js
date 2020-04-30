@@ -34,10 +34,6 @@ const NewGame = () => {
   const history = useHistory();
 
   const onSubmit = (data) => {
-    console.log(`DATOS DEL FORMULARIO <<<<<<<`);
-    console.log(data);
-    console.log(`DATOS DEL FORMULARIO - COVER <<<<<<<`);
-    console.log(data.cover);
     const coverFile = data.cover[0];
     data.cover = coverFile;
     newGameApi(data).then((data) => {

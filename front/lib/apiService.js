@@ -31,8 +31,6 @@ export const addGametoUserFromApi = async (id) => {
 };
 
 export const newGameApi = async (dataFile) => {
-  console.log(`DATOS RECIBIDOS EN LA APISERVICE - NEWGAMEAPI <<<<<<<`);
-  console.log(dataFile);
   const data = new FormData();
   data.append("cover", dataFile.cover);
   data.append("title", dataFile.title);
@@ -41,8 +39,6 @@ export const newGameApi = async (dataFile) => {
   data.append("description", dataFile.description);
   data.append("trailer", dataFile.trailer);
   const response = await api.post(`/game/create`, data);
-  console.log(`DATOS GUARDADOS EN LA APISERVICE - NEWGAMEAPI <<<<<<<`);
-  console.log(response);
   return response.data;
 };
 
