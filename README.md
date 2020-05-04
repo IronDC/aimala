@@ -8,7 +8,7 @@ A Game Library &amp; Game DB for Ironhack Module 3 Project
 # Made by David García && Joan Carballo
 
 # What is this
-This is a MERN project for Ironhack's third module developed to practice the skils adquired at the bootcamp between October'19 and April'20.
+This is a MERN project for Ironhack's third module developed to practice the skills adquired at the bootcamp between October'19 and April'20.
 
 Aimala is a Game DB and User Personal Games Library to keep control of the owned games and platforms (like videogame consoles or Digital platforms). You can read and search any game and create new ones if it doesn't exist. Also you can save your Steam ID to see your games from Steam, this feature uses the Steam Web API.
 
