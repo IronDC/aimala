@@ -25,8 +25,8 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  colorPrimary:{
-    backgroundColor:"#ffa600",
+  colorPrimary: {
+    backgroundColor: "#ffa600",
   },
 }));
 
@@ -91,21 +91,28 @@ export default function MenuAppBar() {
                 onClose={handleClose}
               >
                 {!user && (
-                  <MenuItem>
-                    <Link to="/signup">Sign Up</Link>
-                  </MenuItem>
-                )}
-                {!user && (
-                  <MenuItem>
-                    <Link to="/login">LogIn</Link>
-                  </MenuItem>
+                  <>
+                    <MenuItem>
+                      <Link to="/signup">Sign Up</Link>
+                    </MenuItem>
+                    <MenuItem>
+                      <Link to="/login">LogIn</Link>
+                    </MenuItem>
+                  </>
                 )}
                 {user && (
-                  <MenuItem>
-                    <Link to="/login" onClick={handleLogout}>
-                      Logout
-                    </Link>
-                  </MenuItem>
+                  <>
+                    <MenuItem>
+                      <Link to="/login" onClick={handleLogout}>
+                        Logout
+                      </Link>
+                    </MenuItem>
+                    <MenuItem>
+                      <Link to="/login" onClick={handleLogout}>
+                        User Profile
+                      </Link>
+                    </MenuItem>
+                  </>
                 )}
               </Menu>
             </div>
