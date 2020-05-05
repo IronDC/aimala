@@ -51,7 +51,7 @@ const HomePage = () => {
           fontFamily="Roboto, Helvetica"
         >
           This was an IronHack MERN Final Project for Web Dev Bootcamp 10-2019
-          by David García.
+          by David García and Joan Carballo.
         </Box>
       </TextContainer>
     </Container>
