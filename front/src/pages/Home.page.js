@@ -50,7 +50,8 @@ const HomePage = () => {
           fontSize="0.7rem"
           fontFamily="Roboto, Helvetica"
         >
-          This whas an IronHack MERN Final Project for Web Dev Bootcamp 10-2019.
+          This was an IronHack MERN Final Project for Web Dev Bootcamp 10-2019
+          by David García.
         </Box>
       </TextContainer>
     </Container>
