@@ -40,6 +40,7 @@ const userSchema = new Schema(
       type: String,
       default: "",
     },
+    image: Object,
   },
   {
     timestamps: true,

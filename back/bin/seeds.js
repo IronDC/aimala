@@ -18,6 +18,9 @@ withDbConnection(async () => {
       gamesOwned: [],
       platformsOwned: [],
       steamid: "",
+      image: {
+        url: "https://res.cloudinary.com/aimalacloud/image/upload/v1589368823/aimala/mario_jxjdp0.png",
+      },
     },
     {
       usertype: "user",
@@ -27,6 +30,9 @@ withDbConnection(async () => {
       gamesOwned: [],
       platformsOwned: [],
       steamid: "",
+      image: {
+        url: "https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png",
+      },
     },
     {
       usertype: "user",
@@ -36,6 +42,9 @@ withDbConnection(async () => {
       gamesOwned: [],
       platformsOwned: [],
       steamid: "",
+      image: {
+        url: "https://res.cloudinary.com/aimalacloud/image/upload/v1589368823/aimala/luigi_wipe8p.png",
+      },
     },
     {
       usertype: "admin",
@@ -45,6 +54,9 @@ withDbConnection(async () => {
       gamesOwned: [],
       platformsOwned: [],
       steamid: "",
+      image: {
+        url: "https://res.cloudinary.com/aimalacloud/image/upload/v1589368823/aimala/luigi_wipe8p.png",
+      },
     },
     {
       usertype: "user",
@@ -54,6 +66,9 @@ withDbConnection(async () => {
       gamesOwned: [],
       platformsOwned: [],
       steamid: "",
+      image: {
+        url: "https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png",
+      },
     },
     {
       usertype: "user",
@@ -63,6 +78,9 @@ withDbConnection(async () => {
       gamesOwned: [],
       platformsOwned: [],
       steamid: "",
+      image: {
+        url: "https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png",
+      },
     },
     {
       usertype: "user",
@@ -72,6 +90,9 @@ withDbConnection(async () => {
       gamesOwned: [],
       platformsOwned: [],
       steamid: "",
+      image: {
+        url: "https://assets-edge.slickpic.com/img/common/profileimg_default250x250-camera.png",
+      },
     },
   ]);
   console.log(">>> Users Created");
